@@ -25,35 +25,34 @@ namespace Caixa
             InitializeComponent();
             List<Teste> testes = new List<Teste>()
             {
-                new Teste("27/11/2020", "-", "-", "SUPRIMENTO", "R$ 2000,00", "SUPRIMENTO"), 
-                new Teste("27/11/2020", "123456", "PRAFESTA", "DEBITO", "R$ 20,00", "RECIBO"), 
-                new Teste("27/11/2020", "112233", "CASTELATO", "DEBITO", "R$ 200,00", "ADIANTAMENTO"), 
-                new Teste("27/11/2020", "102030", "MARILAN", "DEBITO", "R$ 50,00", "RECIBO"), 
+                new Teste("27/11/2020", "001", "123456", "JOSE DA SILVA", 500, "ABC1234"), 
+                new Teste("27/11/2020", "002", "123475", "JOAO DOS SANTOS", 20, "CDE2346"), 
+                new Teste("27/11/2020", "003", "123478", "ANTONIO DE SOUZA", 200, "FGH1256"),  
             };
 
-            DgTipos.ItemsSource = testes;
+            DgCaixa.ItemsSource = testes;
         }
     }
 
     class Teste
     {
         public string Data {get; set;}
-        public string Cte {get; set;}
-        public string Cliente {get; set;}
-        public string TipoValor {get; set;}
-        public string valor {get; set;}
-        public string TipoDoc { get; set; }
+        public string Id {get; set;}
+        public string Manifesto {get; set;}
+        public string Motorista {get; set;}
+        public int Valor {get; set;}
+        public string Placa { get; set; }
 
        
 
-        public Teste(string data, string cte, string cliente, string tipoValor, string valor, string tipoDoc)
+        public Teste(string data, string id, string manifesto, string motorista, int valor, string placa)
         {
             Data = data;
-            Cte = cte;
-            Cliente = cliente;
-            TipoValor = tipoValor;
-            this.valor = valor;
-            TipoDoc = tipoDoc;
+            Id = id;
+            Manifesto = manifesto;
+            Motorista = motorista;
+            Valor = valor;
+            Placa = placa;
         }
     }
 }

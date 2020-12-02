@@ -11,11 +11,8 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <StackPanel>
-        <TextBlock
-            Margin="40,20,0,0"
-            Style="{StaticResource MaterialDesignHeadline4TextBlock}"
-            Text="Suprimento" />
-        <Separator />
+        <componentes:Titulo Texto="Suprimento" />
+
         <componentes:Status />
 
         <TextBox

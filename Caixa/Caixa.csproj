@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Dados\Dados.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Cadastros\TiposCobranca - Cópia.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>TiposCobranca.xaml.cs</DependentUpon>
