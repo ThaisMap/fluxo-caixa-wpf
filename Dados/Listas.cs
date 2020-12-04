@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Dados.Modelos;
+using System;
 using System.Collections.Generic;
 
 namespace Dados
 {
-    public static class Listas
-    {
+    public static class Listas { 
+         
         public static List<Caixa> GetCaixas = new List<Caixa>()
             {
                 new Caixa("27/11/2020", "-", "-", "SUPRIMENTO", "R$ 2000,00", "SUPRIMENTO"),
@@ -13,7 +14,14 @@ namespace Dados
                 new Caixa("28/11/2020", "001", "ESTORNO ADIANTAMENTO 001", "CRÉDITO", "R$ 200,00", "ESTORNO"),
                 new Caixa("27/11/2020", "102030", "MARILAN", "DEBITO", "R$ 50,00", "RECIBO"),
             };
+
+        public static List<Usuario> UsuariosCadastrados = new List<Usuario>(
+            );
+
     }
+
+
+
 
 
     public class Caixa

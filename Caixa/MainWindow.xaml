@@ -42,15 +42,19 @@
                 x:Name="BtnArquivo"
                 Grid.Row="1"
                 Grid.Column="0"
-                Content="Selecionar arquivo" />
+                 Margin="0,5,5,5"
+                Content="Selecionar arquivo" Cursor="Hand" />
             <TextBox
                 x:Name="TxtArquivo"
                 Grid.Row="1"
                 Grid.Column="1"
                 IsEnabled="False"
-                Text="S://Scan/1356487.pdf" />
+                VerticalAlignment="Bottom"
+                 Margin="0,5,5,5"
+                Text="C:\Users\ti\Pessoal\Produsis\Produsis\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.pdf" />
         </Grid>
         <TextBlock
+                 Margin="0,15"
             DockPanel.Dock="Top"
             Style="{DynamicResource MaterialDesignHeadline6TextBlock}"
             Text="Lançamentos neste fechamento de caixa" HorizontalAlignment="Center"/>
