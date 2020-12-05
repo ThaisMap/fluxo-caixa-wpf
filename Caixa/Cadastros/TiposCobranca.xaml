@@ -33,7 +33,7 @@
                 Content="Adicionar"
                 IsDefault="True" />
         </StackPanel>
-        <DataGrid Name="DgTipos" Style="{DynamicResource DataGridCentralizado}">
+        <DataGrid Name="dgDados" Style="{DynamicResource DataGridCentralizado}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Descricao}" Header="Tipos de cobrança" />
             </DataGrid.Columns>

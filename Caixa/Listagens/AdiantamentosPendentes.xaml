@@ -17,9 +17,8 @@
             <DataGrid Name="DgTipos" Style="{DynamicResource DataGridCentralizado}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Id}" Header="Id" />
-                    <DataGridTextColumn Binding="{Binding Data}" Header="Data" />
-                    <DataGridTextColumn Binding="{Binding Valor, StringFormat='C'}" Header="Valor" />
-                    <DataGridTextColumn Binding="{Binding Manifesto}" Header="Manifesto" />
+                    <DataGridTextColumn Binding="{Binding Data, StringFormat='d'}" Header="Data" />
+                    <DataGridTextColumn Binding="{Binding Valor, StringFormat='C'}" Header="Valor" /> 
                     <DataGridTextColumn Binding="{Binding Placa}" Header="Placa" />
                     <DataGridTextColumn Binding="{Binding Motorista}" Header="Motorista" />
                     <DataGridTemplateColumn Header="Estorno">

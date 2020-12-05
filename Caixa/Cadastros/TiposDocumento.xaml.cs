@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -20,7 +18,11 @@ namespace Caixa.Cadastros
     {
         public TiposDocumento()
         {
+            string[] tiposPossiveis = { "Crédito", "Débito" };
+
             InitializeComponent();
+            dgDados.ItemsSource = Dados.Listas.TiposDocumento;
+            cbTipo.ItemsSource = tiposPossiveis;
         }
     }
 }

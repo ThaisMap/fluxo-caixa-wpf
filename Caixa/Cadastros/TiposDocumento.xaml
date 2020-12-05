@@ -10,6 +10,9 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <componentes:CreditoOuDebitoBooleanConverter x:Key="CreditoOuDebito" />
+    </UserControl.Resources>
     <StackPanel>
         <componentes:Titulo Texto="Tipos de documento" />
 
@@ -20,10 +23,18 @@
             <TextBox
                 Name="Descricao"
                 Width="350"
-                Margin="0,10,0,5"
+                Margin="5"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
                 materialDesign:HintAssist.Hint="Descrição"
+                materialDesign:HintAssist.IsFloating="True" />
+            <ComboBox
+                Name="cbTipo"
+                Width="100"
+                Margin="5"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                materialDesign:HintAssist.Hint="Tipo"
                 materialDesign:HintAssist.IsFloating="True" />
             <Button
                 x:Name="BtnAdicionar"
@@ -33,9 +44,10 @@
                 Content="Adicionar"
                 IsDefault="True" />
         </StackPanel>
-        <DataGrid Name="DgTipos" Style="{DynamicResource DataGridCentralizado}">
+        <DataGrid Name="dgDados" Style="{DynamicResource DataGridCentralizado}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Descricao}" Header="Tipos de documento" />
+                <DataGridTextColumn Binding="{Binding Descricao}" Header="Descrição" />
+                <DataGridTextColumn Binding="{Binding Soma, Converter={StaticResource CreditoOuDebito}}" Header="Tipo" />
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>

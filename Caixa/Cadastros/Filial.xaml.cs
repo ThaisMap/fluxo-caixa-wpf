@@ -21,6 +21,7 @@ namespace Caixa.Cadastros
         public Filial()
         {
             InitializeComponent();
+            dgDados.ItemsSource = Dados.Listas.Filiais;
         }
     }
 }

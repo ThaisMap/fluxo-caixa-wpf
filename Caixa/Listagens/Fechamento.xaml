@@ -45,7 +45,7 @@
                 <DataGridTextColumn Binding="{Binding Data, StringFormat='d'}" Header="Data" />
                 <DataGridTextColumn Binding="{Binding Valor, StringFormat='C'}" Header="Valor" />
                 <DataGridTextColumn Binding="{Binding TipoDocumento.Descricao}" Header="Tipo Documento" />
-                <DataGridTextColumn Binding="{Binding Usuario.Nome}" Header="Tipo Documento" />
+                <DataGridTextColumn Binding="{Binding Usuario.Nome}" Header="Usuário" />
             </DataGrid.Columns>
         </DataGrid>
 

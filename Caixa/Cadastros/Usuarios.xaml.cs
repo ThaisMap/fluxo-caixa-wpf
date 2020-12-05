@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dados;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +22,11 @@ namespace Caixa.Cadastros
         public Usuarios()
         {
             InitializeComponent();
+            CbCadastrados.ItemsSource = Listas.UsuariosCadastrados;
+            CbCadastrados.DisplayMemberPath = "Nome";
+            cbFilial.ItemsSource = Listas.Filiais;
+            cbFilial.DisplayMemberPath = "Nome";
+
         }
     }
 }

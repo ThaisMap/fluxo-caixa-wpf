@@ -20,7 +20,8 @@ namespace Caixa.Cadastros
     {
         public TiposCobranca()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            dgDados.ItemsSource = Dados.Listas.TiposCobranca;
         }
     }
 

@@ -14,20 +14,18 @@
     Height="450"
     mc:Ignorable="d">
     <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <Menu DockPanel.Dock="Top" HorizontalAlignment="Center"> 
-            <MenuItem Header="Cadastros">
-                <MenuItem Header="Filiais" Name="MenuFiliais"/>
-                <MenuItem Header="Clientes" Name="MenuClientes"/>
-                <MenuItem Header="Usuários" Name="MenuUsuarios"/>
-                <MenuItem Header="Tipos de documento" Name="MenuDocumentos"/>
-                <MenuItem Header="Tipos de cobrança" Name="MenuCobrancas"/>
+        <Menu DockPanel.Dock="Top" HorizontalAlignment="Center">
+            <MenuItem Header="Cadastros"  Name="MenuCadastros">
+                <MenuItem Header="Filiais" Name="MenuFiliais" Click="MenuFiliais_Click"/>
+                <MenuItem Header="Clientes" Name="MenuClientes" Click="MenuClientes_Click"/>
+                <MenuItem Header="Usuários" Name="MenuUsuarios" Click="MenuUsuarios_Click"/>
+                <MenuItem Header="Tipos de documento" Name="MenuDocumentos" Click="MenuDocumentos_Click"/>
+                <MenuItem Header="Tipos de cobrança" Name="MenuCobrancas" Click="MenuCobrancas_Click"/>
             </MenuItem>
-            <MenuItem Header="Caixa"/>
-            <MenuItem Header="Adiantamentos"/>
-            <MenuItem Header="Relatórios"/>                  
+            <MenuItem Header="Caixa" Name="MenuCaixa" Click="MenuCaixa_Click"/>
+            <MenuItem Header="Adiantamentos" Name="MenuAdiantamentos" Click="MenuAdiantamentos_Click"/>
+            <MenuItem Header="Relatórios" Name="MenuRelatorios"/>                  
         </Menu>
-        <ContentControl DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="Conteudo" Background="Black">
-            
-        </ContentControl>
+        <ContentControl DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="Conteudo" Background="Black"/>
     </DockPanel>
 </Window>

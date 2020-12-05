@@ -21,6 +21,7 @@ namespace Caixa.Listagens
         public AdiantamentosPendentes()
         {
             InitializeComponent();
+            DgTipos.ItemsSource = Dados.Listas.Adiantamentos;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Caixa.Listagens
         public Caixa()
         {
             InitializeComponent();
-            DgCaixa.ItemsSource = Listas.GetCaixas;
+            DgCaixa.ItemsSource = Listas.Lancamentos;
         }
     }
 }

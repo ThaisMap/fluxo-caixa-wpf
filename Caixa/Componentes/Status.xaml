@@ -14,7 +14,7 @@
         HorizontalAlignment="Center"
         Orientation="Horizontal">
         <TextBlock Margin="5"><Bold>Data:</Bold></TextBlock>
-        <TextBlock Margin="0,5,5,5" Text="{Binding Hoje}" />
+        <TextBlock Margin="0,5,5,5" Text="{Binding Hoje, StringFormat='d'}" />
         <TextBlock Margin="0,5" Text=" - " />
         <TextBlock Margin="5"><Bold>Filial:</Bold></TextBlock>
         <TextBlock Margin="0,5,5,5" Text="{Binding NomeFilial}" />

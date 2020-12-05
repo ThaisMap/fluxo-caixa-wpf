@@ -25,6 +25,47 @@ namespace Caixa
         {
             InitializeComponent(); 
 
-        }    
+        }
+         
+
+        private void MenuFiliais_Click(object sender, RoutedEventArgs e)
+        {
+            Conteudo.Content = new Cadastros.Filial();
+        }
+
+        private void MenuUsuarios_Click(object sender, RoutedEventArgs e)
+        {
+            Conteudo.Content = new Cadastros.Usuarios();
+        }
+
+        private void MenuClientes_Click(object sender, RoutedEventArgs e)
+        {
+            Conteudo.Content = new Cadastros.Clientes();
+        }
+
+        private void MenuDocumentos_Click(object sender, RoutedEventArgs e)
+        {
+            Conteudo.Content = new Cadastros.TiposDocumento();
+        }
+
+        private void MenuCobrancas_Click(object sender, RoutedEventArgs e)
+        {
+            Conteudo.Content = new Cadastros.TiposCobranca();
+        }
+
+        private void MenuCaixa_Click(object sender, RoutedEventArgs e)
+        {
+            Conteudo.Content = new Listagens.Caixa();
+        }
+
+        private void MenuAdiantamentos_Click(object sender, RoutedEventArgs e)
+        {
+            Conteudo.Content = new Listagens.AdiantamentosPendentes();
+        }
+
+        private void MenuFechamento_Click(object sender, RoutedEventArgs e)
+        {
+            Conteudo.Content = new Listagens.Caixa();
+        }
     }
 }

@@ -6,22 +6,26 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Caixa.Listagens"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <componentes:CreditoOuDebitoBooleanConverter x:Key="CreditoOuDebito"/>
+    </UserControl.Resources>
     <StackPanel>
         <componentes:Titulo Texto="Caixa" />
 
         <componentes:Status />
-        <DataGrid Name="DgCaixa" Style="{DynamicResource DataGridCentralizado}">
+        <DataGrid
+            Name="DgCaixa" 
+            Style="{DynamicResource DataGridCentralizado}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Data}" Header="Data" />
-                <DataGridTextColumn Binding="{Binding Cte}" Header="Cte" />
-                <DataGridTextColumn Binding="{Binding Cliente}" Header="Cliente" />
-                <DataGridTextColumn Binding="{Binding TipoValor}" Header="Lançamento" />
-                <DataGridTextColumn Binding="{Binding valor, StringFormat='C'}" Header="Valor" />
-                <DataGridTextColumn Binding="{Binding TipoDoc}" Header="Tipo Documento" />
+                <DataGridTextColumn Binding="{Binding Data, StringFormat='d'}" Header="Data" />
+                <DataGridTextColumn Binding="{Binding TipoDocumento.Descricao}" Header="Documento" />
+                <DataGridTextColumn Binding="{Binding Valor, StringFormat='C'}" Header="Valor" TextBlock.TextAlignment="Right"/>
+                <DataGridTextColumn Binding="{Binding TipoDocumento.Soma, Converter={StaticResource CreditoOuDebito}}" Header="Tipo" />
+                <DataGridTextColumn Binding="{Binding Usuario.Nome}" Header="Usuário" />
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
@@ -29,7 +33,7 @@
                 Name="BtnIncluir"
                 Width="80"
                 Margin="0,10,10,5"
-                Content="Incluir" />
+                Content="Incluir" Cursor="Hand" />
             <Button
                 Name="tnFechamento"
                 Margin="0,10,10,5"

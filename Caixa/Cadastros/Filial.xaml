@@ -41,9 +41,9 @@
                 Content="Adicionar"
                 IsDefault="True" />
         </StackPanel>
-        <DataGrid Name="DgTipos" Style="{DynamicResource DataGridCentralizado}">
+        <DataGrid Name="dgDados" Style="{DynamicResource DataGridCentralizado}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Descricao}" Header="Nome" />
+                <DataGridTextColumn Binding="{Binding Nome}" Header="Nome" />
                 <DataGridTextColumn Binding="{Binding Saldo, StringFormat='C'}" Header="Saldo" />
             </DataGrid.Columns>
         </DataGrid>
