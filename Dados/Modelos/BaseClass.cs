@@ -15,19 +15,19 @@ namespace Dados.Modelos
     }
     public class Usuario : BaseClass
     {
-        public Usuario(string nome, string senha, string login, string acesso, Filial filial, int id) : base(id)
+        public Usuario(string nome, string senha, string login, bool admin, Filial filial, int id) : base(id)
         { 
             Nome = nome;
             Senha = senha;
             Login = login;
-            Acesso = acesso;
+            Admin = admin;
             Filial = filial;
         }
 
         public string Nome { get; set; }
         public string Senha { get; set; }
         public string Login { get; set; }
-        public string Acesso { get; set; }
+        public bool Admin { get; set; }
         public Filial Filial { get; set; }
     }
 
@@ -67,32 +67,32 @@ namespace Dados.Modelos
 
     public class Filial : BaseClass
     {
-        public Filial(string nome, decimal saldo, int id) : base(id)
+        public Filial(string nome, double saldo, int id) : base(id)
         {
             Nome = nome;
             Saldo = saldo;
         }
 
         public string Nome { get; set; }
-        public decimal Saldo { get; set; }
+        public double Saldo { get; set; }
     }
 
     public class Lancamento : BaseClass
     {
-        public Lancamento(DateTime data, Usuario usuario, Filial filial, decimal valor, TipoDocumento tipoDocumento, int id) : base(id)
+        public Lancamento(DateTime data, Usuario usuario, Filial filial, double valor, TipoDocumento tipoDocumento, int id) : base(id)
         {
             Data = data;
             Usuario = usuario;
             Filial = filial;
-            Valor = valor;
+            Valor = tipoDocumento.Soma ? valor : -valor;
             TipoDocumento = tipoDocumento;
         }
-
         public DateTime Data { get; set; }
         public Usuario Usuario { get; set; }
         public Filial Filial { get; set; }
-        public decimal Valor { get; set; }
+        public double Valor { get; set; }
         public TipoDocumento TipoDocumento { get; set; }
+        
     }
 
     public class Suprimento : Lancamento
@@ -102,12 +102,12 @@ namespace Dados.Modelos
         {
             Fechamento = fechamento;
         }         
-        public int? Fechamento { get; set; }
+        public int? Fechamento { get; set; } 
     }
 
     public class Debito : Lancamento
     {
-        public Debito(TipoCobranca tipoCobranca, int cte, int volumes, Cliente cliente, int? fechamento, Lancamento lancamento) :
+        public Debito(TipoCobranca tipoCobranca, string cte, int volumes, Cliente cliente, int? fechamento, Lancamento lancamento) :
             base(lancamento.Data, lancamento.Usuario, lancamento.Filial, lancamento.Valor, lancamento.TipoDocumento, lancamento.Id)
         {
             TipoCobranca = tipoCobranca;
@@ -118,7 +118,7 @@ namespace Dados.Modelos
         }
 
         public TipoCobranca TipoCobranca { get; set; }
-        public int Cte { get; set; }
+        public string Cte { get; set; }
         public int Volumes { get; set; }
         public Cliente Cliente { get; set; }
         public int? Fechamento { get; set; }
@@ -141,7 +141,7 @@ namespace Dados.Modelos
     
     public class Fechamento : BaseClass
     {
-        public Fechamento(DateTime data, Filial filial, decimal valorInicial, decimal valorFinal, string arquivoScan, int id) : base(id)
+        public Fechamento(DateTime data, Filial filial, double valorInicial, double? valorFinal, string arquivoScan, int id) : base(id)
         {
             Data = data;
             Filial = filial;
@@ -152,8 +152,8 @@ namespace Dados.Modelos
 
         public DateTime Data { get; set; }
         public Filial Filial { get; set; }
-        public decimal ValorInicial { get; set; }
-        public decimal ValorFinal { get; set; }
+        public double ValorInicial { get; set; }
+        public double? ValorFinal { get; set; }
         public string ArquivoScan { get; set; }
 
     }

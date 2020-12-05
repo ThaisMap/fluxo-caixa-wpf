@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Dados;
 
 namespace Caixa.Componentes
 {
@@ -18,9 +19,16 @@ namespace Caixa.Componentes
     /// </summary>
     public partial class Status : UserControl
     {
+        public string NomeUsuario { get; private set; } = Dados.Status.Usuario.Nome;
+        public string NomeFilial { get; private set; } = Dados.Status.Filial.Nome;
+        public double SaldoInicial { get; private set; } = Dados.Status.FechamentoPendente.ValorInicial;
+        public double Saldo { get; private set; } = Dados.Status.Saldo;
+        public DateTime Hoje { get; private set; } = DateTime.Today;
         public Status()
         {
             InitializeComponent();
+            DataContext = this;
+
         }
     }
 }

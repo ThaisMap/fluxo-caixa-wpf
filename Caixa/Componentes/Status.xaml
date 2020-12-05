@@ -14,14 +14,16 @@
         HorizontalAlignment="Center"
         Orientation="Horizontal">
         <TextBlock Margin="5"><Bold>Data:</Bold></TextBlock>
-        <TextBlock Margin="0,5,5,5" Text="27/11/2020" />
+        <TextBlock Margin="0,5,5,5" Text="{Binding Hoje}" />
         <TextBlock Margin="0,5" Text=" - " />
         <TextBlock Margin="5"><Bold>Filial:</Bold></TextBlock>
-        <TextBlock Margin="0,5,5,5" Text=" São Joaquim de Bicas" />
+        <TextBlock Margin="0,5,5,5" Text="{Binding NomeFilial}" />
         <TextBlock Margin="0,5" Text=" - " />
         <TextBlock Margin="5"><Bold>Usuário logado:</Bold></TextBlock>
-        <TextBlock Margin="0,5,5,5" Text="Walter dos Reis Junior" />
+        <TextBlock Margin="0,5,5,5" Text="{Binding NomeUsuario}" />
+        <TextBlock Margin="5"><Bold>Saldo inicial:</Bold></TextBlock>
+        <TextBlock Margin="0,5,5,5" Text="{Binding SaldoInicial, StringFormat='C'}" />
         <TextBlock Margin="5"><Bold>Saldo atual:</Bold></TextBlock>
-        <TextBlock Margin="0,5,5,5" Text="R$ 990,50" />
+        <TextBlock Margin="0,5,5,5" Text="{Binding Saldo, StringFormat='C'}" />
     </WrapPanel>
 </UserControl>

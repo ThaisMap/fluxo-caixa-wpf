@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Dados;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Dados;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,17 +12,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Caixa
+namespace Caixa.Listagens
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interação lógica para Fechamento.xam
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Fechamento : UserControl
     {
-        public MainWindow()
+        public Fechamento()
         {
-            InitializeComponent(); 
-
-        }    
+            InitializeComponent();
+            DgCaixa.ItemsSource = Listas.Lancamentos;
+        }
     }
 }
