@@ -18,9 +18,24 @@ namespace Caixa.Lancamentos
     /// </summary>
     public partial class Debito : UserControl
     {
+        /****** passo a passo  https://stackoverflow.com/questions/3067617/raising-an-event-on-parent-window-from-a-user-control-in-net-c-sharp *******/
         public Debito()
         {
             InitializeComponent();
         }
+
+        public static readonly RoutedEvent EventoDebitoLancado =
+            EventManager.RegisterRoutedEvent("EventoDebitoLancado", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Debito)); 
+
+        public event RoutedEventHandler DebitoLancado
+        {
+            add { AddHandler(EventoDebitoLancado, value);  }
+            remove { RemoveHandler(EventoDebitoLancado, value); }
+        }
+
+        private void BtnLancar_Click(object sender, RoutedEventArgs e)
+        { 
+            RaiseEvent(new RoutedEventArgs(EventoDebitoLancado));
+        } 
     }
 }

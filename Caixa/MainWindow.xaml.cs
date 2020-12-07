@@ -23,8 +23,10 @@ namespace Caixa
     {
         public MainWindow()
         {
-            InitializeComponent(); 
-
+            InitializeComponent();
+            // Register the Bubble Event Handler 
+            AddHandler(Listagens.Caixa.EventoBtnFechamento,
+                new RoutedEventHandler(MenuFechamentos_Click));
         }
          
 
@@ -55,6 +57,7 @@ namespace Caixa
 
         private void MenuCaixa_Click(object sender, RoutedEventArgs e)
         {
+
             Conteudo.Content = new Listagens.Caixa();
         }
 
@@ -62,10 +65,11 @@ namespace Caixa
         {
             Conteudo.Content = new Listagens.AdiantamentosPendentes();
         }
+         
 
-        private void MenuFechamento_Click(object sender, RoutedEventArgs e)
+        private void MenuFechamentos_Click(object sender, RoutedEventArgs e)
         {
-            Conteudo.Content = new Listagens.Caixa();
+            Conteudo.Content = new Listagens.Fechamento();
         }
     }
 }

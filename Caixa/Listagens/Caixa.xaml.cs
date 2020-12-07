@@ -24,5 +24,29 @@ namespace Caixa.Listagens
             InitializeComponent();
             DgCaixa.ItemsSource = Listas.Lancamentos;
         }
+
+        public static readonly RoutedEvent EventoBtnFechamento =
+          EventManager.RegisterRoutedEvent("EventoBtnFechamento", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Caixa));
+
+        public event RoutedEventHandler BtnFechamento
+        {
+            add { AddHandler(EventoBtnFechamento, value); }
+            remove { RemoveHandler(EventoBtnFechamento, value); }
+        }
+
+        private void BtnIncluir_Click(object sender, RoutedEventArgs e)
+        {
+            DialogLancamento.IsOpen = true;
+        }
+
+        private void PopUpLancamentoDebito_DebitoLancado(object sender, RoutedEventArgs e)
+        {
+            DialogLancamento.IsOpen = false;
+        }
+
+        private void btnFechamento_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseEvent(new RoutedEventArgs(EventoBtnFechamento));
+        }
     }
 }
