@@ -71,5 +71,10 @@ namespace Caixa
         {
             Conteudo.Content = new Listagens.Fechamento();
         }
+
+        private void MenuRelatorios_Click(object sender, RoutedEventArgs e)
+        {
+            Conteudo.Content = new Relatorios.ImprimirAdiantamento();
+        }
     }
 }

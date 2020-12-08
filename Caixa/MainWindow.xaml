@@ -25,7 +25,7 @@
             <MenuItem Header="Caixa" Name="MenuCaixa" Click="MenuCaixa_Click"/>
             <MenuItem Header="Adiantamentos" Name="MenuAdiantamentos" Click="MenuAdiantamentos_Click"/>
             <MenuItem Header="Fechamento" Name="MenuFechamentos" Click="MenuFechamentos_Click"/>
-            <MenuItem Header="Relatórios" Name="MenuRelatorios"/>                  
+            <MenuItem Header="Relatórios" Name="MenuRelatorios" Click="MenuRelatorios_Click"/>                  
         </Menu>
         <ContentControl DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="Conteudo" Background="Black"/>
     </DockPanel>
