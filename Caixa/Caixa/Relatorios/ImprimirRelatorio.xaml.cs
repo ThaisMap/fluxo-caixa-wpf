@@ -19,14 +19,21 @@ namespace Caixa.Relatorios
     /// <summary>
     /// Interação lógica para ImprimirAdiantamento.xam
     /// </summary>
-    public partial class ImprimirAdiantamento : UserControl
+    public partial class ImprimirRelatorio : Window
     {
-        public ImprimirAdiantamento()
+        public ImprimirRelatorio()
         {
             InitializeComponent(); 
             Adiantamento recibo = new Adiantamento();
-            recibo.Load();
-            AdiantamentoViewer.ViewerCore.ReportSource = recibo; 
+            recibo.Load(); 
+            VisualizadorRelatorio.ViewerCore.ReportSource = recibo;
+        }
+
+        public ImprimirRelatorio(ReportClass relatorio)
+        {
+            InitializeComponent();
+            relatorio.Load();
+            VisualizadorRelatorio.ViewerCore.ReportSource = relatorio;
         }
     }
 }

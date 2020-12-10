@@ -100,6 +100,9 @@
     <Compile Include="Lancamentos\Debito.xaml.cs">
       <DependentUpon>Debito.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lancamentos\PopUp.xaml.cs">
+      <DependentUpon>PopUp.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lancamentos\Suprimento.xaml.cs">
       <DependentUpon>Suprimento.xaml</DependentUpon>
     </Compile>
@@ -121,8 +124,8 @@
       <DependentUpon>Adiantamento.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Relatorios\ImprimirAdiantamento.xaml.cs">
-      <DependentUpon>ImprimirAdiantamento.xaml</DependentUpon>
+    <Compile Include="Relatorios\ImprimirRelatorio.xaml.cs">
+      <DependentUpon>ImprimirRelatorio.xaml</DependentUpon>
     </Compile>
     <Page Include="Cadastros\Clientes.xaml">
       <SubType>Designer</SubType>
@@ -160,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Lancamentos\PopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lancamentos\Suprimento.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -192,7 +199,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Relatorios\ImprimirAdiantamento.xaml">
+    <Page Include="Relatorios\ImprimirRelatorio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

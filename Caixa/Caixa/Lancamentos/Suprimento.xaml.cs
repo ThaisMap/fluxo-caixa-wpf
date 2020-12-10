@@ -22,5 +22,18 @@ namespace Caixa.Lancamentos
         {
             InitializeComponent();
         }
+        public static readonly RoutedEvent EventoSuprimentoLancado =
+          EventManager.RegisterRoutedEvent("EventoSuprimentoLancado", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Suprimento));
+
+        public event RoutedEventHandler SuprimentoLancado
+        {
+            add { AddHandler(EventoSuprimentoLancado, value); }
+            remove { RemoveHandler(EventoSuprimentoLancado, value); }
+        }
+
+        private void BtnLancar_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseEvent(new RoutedEventArgs(EventoSuprimentoLancado));
+        }
     }
 }

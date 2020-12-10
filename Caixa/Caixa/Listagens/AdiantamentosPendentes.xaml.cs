@@ -23,5 +23,15 @@ namespace Caixa.Listagens
             InitializeComponent();
             DgTipos.ItemsSource = Dados.Listas.Adiantamentos;
         }
+
+        private void BtnIncluir_Click(object sender, RoutedEventArgs e)
+        {
+            DialogoLancamento.IsOpen = true;
+        }
+
+        private void Adiantamento_AdiantamentoLancado(object sender, RoutedEventArgs e)
+        {
+            DialogoLancamento.IsOpen = false;
+        }
     }
 }

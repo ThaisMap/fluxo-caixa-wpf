@@ -73,7 +73,8 @@ namespace Caixa
 
         private void MenuRelatorios_Click(object sender, RoutedEventArgs e)
         {
-            Conteudo.Content = new Relatorios.ImprimirAdiantamento();
+            Relatorios.ImprimirRelatorio imprimir = new Relatorios.ImprimirRelatorio();
+            imprimir.ShowDialog();
         }
     }
 }

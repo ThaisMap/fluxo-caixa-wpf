@@ -34,12 +34,8 @@ namespace Caixa.Listagens
             remove { RemoveHandler(EventoBtnFechamento, value); }
         }
 
-        private void BtnIncluir_Click(object sender, RoutedEventArgs e)
-        {
-            DialogLancamento.IsOpen = true;
-        }
-
-        private void PopUpLancamentoDebito_DebitoLancado(object sender, RoutedEventArgs e)
+       
+        private void FecharPopUpDialog(object sender, RoutedEventArgs e)
         {
             DialogLancamento.IsOpen = false;
         }
@@ -47,6 +43,34 @@ namespace Caixa.Listagens
         private void btnFechamento_Click(object sender, RoutedEventArgs e)
         {
             RaiseEvent(new RoutedEventArgs(EventoBtnFechamento));
+        }
+
+        Lancamentos.PopUp popUp;
+        private void BtnIncluir_Click(object sender, RoutedEventArgs e)
+        {
+            popUp = new Lancamentos.PopUp("Débito");
+            AbrirPopUpDialog();
+        }
+
+        private void AbrirPopUpDialog()
+        {
+            PopUpDialog.Content = popUp;
+            DialogLancamento.IsOpen = true;
+            popUp.FecharDialog += FecharPopUpDialog;
+        }
+
+        private void BtnAdiantamento_Click(object sender, RoutedEventArgs e)
+        {
+           popUp = new Lancamentos.PopUp("Adiantamento");
+            AbrirPopUpDialog();
+
+        }
+
+        private void BtnSuprimento_Click(object sender, RoutedEventArgs e)
+        {
+            popUp = new Lancamentos.PopUp("Suprimento");
+            AbrirPopUpDialog();
+
         }
     }
 }

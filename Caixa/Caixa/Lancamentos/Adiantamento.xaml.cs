@@ -22,5 +22,25 @@ namespace Caixa.Lancamentos
         {
             InitializeComponent();
         }
+
+        public static readonly RoutedEvent EventoAdiantamentoLancado =
+           EventManager.RegisterRoutedEvent("EventoAdiantamentoLancado", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Adiantamento));
+
+        public event RoutedEventHandler AdiantamentoLancado
+        {
+            add { AddHandler(EventoAdiantamentoLancado, value); }
+            remove { RemoveHandler(EventoAdiantamentoLancado, value); }
+        }
+
+        private void BtnLancar_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseEvent(new RoutedEventArgs(EventoAdiantamentoLancado));
+        }
+
+        private void BtnImprimir_Click(object sender, RoutedEventArgs e)
+        {
+            Relatorios.ImprimirRelatorio imprimir = new Relatorios.ImprimirRelatorio();
+            imprimir.ShowDialog();
+        }
     }
 }
