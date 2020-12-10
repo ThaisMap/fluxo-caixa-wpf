@@ -23,10 +23,10 @@ namespace Caixa.Relatorios
     {
         public ImprimirRelatorio()
         {
-            InitializeComponent(); 
-            Adiantamento recibo = new Adiantamento();
-            recibo.Load(); 
-            VisualizadorRelatorio.ViewerCore.ReportSource = recibo;
+            InitializeComponent();
+            Dados.RelatoriosCrystal.Fechamento fechamento = new Dados.RelatoriosCrystal.Fechamento();
+            VisualizadorRelatorio.ViewerCore.ReportSource = fechamento;
+            fechamento.SetDataSource(Dados.Listas.GetCaixas);
         }
 
         public ImprimirRelatorio(ReportClass relatorio)

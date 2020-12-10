@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ListaFechamento" targetNamespace="http://tempuri.org/ListaFechamento.xsd" xmlns:mstns="http://tempuri.org/ListaFechamento.xsd" xmlns="http://tempuri.org/ListaFechamento.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ListaFechamento" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ListaFechamento" msprop:Generator_UserDSName="ListaFechamento">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Lancamentos" msprop:Generator_TableClassName="LancamentosDataTable" msprop:Generator_TableVarName="tableLancamentos" msprop:Generator_TablePropName="Lancamentos" msprop:Generator_RowDeletingName="LancamentosRowDeleting" msprop:Generator_RowChangingName="LancamentosRowChanging" msprop:Generator_RowEvHandlerName="LancamentosRowChangeEventHandler" msprop:Generator_RowDeletedName="LancamentosRowDeleted" msprop:Generator_UserTableName="Lancamentos" msprop:Generator_RowChangedName="LancamentosRowChanged" msprop:Generator_RowEvArgName="LancamentosRowChangeEvent" msprop:Generator_RowClassName="LancamentosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Data" msprop:Generator_ColumnVarNameInTable="columnData" msprop:Generator_ColumnPropNameInRow="Data" msprop:Generator_ColumnPropNameInTable="DataColumn" msprop:Generator_UserColumnName="Data" type="xs:string" minOccurs="0" />
+              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente" type="xs:string" minOccurs="0" />
+              <xs:element name="Cte" msprop:Generator_ColumnVarNameInTable="columnCte" msprop:Generator_ColumnPropNameInRow="Cte" msprop:Generator_ColumnPropNameInTable="CteColumn" msprop:Generator_UserColumnName="Cte" type="xs:string" minOccurs="0" />
+              <xs:element name="Volumes" msprop:Generator_ColumnVarNameInTable="columnVolumes" msprop:Generator_ColumnPropNameInRow="Volumes" msprop:Generator_ColumnPropNameInTable="VolumesColumn" msprop:Generator_UserColumnName="Volumes" type="xs:string" minOccurs="0" />
+              <xs:element name="TipoCobranca" msprop:Generator_ColumnVarNameInTable="columnTipoCobranca" msprop:Generator_ColumnPropNameInRow="TipoCobranca" msprop:Generator_ColumnPropNameInTable="TipoCobrancaColumn" msprop:Generator_UserColumnName="TipoCobranca" type="xs:string" minOccurs="0" />
+              <xs:element name="Valor" msprop:Generator_ColumnVarNameInTable="columnValor" msprop:Generator_ColumnPropNameInRow="Valor" msprop:Generator_ColumnPropNameInTable="ValorColumn" msprop:Generator_UserColumnName="Valor" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

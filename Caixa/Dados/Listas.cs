@@ -7,11 +7,11 @@ namespace Dados
     public static class Listas
     { 
         public static List<Caixa> GetCaixas = new List<Caixa>() {
-            new Caixa("27/11/2020", "-", "-", "SUPRIMENTO", "R$ 2000,00", "SUPRIMENTO"),
-            new Caixa("27/11/2020", "123456", "PRAFESTA", "DEBITO", "R$ 20,00", "RECIBO"),
-            new Caixa("27/11/2020", "001", "CASTELATO", "DEBITO", "R$ 200,00", "ADIANTAMENTO"),
-            new Caixa("28/11/2020", "001", "ESTORNO ADIANTAMENTO 001", "CRÉDITO", "R$ 200,00", "ESTORNO"),
-            new Caixa("27/11/2020", "102030", "MARILAN", "DEBITO", "R$ 50,00", "RECIBO"),
+            new Caixa(DateTime.Today, "-", "-", "SUPRIMENTO", 1,  2000.00, "SUPRIMENTO"),
+            new Caixa(DateTime.Today, "123456", "PRAFESTA", "DEBITO", 10, -20, "RECIBO"),
+            new Caixa(DateTime.Today, "001", "CASTELATO", "DEBITO", 100, -200, "ADIANTAMENTO"),
+            new Caixa(DateTime.Today, "001", "ESTORNO ADIANTAMENTO 001", "CRÉDITO", 1, 250, "ESTORNO"),
+            new Caixa(DateTime.Today, "102030", "MARILAN", "DEBITO", 10, -500, "RECIBO"),
         };
 
         public static List<Filial> Filiais = new List<Filial>() {
@@ -101,23 +101,25 @@ namespace Dados
 
     public class Caixa
     {
-        public string Data { get; set; }
+        public DateTime Data { get; set; }
         public string Cte { get; set; }
         public string Cliente { get; set; }
         public string TipoValor { get; set; }
-        public string valor { get; set; }
-        public string TipoDoc { get; set; }
+        public int Volumes { get; set; }
+        public double valor { get; set; }
+        public string TipoCobranca { get; set; }
 
 
 
-        public Caixa(string data, string cte, string cliente, string tipoValor, string valor, string tipoDoc)
+        public Caixa(DateTime data, string cte, string cliente, string tipoValor, int volumes, double valor, string tipoDoc)
         {
             Data = data;
             Cte = cte;
             Cliente = cliente;
             TipoValor = tipoValor;
             this.valor = valor;
-            TipoDoc = tipoDoc;
+            TipoCobranca = tipoDoc;
+            Volumes = volumes;
         }
     }
 }
