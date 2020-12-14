@@ -1,0 +1,56 @@
+﻿<UserControl
+    x:Class="Caixa.Listagens.Caixa"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Lancamentos="clr-namespace:Caixa.Lancamentos"
+    xmlns:componentes="clr-namespace:Caixa.Componentes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Caixa.Listagens"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <componentes:CreditoOuDebitoBooleanConverter x:Key="CreditoOuDebito" />
+    </UserControl.Resources>
+    <materialDesign:DialogHost
+        Name="DialogLancamento"
+        CloseOnClickAway="True"
+        IsOpen="False">
+        <materialDesign:DialogHost.DialogContent>
+            <Lancamentos:Debito DebitoLancado="PopUpLancamentoDebito_DebitoLancado"/>
+        </materialDesign:DialogHost.DialogContent>
+        <StackPanel>
+            <componentes:Titulo Texto="Caixa" />
+
+            <componentes:Status />
+            <DataGrid Name="DgCaixa" Style="{DynamicResource DataGridCentralizado}" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Data, StringFormat='d'}" Header="Data" />
+                    <DataGridTextColumn Binding="{Binding TipoDocumento.Descricao}" Header="Documento" />
+                    <DataGridTextColumn
+                        Binding="{Binding Valor, StringFormat='C'}"
+                        Header="Valor"
+                        TextBlock.TextAlignment="Right" />
+                    <DataGridTextColumn Binding="{Binding TipoDocumento.Soma, Converter={StaticResource CreditoOuDebito}}" Header="Tipo" />
+                    <DataGridTextColumn Binding="{Binding Usuario.Nome}" Header="Usuário" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button
+                    Name="BtnIncluir"
+                    Width="80"
+                    Margin="0,10,10,5"
+                    Click="BtnIncluir_Click"
+                    Content="Incluir"
+                    Cursor="Hand" />
+                <Button
+                    Name="btnFechamento"
+                    Margin="0,10,10,5"
+                    Click="btnFechamento_Click"
+                    Content="Realizar Fechamento" />
+            </StackPanel>
+        </StackPanel>
+    </materialDesign:DialogHost>
+</UserControl>

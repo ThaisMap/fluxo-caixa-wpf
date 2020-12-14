@@ -1,0 +1,87 @@
+﻿<UserControl
+    x:Class="Caixa.Lancamentos.Debito"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:componentes="clr-namespace:Caixa.Componentes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Caixa.Lancamentos"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <StackPanel Margin="20">
+        <componentes:Titulo Texto="Lançamento de descarga" />
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <DatePicker
+                Name="Data"
+                Width="150"
+                Margin="0,10,10,5"
+                HorizontalAlignment="Center"
+                materialDesign:HintAssist.Hint="Data"
+                materialDesign:HintAssist.IsFloating="True" />
+
+            <TextBox
+                Name="Valor"
+                Width="150"
+                Margin="0,10,10,5"
+                HorizontalAlignment="Center"
+                materialDesign:HintAssist.Hint="Valor"
+                materialDesign:HintAssist.IsFloating="True"
+                MaxLength="40" />
+
+            <ComboBox
+                Name="TipoDoc"
+                Width="150"
+                Margin="0,10,10,5"
+                VerticalAlignment="Bottom"
+                materialDesign:HintAssist.Hint="Tipo de Documento"
+                materialDesign:HintAssist.IsFloating="True"
+                IsEditable="True" />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBox
+                Name="Cte"
+                Width="150"
+                Margin="0,10,10,5"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                materialDesign:HintAssist.Hint="Cte"
+                materialDesign:HintAssist.IsFloating="True"
+                MaxLength="40" />
+            <TextBox
+                Name="Volumes"
+                Width="150"
+                Margin="0,10,10,5"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                materialDesign:HintAssist.Hint="Velumes"
+                materialDesign:HintAssist.IsFloating="True"
+                MaxLength="40" />
+            <ComboBox
+                Name="Cliente"
+                Width="150"
+                Margin="0,10,10,5"
+                VerticalAlignment="Bottom"
+                materialDesign:HintAssist.Hint="Cliente"
+                materialDesign:HintAssist.IsFloating="True"
+                IsEditable="True" />
+            <ComboBox
+                Name="TipoDescarga"
+                Width="150"
+                Margin="0,10,10,5"
+                VerticalAlignment="Bottom"
+                materialDesign:HintAssist.Hint="Tipo descarga"
+                materialDesign:HintAssist.IsFloating="True"
+                IsEditable="True" />
+        </StackPanel>
+        <Button
+            Name="BtnLancar"
+            Width="80"
+            Margin="0,10,10,5"
+            Click="BtnLancar_Click"
+            Content="Lançar" />
+
+    </StackPanel>
+</UserControl>

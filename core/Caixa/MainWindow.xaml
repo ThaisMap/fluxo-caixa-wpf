@@ -1,0 +1,32 @@
+﻿<Window
+    x:Class="Caixa.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:componentes="clr-namespace:Caixa.Componentes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Caixa"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Caixa ER"
+    MinWidth="420"
+    Width="800"
+    MinHeight="350"
+    Height="450"
+    mc:Ignorable="d">
+    <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Menu DockPanel.Dock="Top" HorizontalAlignment="Center">
+            <MenuItem Header="Cadastros"  Name="MenuCadastros">
+                <MenuItem Header="Filiais" Name="MenuFiliais" Click="MenuFiliais_Click"/>
+                <MenuItem Header="Clientes" Name="MenuClientes" Click="MenuClientes_Click"/>
+                <MenuItem Header="Usuários" Name="MenuUsuarios" Click="MenuUsuarios_Click"/>
+                <MenuItem Header="Tipos de documento" Name="MenuDocumentos" Click="MenuDocumentos_Click"/>
+                <MenuItem Header="Tipos de cobrança" Name="MenuCobrancas" Click="MenuCobrancas_Click"/>
+            </MenuItem>
+            <MenuItem Header="Caixa" Name="MenuCaixa" Click="MenuCaixa_Click"/>
+            <MenuItem Header="Adiantamentos" Name="MenuAdiantamentos" Click="MenuAdiantamentos_Click"/>
+            <MenuItem Header="Fechamento" Name="MenuFechamentos" Click="MenuFechamentos_Click"/>
+            <MenuItem Header="Relatórios" Name="MenuRelatorios" Click="MenuRelatorios_Click"/>                  
+        </Menu>
+        <ContentControl DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="Conteudo" Background="Black"/>
+    </DockPanel>
+</Window>
