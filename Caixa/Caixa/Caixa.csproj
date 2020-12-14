@@ -35,9 +35,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>Caixa.App</StartupObject>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -251,10 +248,6 @@
     <ProjectReference Include="..\Dados\Dados.csproj">
       <Project>{5a6059f9-e6cd-42a7-a373-925edefeb952}</Project>
       <Name>Dados</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAO\Database.csproj">
-      <Project>{fd8f8654-3418-4089-a686-fa705575895c}</Project>
-      <Name>Database</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

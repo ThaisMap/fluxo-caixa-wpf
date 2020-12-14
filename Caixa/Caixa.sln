@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caixa", "Caixa\Caixa.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dados", "Dados\Dados.csproj", "{5A6059F9-E6CD-42A7-A373-925EDEFEB952}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "DAO\Database.csproj", "{FD8F8654-3418-4089-A686-FA705575895C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{5A6059F9-E6CD-42A7-A373-925EDEFEB952}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A6059F9-E6CD-42A7-A373-925EDEFEB952}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A6059F9-E6CD-42A7-A373-925EDEFEB952}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD8F8654-3418-4089-A686-FA705575895C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD8F8654-3418-4089-A686-FA705575895C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD8F8654-3418-4089-A686-FA705575895C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD8F8654-3418-4089-A686-FA705575895C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
