@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Dados.RelatoriosCrystal {
+namespace RelatoriosCrystal {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace Dados.RelatoriosCrystal {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Fechamento : ReportClass {
+    public class Adiantamento : ReportClass {
         
-        public Fechamento() {
+        public Adiantamento() {
         }
         
         public override string ResourceName {
             get {
-                return "Fechamento.rpt";
+                return "Adiantamento.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Dados.RelatoriosCrystal {
         
         public override string FullResourceName {
             get {
-                return "Dados.RelatoriosCrystal.Fechamento.rpt";
+                return "RelatoriosCrystal.Adiantamento.rpt";
             }
             set {
                 // Do nothing
@@ -74,7 +74,7 @@ namespace Dados.RelatoriosCrystal {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section DetailSection1 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,17 +82,25 @@ namespace Dados.RelatoriosCrystal {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[4];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[5];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedFechamento : Component, ICachedReport {
+    public class CachedAdiantamento : Component, ICachedReport {
         
-        public CachedFechamento() {
+        public CachedAdiantamento() {
         }
         
         [Browsable(false)]
@@ -129,7 +137,7 @@ namespace Dados.RelatoriosCrystal {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Fechamento rpt = new Fechamento();
+            Adiantamento rpt = new Adiantamento();
             rpt.Site = this.Site;
             return rpt;
         }

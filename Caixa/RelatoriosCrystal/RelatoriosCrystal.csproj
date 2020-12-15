@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5A6059F9-E6CD-42A7-A373-925EDEFEB952}</ProjectGuid>
+    <ProjectGuid>{BC53EE16-EBFB-403B-9434-AFA13D090956}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dados</RootNamespace>
-    <AssemblyName>Dados</AssemblyName>
+    <RootNamespace>RelatoriosCrystal</RootNamespace>
+    <AssemblyName>RelatoriosCrystal</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -45,12 +45,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Conversor.cs" />
-    <Compile Include="Listas.cs" />
-    <Compile Include="Modelos\BaseClass.cs" />
-    <Compile Include="Modelos\Filial.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Status.cs" />
+    <Compile Include="Adiantamento.cs">
+      <DependentUpon>Adiantamento.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Fechamento.cs">
+      <DependentUpon>Fechamento.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ListaFechamento.cs">
+      <DependentUpon>ListaFechamento.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ListaFechamento.Designer.cs">
+      <DependentUpon>ListaFechamento.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Adiantamento.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Adiantamento.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fechamento.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Fechamento.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ListaFechamento.xsc">
+      <DependentUpon>ListaFechamento.xsd</DependentUpon>
+    </None>
+    <None Include="ListaFechamento.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ListaFechamento.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ListaFechamento.xss">
+      <DependentUpon>ListaFechamento.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />

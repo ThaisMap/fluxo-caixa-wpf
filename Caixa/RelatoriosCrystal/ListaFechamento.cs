@@ -1,4 +1,4 @@
-﻿namespace Dados.RelatoriosCrystal
+﻿namespace RelatoriosCrystal
 {
 
 

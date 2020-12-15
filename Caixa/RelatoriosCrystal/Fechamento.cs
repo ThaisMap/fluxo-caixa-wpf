@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Caixa.Relatorios {
+namespace RelatoriosCrystal {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace Caixa.Relatorios {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Adiantamento : ReportClass {
+    public class Fechamento : ReportClass {
         
-        public Adiantamento() {
+        public Fechamento() {
         }
         
         public override string ResourceName {
             get {
-                return "Adiantamento.rpt";
+                return "Fechamento.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Caixa.Relatorios {
         
         public override string FullResourceName {
             get {
-                return "Caixa.Relatorios.Adiantamento.rpt";
+                return "RelatoriosCrystal.Fechamento.rpt";
             }
             set {
                 // Do nothing
@@ -74,7 +74,7 @@ namespace Caixa.Relatorios {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section DetailSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,25 +82,17 @@ namespace Caixa.Relatorios {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[5];
+                return this.ReportDefinition.Sections[4];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedAdiantamento : Component, ICachedReport {
+    public class CachedFechamento : Component, ICachedReport {
         
-        public CachedAdiantamento() {
+        public CachedFechamento() {
         }
         
         [Browsable(false)]
@@ -137,7 +129,7 @@ namespace Caixa.Relatorios {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Adiantamento rpt = new Adiantamento();
+            Fechamento rpt = new Fechamento();
             rpt.Site = this.Site;
             return rpt;
         }

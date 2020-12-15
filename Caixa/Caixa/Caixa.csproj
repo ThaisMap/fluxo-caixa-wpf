@@ -118,12 +118,6 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\Adiantamento.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Adiantamento.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Relatorios\ImprimirRelatorio.xaml.cs">
       <DependentUpon>ImprimirRelatorio.xaml</DependentUpon>
     </Compile>
@@ -222,10 +216,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\Adiantamento.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Adiantamento.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -248,6 +238,10 @@
     <ProjectReference Include="..\Dados\Dados.csproj">
       <Project>{5a6059f9-e6cd-42a7-a373-925edefeb952}</Project>
       <Name>Dados</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RelatoriosCrystal\RelatoriosCrystal.csproj">
+      <Project>{bc53ee16-ebfb-403b-9434-afa13d090956}</Project>
+      <Name>RelatoriosCrystal</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

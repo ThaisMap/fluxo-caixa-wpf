@@ -65,18 +65,6 @@ namespace Dados.Modelos
         }
     }
 
-    public class Filial : BaseClass
-    {
-        public Filial(string nome, double saldo, int id) : base(id)
-        {
-            Nome = nome;
-            Saldo = saldo;
-        }
-
-        public string Nome { get; set; }
-        public double Saldo { get; set; }
-    }
-
     public class Lancamento : BaseClass
     {
         public Lancamento(DateTime data, Usuario usuario, Filial filial, double valor, TipoDocumento tipoDocumento, int id) : base(id)
@@ -91,8 +79,7 @@ namespace Dados.Modelos
         public Usuario Usuario { get; set; }
         public Filial Filial { get; set; }
         public double Valor { get; set; }
-        public TipoDocumento TipoDocumento { get; set; }
-        
+        public TipoDocumento TipoDocumento { get; set; }        
     }
 
     public class Suprimento : Lancamento
