@@ -1,11 +1,15 @@
 ﻿using Dados.Modelos;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Dados
 {
     public static class Listas
-    { 
+    {
+        private static CaixaContext Context = new CaixaContext();
+
+
         public static List<Caixa> GetCaixas = new List<Caixa>() {
             new Caixa(DateTime.Today, "-", "-", "SUPRIMENTO", 1,  2000.00, "SUPRIMENTO"),
             new Caixa(DateTime.Today, "123456", "PRAFESTA", "DEBITO", 10, -20, "RECIBO"),
@@ -14,10 +18,7 @@ namespace Dados
             new Caixa(DateTime.Today, "102030", "MARILAN", "DEBITO", 10, -500, "RECIBO"),
         };
 
-        public static List<Filial> Filiais = new List<Filial>() {
-            new Filial("Bicas", 1670, 1),
-            new Filial("Atibaia", 5000, 2)
-        };
+        public static List<Filial> Filiais = Context.Filiais.ToList();
 
         public static List<Usuario> UsuariosCadastrados = new List<Usuario>() {
             new Usuario("Walter", "1234", "walter", true, Filiais[0], 1),

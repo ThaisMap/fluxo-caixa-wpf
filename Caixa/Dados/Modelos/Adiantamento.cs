@@ -1,0 +1,20 @@
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Dados.Modelos
+{
+    [Table ("Adiantamentos")]
+    public class Adiantamento : Lancamento
+    {
+        public Adiantamento(string placa, string motorista, bool pendente, Lancamento lancamento) :
+            base(lancamento.Data, lancamento.Usuario, lancamento.Filial, lancamento.Valor, lancamento.TipoDocumento, lancamento.Id)
+        {
+            Placa = placa;
+            Motorista = motorista;
+            Pendente = pendente;
+        }
+
+        public string Placa { get; set; }
+        public string Motorista { get; set; }
+        public bool Pendente { get; set; }
+    }
+}
