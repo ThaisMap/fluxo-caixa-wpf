@@ -4,7 +4,7 @@ namespace Dados.Modelos
 {
     public class Usuario : BaseClass
     {
-        public Usuario(string nome, string senha, string login, bool admin, Filial filial, int id) : base(id)
+        public Usuario(string nome, string senha, string login, bool admin, Filial filial ) : base( )
         {
             Nome = nome;
             Senha = senha;
@@ -12,7 +12,10 @@ namespace Dados.Modelos
             Admin = admin;
             Filial = filial;
         }
+        public Usuario()
+        {
 
+        }
         public string Nome { get; set; }
         public string Senha { get; set; }
         public string Login { get; set; }

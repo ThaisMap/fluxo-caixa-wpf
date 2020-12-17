@@ -23,8 +23,7 @@ namespace Caixa.Cadastros
         public TiposDocumento()
         {
             string[] tiposPossiveis = { "Crédito", "Débito" };
-            InitializeComponent();
-            dgDados.ItemsSource = Dados.Listas.TiposDocumento;
+            InitializeComponent(); 
             cbTipo.ItemsSource = tiposPossiveis;
         }
     }

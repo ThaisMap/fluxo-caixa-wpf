@@ -28,18 +28,6 @@ namespace Caixa
             // Register the Bubble Event Handler 
             AddHandler(Listagens.Caixa.EventoBtnFechamento,
                 new RoutedEventHandler(MenuFechamentos_Click));
-
-            //using (CaixaContext Banco = new CaixaContext())
-            //{
-            //    Filial teste = new Filial()
-            //    {
-            //        Nome = "Teste 2",
-            //        Saldo = 12000.00
-            //    };
-            //    Banco.Filiais.Add(teste);
-            //    Banco.SaveChanges();
-            //}
-
         }
 
 

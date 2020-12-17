@@ -20,28 +20,11 @@ namespace Dados
 
         public static List<Filial> Filiais = Context.Filiais.ToList();
 
-        public static List<Usuario> UsuariosCadastrados = new List<Usuario>() {
-            new Usuario("Walter", "1234", "walter", true, Filiais[0], 1),
-            new Usuario("Thais", "1234", "thais", false, Filiais[0], 2), 
-            new Usuario("Matheus", "1234", "matheus", true, Filiais[1], 3),
-            new Usuario("Anderson", "1234", "anderson", false, Filiais[1], 4),
-        };
+        public static List<Usuario> UsuariosCadastrados = Context.Usuarios.ToList();
 
-        public static List<TipoCobranca> TiposCobranca = new List<TipoCobranca>()
-        {
-            new TipoCobranca("Reembolsada", 0),
-            new TipoCobranca("Não Reembolsada", 1),
-        };
+        public static List<TipoCobranca> TiposCobranca = Context.TiposCobranca.ToList();
 
-        public static List<TipoDocumento> TiposDocumento = new List<TipoDocumento>()
-        {
-            new TipoDocumento("Suprimento", true, 0), 
-            new TipoDocumento("Recibo", false, 1),
-            new TipoDocumento("Nota Fiscal", false, 2),
-            new TipoDocumento("Adiantamento", false, 3), 
-            new TipoDocumento("Estorno de adiantamento", true, 4), 
-
-        };
+        public static List<TipoDocumento> TiposDocumento = Context.TiposDocumento.ToList();
 
         public static List<Cliente> Clientes = new List<Cliente>()
         {

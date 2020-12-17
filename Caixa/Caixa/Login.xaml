@@ -68,6 +68,7 @@
                 Margin="10,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
+                Click="BtnLogin_Click"
                 Content="Login"
                 IsDefault="True"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dados;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,16 +21,23 @@ namespace Caixa.Componentes
     /// </summary>
     public partial class Status : UserControl
     {
+        
         public string NomeUsuario { get; private set; } = Dados.Status.Usuario.Nome;
         public string NomeFilial { get; private set; } = Dados.Status.Filial.Nome;
-        public double SaldoInicial { get; private set; } = Dados.Status.FechamentoPendente.ValorInicial;
-        public double Saldo { get; private set; } = Dados.Status.Saldo;
+        public double SaldoInicial { get; private set; } = 0;
+        public double Saldo { get; private set; } =10;
         public DateTime Hoje { get; private set; } = DateTime.Today;
         public Status()
         {
             InitializeComponent();
             DataContext = this;
-
+            using (var Banco = new CaixaContext())
+            {
+                var usuario = Banco.Usuarios.First();
+                NomeUsuario = usuario.Nome;
+                var filial = Banco.Filiais.Find(usuario.Filial);
+                NomeFilial = filial.Nome;
+            }
         }
     }
 }

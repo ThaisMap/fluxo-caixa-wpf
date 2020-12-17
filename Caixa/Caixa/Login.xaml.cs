@@ -9,6 +9,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Dados.Modelos;
+using Dados;
+using System.Linq; 
 
 namespace Caixa
 {
@@ -20,6 +23,18 @@ namespace Caixa
         public Login()
         {
             InitializeComponent();
+
+            using (var Banco = new CaixaContext())
+            {
+                Banco.Seed();
+            }
+        }
+
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            this.Close();
+            main.Show();
         }
     }
 }
