@@ -20,5 +20,23 @@ namespace Dados.Modelos
         public string Nome { get; set; }
         public TipoCobranca TipoCobranca { get; set; }
         public ICollection<Debito> Debitos { get; set; }
+
+        public void Salvar()
+        {
+            using (var Banco = new CaixaContext())
+            {
+                if (Id == 0)
+                {
+                    Banco.Clientes.Add(this);
+                }
+                else
+                {
+                    var tipo = Banco.Clientes.Find(Id);
+                    tipo.Nome = Nome;
+                    tipo.TipoCobranca = TipoCobranca;
+                }
+                Banco.SaveChanges();
+            }
+        }
     }
 }

@@ -21,12 +21,91 @@ namespace Caixa.Cadastros
     /// </summary>
     public partial class Clientes : UserControl
     {
+        Dados.Modelos.Cliente ClienteSelecionado = new Dados.Modelos.Cliente();
+        List<Dados.Modelos.Cliente> ClientesCadastrados = new List<Dados.Modelos.Cliente>();
         public Clientes()
         {
             InitializeComponent();
-            tipoCobranca.ItemsSource = Listas.TiposCobranca;
-            tipoCobranca.DisplayMemberPath = "Descricao";
+            cbTipo.ItemsSource = Listas.TiposCobranca;
+            cbTipo.DisplayMemberPath = "Descricao";
+            CbCadastrados.DisplayMemberPath = "Nome";
+            cbTipo.SelectedIndex = 0;
+            EsconderMsgErro();
+            CarregarCadastros();
         }
 
+        private void CarregarCadastros()
+        {
+            using (var Banco = new CaixaContext())
+            {
+                ClientesCadastrados = Banco.Clientes.ToList();
+            }
+            CbCadastrados.ItemsSource = ClientesCadastrados;
+        }
+
+        private void EsconderMsgErro()
+        {
+            NomeErro.Visibility = Visibility.Hidden;
+        }
+
+        private void LimparCampos()
+        {
+            Nome.Text = "";
+            cbTipo.SelectedIndex = 0;
+            NomeErro.Visibility = Visibility.Hidden; 
+            ClienteSelecionado = new Dados.Modelos.Cliente();
+        }
+
+        private bool VerificarPreenchimento()
+        {
+            if (Nome.Text.Length < 3)
+            {
+                NomeErro.Visibility = Visibility.Visible;
+                Nome.Focus();
+                return false;
+            }
+            else
+            {
+                NomeErro.Visibility = Visibility.Hidden;
+            }
+
+            return true;
+        }
+
+        public void MontarObjeto()
+        {
+            ClienteSelecionado.Nome = Nome.Text;
+            ClienteSelecionado.TipoCobranca = cbTipo.SelectedItem as Dados.Modelos.TipoCobranca;
+        }
+
+        private void BtnAdicionar_Click(object sender, RoutedEventArgs e)
+        {
+            if (VerificarPreenchimento())
+            {
+                try
+                {
+                    MontarObjeto();
+                    ClienteSelecionado.Salvar();
+                    LimparCampos();
+                    CarregarCadastros();
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show(erro.Message, "Houve um erro");
+                }
+            }
+        }
+
+        private void Limpar_Click(object sender, RoutedEventArgs e)
+        {
+            LimparCampos();
+        }
+
+        private void BtnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            ClienteSelecionado = CbCadastrados.SelectedItem as Dados.Modelos.Cliente;
+            Nome.Text = ClienteSelecionado.Nome;
+            cbTipo.SelectedItem = ClienteSelecionado.TipoCobranca;
+        }
     }
 }
