@@ -98,6 +98,7 @@ namespace Caixa.Cadastros
                 TipoSelecionado.Descricao = AlterarDescricao.Text;
                 TipoSelecionado.Salvar();
                 CarregarCadastros();
+                LimparCampos();
                 DialogAlteracao.IsOpen = false;
             }
         }

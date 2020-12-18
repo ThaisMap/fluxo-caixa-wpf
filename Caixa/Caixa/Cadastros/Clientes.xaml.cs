@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Dados;
 
 namespace Caixa.Cadastros
 {
@@ -23,6 +24,9 @@ namespace Caixa.Cadastros
         public Clientes()
         {
             InitializeComponent();
+            tipoCobranca.ItemsSource = Listas.TiposCobranca;
+            tipoCobranca.DisplayMemberPath = "Descricao";
         }
+
     }
 }

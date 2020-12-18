@@ -6,13 +6,17 @@ namespace Dados.Modelos
     public class Debito : Lancamento
     {
         public Debito(TipoCobranca tipoCobranca, string cte, int volumes, Cliente cliente, int? fechamento, Lancamento lancamento) :
-            base(lancamento.Data, lancamento.Usuario, lancamento.Filial, lancamento.Valor, lancamento.TipoDocumento, lancamento.Id)
+            base(lancamento.Data, lancamento.Usuario, lancamento.Filial, lancamento.Valor, lancamento.TipoDocumento)
         {
             TipoCobranca = tipoCobranca;
             Cte = cte;
             Volumes = volumes;
             Cliente = cliente;
             Fechamento = fechamento;
+        }
+        public Debito() : base()
+        {
+
         }
 
         public string Cte { get; set; }

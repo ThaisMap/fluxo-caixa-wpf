@@ -25,11 +25,8 @@ namespace Caixa.Cadastros
         }
 
         private void CarregarCadastros()
-        {
-            using (var Banco = new CaixaContext())
-            {
-                FiliaisCadastradas = Banco.Filiais.ToList();
-            }
+        { 
+            FiliaisCadastradas = Listas.Filiais;
             dgDados.ItemsSource = FiliaisCadastradas;
         }
 

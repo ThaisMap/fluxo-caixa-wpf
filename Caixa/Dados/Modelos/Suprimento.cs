@@ -6,9 +6,14 @@ namespace Dados.Modelos
     public class Suprimento : Lancamento
     {
         public Suprimento(int? fechamento, Lancamento lancamento) :
-            base(lancamento.Data, lancamento.Usuario, lancamento.Filial, lancamento.Valor, lancamento.TipoDocumento, lancamento.Id)
+            base(lancamento.Data, lancamento.Usuario, lancamento.Filial, lancamento.Valor, lancamento.TipoDocumento)
         {
             Fechamento = fechamento;
+        }
+
+        public Suprimento() : base()
+        {
+
         }
 
         public int? Fechamento { get; set; }

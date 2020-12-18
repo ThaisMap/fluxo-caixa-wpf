@@ -2,9 +2,9 @@
 
 namespace Dados.Modelos
 {
-    public class Fechamento : BaseClass
+    public class Fechamento
     {
-        public Fechamento(DateTime data, Filial filial, double valorInicial, double? valorFinal, string arquivoScan, int id) : base(id)
+        public Fechamento(DateTime data, Filial filial, double valorInicial, double? valorFinal, string arquivoScan)
         {
             Data = data;
             Filial = filial;
@@ -12,7 +12,11 @@ namespace Dados.Modelos
             ValorFinal = valorFinal;
             ArquivoScan = arquivoScan;
         }
-
+        public Fechamento()
+        {
+                
+        }
+        public int Id { get; set; }
         public DateTime Data { get; set; }
         public Filial Filial { get; set; }
         public double ValorInicial { get; set; }

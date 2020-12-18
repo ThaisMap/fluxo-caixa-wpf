@@ -4,9 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Dados.Modelos
 {
     [Table ("Lancamentos")]
-    public class Lancamento : BaseClass
+    public class Lancamento 
     {
-        public Lancamento(DateTime data, Usuario usuario, Filial filial, double valor, TipoDocumento tipoDocumento, int id) : base(id)
+        public Lancamento()
+        {
+
+        }
+        public Lancamento(DateTime data, Usuario usuario, Filial filial, double valor, TipoDocumento tipoDocumento)
         {
             Data = data;
             Usuario = usuario;
@@ -15,6 +19,7 @@ namespace Dados.Modelos
             TipoDocumento = tipoDocumento;
         }
 
+        public int Id { get; set; }
         public DateTime Data { get; set; }
         public Usuario Usuario { get; set; }
         public Filial Filial { get; set; }

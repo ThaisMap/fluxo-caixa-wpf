@@ -26,7 +26,7 @@ namespace Caixa.Relatorios
             InitializeComponent();
             RelatoriosCrystal.Fechamento fechamento = new RelatoriosCrystal.Fechamento();
             VisualizadorRelatorio.ViewerCore.ReportSource = fechamento;
-            fechamento.SetDataSource(Dados.Listas.GetCaixas);
+            fechamento.SetDataSource(Dados.Listas.Fechamentos);
         }
 
         public ImprimirRelatorio(ReportClass relatorio)

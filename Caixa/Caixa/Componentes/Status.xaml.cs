@@ -21,9 +21,9 @@ namespace Caixa.Componentes
     /// </summary>
     public partial class Status : UserControl
     {
-        
-        public string NomeUsuario { get; private set; } = Dados.Status.Usuario.Nome;
-        public string NomeFilial { get; private set; } = Dados.Status.Filial.Nome;
+
+        public string NomeUsuario { get; private set; }
+        public string NomeFilial { get; private set; }
         public double SaldoInicial { get; private set; } = 0;
         public double Saldo { get; private set; } =10;
         public DateTime Hoje { get; private set; } = DateTime.Today;
@@ -33,10 +33,9 @@ namespace Caixa.Componentes
             DataContext = this;
             using (var Banco = new CaixaContext())
             {
-                var usuario = Banco.Usuarios.First();
+                var usuario = Banco.Usuarios.Include("Filial").First();
                 NomeUsuario = usuario.Nome;
-                var filial = Banco.Filiais.Find(usuario.Filial);
-                NomeFilial = filial.Nome;
+                NomeFilial = usuario.Filial.Nome;
             }
         }
     }
