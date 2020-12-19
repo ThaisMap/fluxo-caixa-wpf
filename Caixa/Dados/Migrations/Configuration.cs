@@ -1,5 +1,6 @@
 ﻿namespace Dados.Migrations
 {
+    using Dados.Modelos;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -10,6 +11,7 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(Dados.CaixaContext context)
@@ -18,6 +20,11 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
+            Filial padrao = new Filial("Filial 1", 1000) { Id = 1 };
+            Usuario master = new Usuario("Master", "mapster", "MASTER", true, padrao) { Id = 1 };
+            context.Filiais.AddOrUpdate(padrao);
+            context.Usuarios.AddOrUpdate(master);
+            context.SaveChanges();
         }
     }
 }

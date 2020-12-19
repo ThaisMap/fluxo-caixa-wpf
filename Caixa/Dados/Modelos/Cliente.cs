@@ -7,7 +7,7 @@ namespace Dados.Modelos
         public Cliente(string nome, TipoCobranca tipoCobranca) 
         {
             Nome = nome;
-            TipoCobranca = tipoCobranca;
+            TipoCobranca_Id = tipoCobranca.Id;
         }
 
         public Cliente()
@@ -15,11 +15,13 @@ namespace Dados.Modelos
                 
         }
 
-
+         
         public int Id { get; set; }
         public string Nome { get; set; }
-        public TipoCobranca TipoCobranca { get; set; }
+        public int TipoCobranca_Id { get; set; }
+
         public ICollection<Debito> Debitos { get; set; }
+
 
         public void Salvar()
         {
@@ -33,7 +35,7 @@ namespace Dados.Modelos
                 {
                     var tipo = Banco.Clientes.Find(Id);
                     tipo.Nome = Nome;
-                    tipo.TipoCobranca = TipoCobranca;
+                    tipo.TipoCobranca_Id = TipoCobranca_Id;
                 }
                 Banco.SaveChanges();
             }

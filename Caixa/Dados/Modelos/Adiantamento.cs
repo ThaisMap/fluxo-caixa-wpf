@@ -21,5 +21,6 @@ namespace Dados.Modelos
         public string Placa { get; set; }
         public string Motorista { get; set; }
         public bool Pendente { get; set; }
+
     }
 }

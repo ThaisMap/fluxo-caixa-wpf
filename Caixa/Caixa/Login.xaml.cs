@@ -24,10 +24,10 @@ namespace Caixa
         {
             InitializeComponent();
 
-            using (var Banco = new CaixaContext())
-            {
-                Banco.Seed();
-            }
+            //using (var Banco = new CaixaContext())
+            //{
+            //    Banco.Seed();
+            //}
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)

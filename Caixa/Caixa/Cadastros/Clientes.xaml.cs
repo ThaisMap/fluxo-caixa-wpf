@@ -28,6 +28,7 @@ namespace Caixa.Cadastros
             InitializeComponent();
             cbTipo.ItemsSource = Listas.TiposCobranca;
             cbTipo.DisplayMemberPath = "Descricao";
+            cbTipo.SelectedValuePath = "Id";
             CbCadastrados.DisplayMemberPath = "Nome";
             cbTipo.SelectedIndex = 0;
             EsconderMsgErro();
@@ -75,7 +76,7 @@ namespace Caixa.Cadastros
         public void MontarObjeto()
         {
             ClienteSelecionado.Nome = Nome.Text;
-            ClienteSelecionado.TipoCobranca = cbTipo.SelectedItem as Dados.Modelos.TipoCobranca;
+            ClienteSelecionado.TipoCobranca_Id = (int)cbTipo.SelectedValue;
         }
 
         private void BtnAdicionar_Click(object sender, RoutedEventArgs e)
@@ -105,7 +106,7 @@ namespace Caixa.Cadastros
         {
             ClienteSelecionado = CbCadastrados.SelectedItem as Dados.Modelos.Cliente;
             Nome.Text = ClienteSelecionado.Nome;
-            cbTipo.SelectedItem = ClienteSelecionado.TipoCobranca;
+            cbTipo.SelectedValue = ClienteSelecionado.TipoCobranca_Id;
         }
     }
 }

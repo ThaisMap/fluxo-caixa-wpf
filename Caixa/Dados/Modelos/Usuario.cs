@@ -10,8 +10,8 @@ namespace Dados.Modelos
             Senha = senha;
             Login = login;
             Admin = admin;
-            Filial = filial;
-        }
+            Filial_Id = filial.Id;
+        }        
         public Usuario()
         {
 
@@ -21,7 +21,8 @@ namespace Dados.Modelos
         public string Senha { get; set; }
         public string Login { get; set; }
         public bool Admin { get; set; }
-        public Filial Filial { get; set; }
+        public int Filial_Id { get; set; }
+        public virtual Filial Filial { get; set; }
         public ICollection<Lancamento> Lancamentos { get; set; }
     }
 }

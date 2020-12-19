@@ -60,7 +60,6 @@
     <Compile Include="Listas.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modelos\Adiantamento.cs" />
-    <Compile Include="Modelos\BaseClass.cs" />
     <Compile Include="Modelos\Cliente.cs" />
     <Compile Include="Modelos\Debito.cs" />
     <Compile Include="Modelos\Fechamento.cs" />

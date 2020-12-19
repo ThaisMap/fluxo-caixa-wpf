@@ -9,7 +9,7 @@ namespace Dados
     public static class Status
     { 
         public static Usuario Usuario  = Listas.UsuariosCadastrados.FirstOrDefault();
-        public static Filial Filial = Usuario.Filial;
+        public static Filial Filial = Listas.Filiais.Where(f=>f.Id == Usuario.Filial_Id).FirstOrDefault();
         public static double Saldo = Filial.Saldo;
         public static Fechamento FechamentoPendente = Listas.Fechamentos.FirstOrDefault();
     }

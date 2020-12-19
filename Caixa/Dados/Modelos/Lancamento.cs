@@ -13,17 +13,20 @@ namespace Dados.Modelos
         public Lancamento(DateTime data, Usuario usuario, Filial filial, double valor, TipoDocumento tipoDocumento)
         {
             Data = data;
-            Usuario = usuario;
-            Filial = filial;
+            Usuario_Id = usuario.Id;
+            Filial_Id = filial.Id;
             Valor = tipoDocumento.Soma ? valor : -valor;
-            TipoDocumento = tipoDocumento;
+            TipoDocumento_Id = tipoDocumento.Id;
         }
 
         public int Id { get; set; }
         public DateTime Data { get; set; }
-        public Usuario Usuario { get; set; }
-        public Filial Filial { get; set; }
         public double Valor { get; set; }
-        public TipoDocumento TipoDocumento { get; set; }
+        public int TipoDocumento_Id { get; set; }
+        public int Usuario_Id { get; set; }
+        public int Filial_Id { get; set; }
+        public virtual Usuario Usuario { get; set; }
+        public virtual Filial Filial { get; set; }
+        public virtual TipoDocumento TipoDocumento { get; set; }
     }
 }
