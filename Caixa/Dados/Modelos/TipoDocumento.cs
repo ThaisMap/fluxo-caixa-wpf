@@ -7,7 +7,7 @@ namespace Dados.Modelos
         public int Id { get; set; }
         public string Descricao { get; set; }
         public bool Soma { get; set; }
-        public ICollection<Lancamento> Lancamentos { get; set; }
+        public virtual ICollection<Lancamento> Lancamentos { get; set; }
 
         public TipoDocumento(string descricao, bool soma)
         {

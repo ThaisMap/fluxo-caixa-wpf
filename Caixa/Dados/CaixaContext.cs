@@ -27,21 +27,7 @@ namespace Dados
         public DbSet<TipoDocumento> TiposDocumento { get; set; }
 
 
-        public void Seed()
-        {
-            if(Filiais.Count() == 0)
-            {
-                Filiais.Add(new Filial("Filial  1", 1000.0));
-                SaveChanges();
-            }
-
-            if (Usuarios.Count() == 0)
-            {
-                Usuarios.Add(new Usuario("Master", "mapster", "MASTER", true, Filiais.First()));
-                SaveChanges();
-            }
-            
-        }
+     
     }
 }
      

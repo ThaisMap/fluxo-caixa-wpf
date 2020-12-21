@@ -7,8 +7,8 @@ namespace Dados.Modelos
     {
         public int Id { get; set; }
         public string Descricao { get; set; }
-        public ICollection<Cliente> Clientes { get; set; }
-        public ICollection<Debito> Debitos { get; set; }
+        public virtual ICollection<Cliente> Clientes { get; set; }
+        public virtual ICollection<Debito> Debitos { get; set; }
 
         public TipoCobranca()
         {

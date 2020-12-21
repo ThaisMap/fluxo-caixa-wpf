@@ -4,6 +4,14 @@ namespace Dados.Modelos
 {
     public class Cliente
     {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public int TipoCobranca_Id { get; set; }
+
+        public virtual TipoCobranca TipoCobranca { get; set; }
+        public virtual ICollection<Debito> Debitos { get; set; }
+
+
         public Cliente(string nome, TipoCobranca tipoCobranca) 
         {
             Nome = nome;
@@ -16,13 +24,6 @@ namespace Dados.Modelos
         }
 
          
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public int TipoCobranca_Id { get; set; }
-
-        public ICollection<Debito> Debitos { get; set; }
-
-
         public void Salvar()
         {
             using (var Banco = new CaixaContext())

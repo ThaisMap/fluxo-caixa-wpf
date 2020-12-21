@@ -5,6 +5,13 @@ namespace Dados.Modelos
 {
     public class Filial
     {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public double Saldo { get; set; }
+        public virtual ICollection<Lancamento> Lancamentos { get; set; }
+        public virtual ICollection<Fechamento> Fechamentos { get; set; }
+        public virtual ICollection<Usuario> Usuarios { get; set; }
+ 
         public Filial(string nome, double saldo)
         {
             Nome = nome;
@@ -16,13 +23,6 @@ namespace Dados.Modelos
         {
         }
 
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public double Saldo { get; set; }
-        public ICollection<Lancamento> Lancamentos { get; set; }
-        public ICollection<Fechamento> Fechamentos { get; set; }
-        public ICollection<Usuario> Usuarios { get; set; }
- 
         
         public void Salvar()
         {

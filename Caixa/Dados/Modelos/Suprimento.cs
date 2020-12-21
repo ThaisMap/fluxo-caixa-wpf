@@ -5,8 +5,10 @@ namespace Dados.Modelos
     [Table ("Suprimentos")]
     public class Suprimento : Lancamento
     {
+        public int? Fechamento { get; set; }
+
         public Suprimento(int? fechamento, Lancamento lancamento) :
-            base(lancamento.Data, lancamento.Usuario, lancamento.Filial, lancamento.Valor, lancamento.TipoDocumento)
+            base(lancamento.Data, lancamento.Usuario_Id, lancamento.Filial_Id, lancamento.Valor, lancamento.TipoDocumento)
         {
             Fechamento = fechamento;
         }
@@ -15,7 +17,21 @@ namespace Dados.Modelos
         {
 
         }
-
-        public int? Fechamento { get; set; }
+        public void Salvar()
+        {
+            using (var Banco = new CaixaContext())
+            {
+                if (Id == 0)
+                {
+                    Banco.Suprimentos.Add(this);
+                }
+                else
+                {
+                    var suprimento = Banco.Suprimentos.Find(Id);
+                    suprimento.Fechamento = Fechamento;
+                }
+                Banco.SaveChanges();
+            }
+        }
     }
 }
