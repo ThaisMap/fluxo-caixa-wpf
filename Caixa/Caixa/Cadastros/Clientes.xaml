@@ -26,7 +26,8 @@
             <Button
                 Name="BtnEditar"
                 Width="80"
-                Content="Editar" Click="BtnEditar_Click" />
+                Click="BtnEditar_Click"
+                Content="Editar" />
         </StackPanel>
 
         <TextBox
