@@ -22,8 +22,14 @@
             //  to avoid creating duplicate seed data.
             Filial padrao = new Filial("Filial 1", 1000) { Id = 1 };
             Usuario master = new Usuario("Master", "mapster", "MASTER", true, padrao.Id, true) { Id = 1 };
+            TipoDocumento suprimento = new TipoDocumento("Suprimento", true);
+            TipoDocumento adiantamento = new TipoDocumento("Adiantamento", false);
+            TipoDocumento estorno = new TipoDocumento("Estorno de adiantamento", true);
             context.Filiais.AddOrUpdate(padrao);
             context.Usuarios.AddOrUpdate(master);
+            context.TiposDocumento.AddOrUpdate(suprimento);
+            context.TiposDocumento.AddOrUpdate(adiantamento);
+            context.TiposDocumento.AddOrUpdate(estorno);
             context.SaveChanges();
         }
     }

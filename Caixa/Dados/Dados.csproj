@@ -66,12 +66,10 @@
     <Compile Include="Modelos\Filial.cs" />
     <Compile Include="Modelos\Lancamento.cs" />
     <Compile Include="Modelos\Observavel.cs" />
-    <Compile Include="Modelos\Suprimento.cs" />
     <Compile Include="Modelos\TipoCobranca.cs" />
     <Compile Include="Modelos\TipoDocumento.cs" />
     <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Status.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />

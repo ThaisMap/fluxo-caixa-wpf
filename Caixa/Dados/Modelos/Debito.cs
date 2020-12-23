@@ -8,8 +8,7 @@ namespace Dados.Modelos
         public string Cte { get; set; }
         public int Volumes { get; set; }
         public int Cliente_Id { get; set; }
-        public int TipoCobranca_Id { get; set; }
-        public int? Fechamento { get; set; }
+        public int TipoCobranca_Id { get; set; } 
         public virtual Cliente Cliente { get; set; }
         public virtual TipoCobranca TipoCobranca { get; set; }
 
@@ -20,8 +19,7 @@ namespace Dados.Modelos
             TipoCobranca_Id = tipoCobranca.Id;
             Cte = cte;
             Volumes = volumes;
-            Cliente = cliente;
-            Fechamento = fechamento;
+            Cliente = cliente; 
         }
         public Debito() : base()
         {
@@ -38,7 +36,7 @@ namespace Dados.Modelos
                 else
                 {
                     var debito = Banco.Debitos.Find(Id);
-                    debito.Fechamento = Fechamento;
+                    debito.Fechamento_Id = Fechamento_Id;
                 }
                 Banco.SaveChanges();
             }

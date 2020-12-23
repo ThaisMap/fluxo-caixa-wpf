@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 
 namespace Dados.Modelos
 {
@@ -11,6 +14,7 @@ namespace Dados.Modelos
         public double? ValorFinal { get; set; }
         public string ArquivoScan { get; set; }
         public virtual Filial Filial { get; set; }
+        public virtual ICollection<Lancamento> Lancamentos { get; set; } 
 
         public Fechamento()
         {
@@ -26,19 +30,27 @@ namespace Dados.Modelos
             ArquivoScan = arquivoScan;
         }
 
+        public Fechamento(Filial filial)
+        {
+            Data = DateTime.Now; 
+            Filial_Id = filial.Id;
+            ValorInicial = filial.Saldo;
+            ArquivoScan = "";
+        }
+
         public void Salvar()
         {
             using (var Banco = new CaixaContext())
             {
-                if (Id == 0)
-                {
-                    Banco.Fechamentos.Add(this);
-                }
-                else
-                {
-                    var fechamento = Banco.Fechamentos.Find(Id);
+                var fechamento = Banco.Fechamentos.FirstOrDefault(x => x.Filial_Id == Filial_Id && DbFunctions.TruncateTime(x.Data) == DbFunctions.TruncateTime(Data.Date)); //(x.Data.Date.CompareTo(Data.Date) >= 0));
+                if (fechamento != null)
+                {                   
                     fechamento.ArquivoScan = ArquivoScan;
                     fechamento.ValorFinal = ValorFinal;
+                }
+                else
+                {                    
+                    Banco.Fechamentos.Add(this);
                 }
                 Banco.SaveChanges();
             }

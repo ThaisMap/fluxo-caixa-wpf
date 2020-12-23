@@ -28,7 +28,7 @@ namespace Caixa
             // Register the Bubble Event Handler 
             AddHandler(Listagens.Caixa.EventoBtnFechamento,
                 new RoutedEventHandler(MenuFechamentos_Click));
-            Conteudo.Content = new Views.CadastroFilialView();
+            Conteudo.Content = new Listagens.Caixa();
         }
 
 

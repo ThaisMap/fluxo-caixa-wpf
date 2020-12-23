@@ -14,16 +14,16 @@
         HorizontalAlignment="Center"
         Orientation="Horizontal">
         <TextBlock Margin="5"><Bold>Data:</Bold></TextBlock>
-        <TextBlock Margin="0,5,5,5" Text="{Binding Hoje, StringFormat='d'}" />
+        <TextBlock Margin="0,5,5,5" Text="{Binding Status.Hoje, StringFormat='d'}" />
         <TextBlock Margin="0,5" Text=" - " />
         <TextBlock Margin="5"><Bold>Filial:</Bold></TextBlock>
-        <TextBlock Margin="0,5,5,5" Text="{Binding NomeFilial}" />
+        <TextBlock Margin="0,5,5,5" Text="{Binding Status.NomeFilial}" />
         <TextBlock Margin="0,5" Text=" - " />
         <TextBlock Margin="5"><Bold>Usuário logado:</Bold></TextBlock>
-        <TextBlock Margin="0,5,5,5" Text="{Binding NomeUsuario}" />
+        <TextBlock Margin="0,5,5,5" Text="{Binding Status.NomeUsuario}" />
         <TextBlock Margin="5"><Bold>Saldo inicial:</Bold></TextBlock>
-        <TextBlock Margin="0,5,5,5" Text="{Binding SaldoInicial, StringFormat='C'}" />
+        <TextBlock Margin="0,5,5,5" Text="{Binding Status.SaldoInicial, StringFormat='C'}" />
         <TextBlock Margin="5"><Bold>Saldo atual:</Bold></TextBlock>
-        <TextBlock Margin="0,5,5,5" Text="{Binding Saldo, StringFormat='C'}" />
+        <TextBlock Margin="0,5,5,5" Text="{Binding Status.Saldo, StringFormat='C'}" />
     </WrapPanel>
 </UserControl>

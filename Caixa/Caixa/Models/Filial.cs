@@ -38,11 +38,6 @@ namespace Caixa.Models
                 OnPropertyChanged("Saldo");
             }
         }
-        public Filial(string nome, double saldo)
-        {
-            Nome = nome;
-            Saldo = saldo;
-        }
 
         public Filial(Dados.Modelos.Filial filialBanco)
         {
@@ -53,29 +48,9 @@ namespace Caixa.Models
         {
         }
 
-
-        private void ValidateProperty<T>(T value, string name)
-        {
-            Validator.ValidateProperty(value, new ValidationContext(this, null, null)
-            {
-                MemberName = name
-            });
-        }
-
         public void Salvar()
         {
-            using (var Banco = new CaixaContext())
-            {
-                if (Id == 0)
-                {
-                    Banco.Filiais.Add(filial);
-                }
-                else
-                {
-                    Banco.Filiais.Find(Id).Nome = Nome;
-                }
-                Banco.SaveChanges();
-            }
+            filial.Salvar();
         }
     }
 }

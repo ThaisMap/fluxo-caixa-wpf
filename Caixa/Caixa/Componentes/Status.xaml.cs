@@ -21,16 +21,10 @@ namespace Caixa.Componentes
     /// </summary>
     public partial class Status : UserControl
     {
-
-        public string NomeUsuario { get; private set; } = Dados.Status.Usuario.Nome;
-        public string NomeFilial { get; private set; } = Dados.Status.Filial.Nome;
-        public double SaldoInicial { get; private set; } = 0;
-        public double Saldo { get; private set; } = Dados.Status.Saldo;
-        public DateTime Hoje { get; private set; } = DateTime.Today;
         public Status()
         {
             InitializeComponent();
-            DataContext = this;
+            DataContext = new ViewModel.StatusVM();
         }
     }
 }

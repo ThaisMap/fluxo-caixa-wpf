@@ -34,7 +34,10 @@ namespace Dados.Modelos
                 }
                 else
                 {
-                    Banco.Filiais.Find(Id).Nome = Nome;
+                    var doBanco = Banco.Filiais.Find(Id);
+                    doBanco.Nome = Nome;
+                    doBanco.Saldo = Saldo;
+
                 }
                 Banco.SaveChanges();
             }

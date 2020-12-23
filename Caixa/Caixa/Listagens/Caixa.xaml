@@ -25,7 +25,7 @@
             <componentes:Titulo Texto="Caixa" />
 
             <componentes:Status />
-            <DataGrid Name="DgCaixa" Style="{DynamicResource DataGridCentralizado}" >
+            <DataGrid Name="DgCaixa" Style="{DynamicResource DataGridCentralizado}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Data, StringFormat='d'}" Header="Data" />
                     <DataGridTextColumn Binding="{Binding TipoDocumento.Descricao}" Header="Documento" />
@@ -39,30 +39,30 @@
             </DataGrid>
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <Button
-                    Name="BtnIncluir" 
-                    Margin=" 10"
+                    Name="BtnIncluir"
+                    Margin="10"
                     Click="BtnIncluir_Click"
                     Content="Descarga"
                     Cursor="Hand" />
                 <Button
                     Name="BtnAdiantamento"
-                    Margin=" 10"
+                    Margin="10"
                     Click="BtnAdiantamento_Click"
                     Content="Adiantamento"
                     Cursor="Hand" />
                 <Button
                     Name="BtnSuprimento"
-                    Margin=" 10"
+                    Margin="10"
                     Click="BtnSuprimento_Click"
                     Content="Suprimento"
                     Cursor="Hand" />
             </StackPanel>
-                <Button
-                    Name="btnFechamento"
-                    Width="180"
-                    Margin="0,10,10,5"
-                    Click="btnFechamento_Click"
-                    Content="Realizar Fechamento" />
+            <Button
+                Name="btnFechamento"
+                Width="180"
+                Margin="0,10,10,5"
+                Click="btnFechamento_Click"
+                Content="Realizar Fechamento" />
         </StackPanel>
     </materialDesign:DialogHost>
 </UserControl>

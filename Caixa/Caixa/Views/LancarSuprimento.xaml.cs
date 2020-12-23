@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caixa.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -11,19 +12,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Caixa.Lancamentos
+namespace Caixa.Views
 {
     /// <summary>
     /// Interação lógica para Suprimento.xam
     /// </summary>
-    public partial class Suprimento : UserControl
+    public partial class LancarSuprimento : UserControl
     {
-        public Suprimento()
+
+        public LancarSuprimento()
         {
             InitializeComponent();
+            DataContext = new LancarSuprimentoVM();
         }
         public static readonly RoutedEvent EventoSuprimentoLancado =
-          EventManager.RegisterRoutedEvent("EventoSuprimentoLancado", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Suprimento));
+          EventManager.RegisterRoutedEvent("EventoSuprimentoLancado", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(LancarSuprimento));
 
         public event RoutedEventHandler SuprimentoLancado
         {
@@ -35,10 +38,5 @@ namespace Caixa.Lancamentos
         {
             RaiseEvent(new RoutedEventArgs(EventoSuprimentoLancado));
         }
-
-        private void testarCaractere(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !double.TryParse(e.Text, out _);
-        }
-    }
+            }
 }

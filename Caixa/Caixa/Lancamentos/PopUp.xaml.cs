@@ -41,7 +41,7 @@ namespace Caixa.Lancamentos
             else
             if (Tipo == "Suprimento")
             {
-                Suprimento suprimento = new Suprimento();
+                Views.LancarSuprimento suprimento = new Views.LancarSuprimento();
                 suprimento.SuprimentoLancado += Fechar;
                 conteudo.Content = suprimento;
             }

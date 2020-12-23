@@ -18,6 +18,10 @@ namespace Caixa.ViewModel
 
         public Filial Filial { get => filial; }
         public ObservableCollection<Filial> FiliaisCadastradas { get => filiaisCadastradas; }
+        public ICommand ComandoInserir { get; private set; }
+        public bool CanExecute { get => !String.IsNullOrEmpty(filial.Nome); }
+
+
         public CadastroFilialVM()
         {
             filial = new Filial();
@@ -31,14 +35,11 @@ namespace Caixa.ViewModel
 
         public void Salvar()
         {
-            Filial.Salvar();            
+            Filial.Salvar();
         }
 
-        public bool CanExecute { get => !String.IsNullOrEmpty(filial.Nome); }
-             
 
-        public ICommand ComandoInserir { get; private set; }
     }
 
-    
-    }
+
+}

@@ -23,8 +23,7 @@ namespace Caixa.Componentes
         public Titulo()
         {
             InitializeComponent();
-            this.DataContext = this;
-            Texto = "Titulo";
+            DataContext = this;
         }
         public string Texto { get; set; }
     }
