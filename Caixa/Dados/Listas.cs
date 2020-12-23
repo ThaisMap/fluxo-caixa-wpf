@@ -1,6 +1,7 @@
 ﻿using Dados.Modelos;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Dados
@@ -9,7 +10,7 @@ namespace Dados
     {
         private static CaixaContext Context = new CaixaContext();
 
-        public static List<Filial> Filiais = Context.Filiais.ToList();
+        public static List<Filial> Filiais = Context.Filiais.ToList(); 
 
         public static List<Usuario> UsuariosCadastrados = Context.Usuarios.Include("Filial").ToList();
 

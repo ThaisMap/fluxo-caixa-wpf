@@ -8,26 +8,58 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Caixa ER"
-    MinWidth="420"
     Width="800"
+    Height="450"
+    MinWidth="420"
     MinHeight="350"
     WindowState="Maximized"
-    Height="450"
     mc:Ignorable="d">
     <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <Menu DockPanel.Dock="Top" HorizontalAlignment="Center">
-            <MenuItem Header="Cadastros"  Name="MenuCadastros">
-                <MenuItem Header="Filiais" Name="MenuFiliais" Click="MenuFiliais_Click"/>
-                <MenuItem Header="Clientes" Name="MenuClientes" Click="MenuClientes_Click"/>
-                <MenuItem Header="Usuários" Name="MenuUsuarios" Click="MenuUsuarios_Click"/>
-                <MenuItem Header="Tipos de documento" Name="MenuDocumentos" Click="MenuDocumentos_Click"/>
-                <MenuItem Header="Tipos de cobrança" Name="MenuCobrancas" Click="MenuCobrancas_Click"/>
+        <Menu HorizontalAlignment="Center" DockPanel.Dock="Top">
+            <MenuItem Name="MenuCadastros" Header="Cadastros">
+                <MenuItem
+                    Name="MenuFiliais"
+                    Click="MenuFiliais_Click"
+                    Header="Filiais" />
+                <MenuItem
+                    Name="MenuClientes"
+                    Click="MenuClientes_Click"
+                    Header="Clientes" />
+                <MenuItem
+                    Name="MenuUsuarios"
+                    Click="MenuUsuarios_Click"
+                    Header="Usuários" />
+                <MenuItem
+                    Name="MenuDocumentos"
+                    Click="MenuDocumentos_Click"
+                    Header="Tipos de documento" />
+                <MenuItem
+                    Name="MenuCobrancas"
+                    Click="MenuCobrancas_Click"
+                    Header="Tipos de cobrança" />
             </MenuItem>
-            <MenuItem Header="Caixa" Name="MenuCaixa" Click="MenuCaixa_Click"/>
-            <MenuItem Header="Adiantamentos" Name="MenuAdiantamentos" Click="MenuAdiantamentos_Click"/>
-            <MenuItem Header="Fechamento" Name="MenuFechamentos" Click="MenuFechamentos_Click"/>
-            <MenuItem Header="Relatórios" Name="MenuRelatorios" Click="MenuRelatorios_Click"/>
+            <MenuItem
+                Name="MenuCaixa"
+                Click="MenuCaixa_Click"
+                Header="Caixa" />
+            <MenuItem
+                Name="MenuAdiantamentos"
+                Click="MenuAdiantamentos_Click"
+                Header="Adiantamentos" />
+            <MenuItem
+                Name="MenuFechamentos"
+                Click="MenuFechamentos_Click"
+                Header="Fechamento" />
+            <MenuItem
+                Name="MenuRelatorios"
+                Click="MenuRelatorios_Click"
+                Header="Relatórios" />
         </Menu>
-        <ContentControl DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="Conteudo" Background="Black"/>
+        <ContentControl
+            Name="Conteudo"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Background="Black"
+            DockPanel.Dock="Top" />
     </DockPanel>
 </Window>

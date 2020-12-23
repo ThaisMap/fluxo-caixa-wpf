@@ -65,6 +65,7 @@
     <Compile Include="Modelos\Fechamento.cs" />
     <Compile Include="Modelos\Filial.cs" />
     <Compile Include="Modelos\Lancamento.cs" />
+    <Compile Include="Modelos\Observavel.cs" />
     <Compile Include="Modelos\Suprimento.cs" />
     <Compile Include="Modelos\TipoCobranca.cs" />
     <Compile Include="Modelos\TipoDocumento.cs" />

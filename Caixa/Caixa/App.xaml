@@ -6,6 +6,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     StartupUri="Login.xaml">
     <Application.Resources>
+
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
@@ -56,7 +57,17 @@
                 <Setter Property="IsReadOnly" Value="True" />
                 <Setter Property="materialDesign:DataGridAssist.CellPadding" Value="4 2" />
             </Style>
-
+            <ControlTemplate x:Key="errorTemplate">
+                <StackPanel>
+                    <AdornedElementPlaceholder />
+                    <TextBlock
+                        Margin="0,0,4,0"
+                        VerticalAlignment="Center"
+                        Foreground="Red"
+                        Text="{Binding [0].ErrorContent}" />
+                </StackPanel>
+            </ControlTemplate>
         </ResourceDictionary>
+
     </Application.Resources>
 </Application>

@@ -95,6 +95,7 @@
     <Compile Include="Cadastros\Usuarios.xaml.cs">
       <DependentUpon>Usuarios.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commands\InserirFilial.cs" />
     <Compile Include="Componentes\CreditoOuDebitoBooleanConverter.cs" />
     <Compile Include="Componentes\Status.xaml.cs">
       <DependentUpon>Status.xaml</DependentUpon>
@@ -126,9 +127,17 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Filial.cs" />
     <Compile Include="Relatorios\ImprimirRelatorio.xaml.cs">
       <DependentUpon>ImprimirRelatorio.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\CadastroFilialVM.cs" />
+    <Compile Include="Models\Observavel.cs" />
+    <Compile Include="Views\CadastroFilialView.xaml.cs">
+      <DependentUpon>CadastroFilialView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Componentes\StringToDoubleValidationRule.cs" />
+    <Compile Include="Componentes\StringToIntValidationRule.cs" />
     <Page Include="Cadastros\Clientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -202,6 +211,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Relatorios\ImprimirRelatorio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CadastroFilialView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

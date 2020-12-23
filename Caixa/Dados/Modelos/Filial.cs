@@ -11,7 +11,7 @@ namespace Dados.Modelos
         public virtual ICollection<Lancamento> Lancamentos { get; set; }
         public virtual ICollection<Fechamento> Fechamentos { get; set; }
         public virtual ICollection<Usuario> Usuarios { get; set; }
- 
+
         public Filial(string nome, double saldo)
         {
             Nome = nome;
@@ -23,7 +23,7 @@ namespace Dados.Modelos
         {
         }
 
-        
+
         public void Salvar()
         {
             using (var Banco = new CaixaContext())

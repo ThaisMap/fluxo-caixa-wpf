@@ -28,22 +28,5 @@ namespace Dados.Modelos
             Valor = tipoDocumento.Soma ? valor : -valor;
             TipoDocumento_Id = tipoDocumento.Id;
         }
-
-        public void Salvar()
-        {
-            using (var Banco = new CaixaContext())
-            {
-                if (Id == 0)
-                {
-                    Banco.Lancamentos.Add(this);
-                }
-                else
-                {
-                    var lancamento = Banco.Lancamentos.Find(Id);
-                    lancamento.Valor = Valor;
-                }
-                Banco.SaveChanges();
-            }
-        }
     }
 }
