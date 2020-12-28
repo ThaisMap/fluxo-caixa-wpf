@@ -32,7 +32,7 @@ namespace Dados.Modelos
         }
          
 
-        public void SalvarSuprimento()
+        public void SalvarLancamentoBase()
         {
             using (var Banco = new CaixaContext())
             {

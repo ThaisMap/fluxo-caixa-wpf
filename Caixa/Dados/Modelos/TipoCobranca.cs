@@ -1,8 +1,10 @@
 ﻿using Dados;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dados.Modelos
 {
+    [Table("TIposCobranca")]
     public class TipoCobranca
     {
         public int Id { get; set; }

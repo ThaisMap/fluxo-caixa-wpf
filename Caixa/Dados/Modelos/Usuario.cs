@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dados.Modelos
 {
+    [Table("Usuarios")]
     public class Usuario 
     {
         public int Id { get; set; }

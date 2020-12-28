@@ -22,13 +22,26 @@
             <StackPanel>
                 <componentes:Titulo Texto="Adiantamentos pendentes" />
                 <componentes:Status />
-                <DataGrid Name="DgTipos" Style="{DynamicResource DataGridCentralizado}">
+                <DataGrid Name="DgTipos" Style="{DynamicResource DataGridCentralizado}" 
+                          ItemsSource="{Binding Pendentes}"
+                          SelectedItem="{Binding AdiantamentoSelecionado}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id}" Header="Id" />
                         <DataGridTextColumn Binding="{Binding Data, StringFormat='d'}" Header="Data" />
                         <DataGridTextColumn Binding="{Binding Valor, StringFormat='C'}" Header="Valor" />
                         <DataGridTextColumn Binding="{Binding Placa}" Header="Placa" />
                         <DataGridTextColumn Binding="{Binding Motorista}" Header="Motorista" />
+                        <DataGridTemplateColumn Header="Impressão">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button
+                                        Name="BtnImprimir"
+                                        Content="Imprimir"
+                                        Style="{DynamicResource MaterialDesignFlatAccentButton}" 
+                                        Click="BtnImprimir_Click"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTemplateColumn Header="Estorno">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

@@ -12,7 +12,7 @@ namespace Caixa.Models
     {
         private Dados.Modelos.Filial filial = new Dados.Modelos.Filial();
 
-        public int Id { get; private set; }
+        public int Id { get => filial.Id; }
         [Required(ErrorMessage = "Informe um nome")]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "Mínimo de 5 caracteres")]
         public string Nome

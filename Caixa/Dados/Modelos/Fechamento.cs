@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dados.Modelos
 {
+    [Table("Fechamentos")]
     public class Fechamento
     {
         public int Id { get; set; }
@@ -13,6 +15,7 @@ namespace Dados.Modelos
         public double ValorInicial { get; set; }
         public double? ValorFinal { get; set; }
         public string ArquivoScan { get; set; }
+        public bool Fechado { get; set;  }
         public virtual Filial Filial { get; set; }
         public virtual ICollection<Lancamento> Lancamentos { get; set; } 
 

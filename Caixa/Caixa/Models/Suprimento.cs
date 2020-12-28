@@ -12,8 +12,9 @@ namespace Caixa.Models
     {
         private Dados.Modelos.Lancamento suprimento = new Dados.Modelos.Lancamento();
         private Sessao status = new Sessao();
+
         [Required(ErrorMessage = "Informe o valor")]
-        [Range(1, double.MaxValue, ErrorMessage = "Informe um valor acima de 0")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Informe um valor acima de 0")]
         public double Valor
         {
             get => suprimento.Valor;
@@ -35,13 +36,7 @@ namespace Caixa.Models
         {
             suprimento = doBanco;
         }
-
-        public Suprimento(double valor, int fechamento)
-        {
-            suprimento.Valor = valor;
-            suprimento.Fechamento_Id = fechamento;
-            DadosFixos();
-        }
+         
         private void DadosFixos()
         {
             suprimento.Data = DateTime.Today;
@@ -53,7 +48,7 @@ namespace Caixa.Models
 
         public void Salvar()
         {
-            suprimento.SalvarSuprimento();
+            suprimento.SalvarLancamentoBase();
             status.AddValorSaldoFilial(Valor);
         }
     }

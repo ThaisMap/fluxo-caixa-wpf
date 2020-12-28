@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Caixa.Commands;
 using System.Threading.Tasks;
+using Caixa.Commands;
 using System.Windows.Input;
 
 namespace Caixa.ViewModel

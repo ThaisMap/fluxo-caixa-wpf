@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dados.Modelos
 {
+    [Table("Filiais")]
     public class Filial
     {
         public int Id { get; set; }

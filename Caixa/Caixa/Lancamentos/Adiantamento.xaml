@@ -20,7 +20,9 @@
                 Margin="0,10,10,5"
                 HorizontalAlignment="Center"
                 materialDesign:HintAssist.Hint="Data"
-                materialDesign:HintAssist.IsFloating="True" />
+                materialDesign:HintAssist.IsFloating="True"
+                SelectedDate="{Binding Adiantamento.Data, ValidatesOnExceptions=True}"
+                Validation.ErrorTemplate="{StaticResource errorTemplate}" />
 
             <TextBox
                 Name="Valor"
@@ -29,7 +31,18 @@
                 HorizontalAlignment="Center"
                 materialDesign:HintAssist.Hint="Valor"
                 materialDesign:HintAssist.IsFloating="True"
-                MaxLength="40" />
+                MaxLength="40">
+                <TextBox.Text>
+                    <Binding
+                        Path="Adiantamento.Valor"
+                        UpdateSourceTrigger="PropertyChanged"
+                        ValidatesOnExceptions="True">
+                        <Binding.ValidationRules>
+                            <componentes:StringToDoubleValidationRule ValidationStep="RawProposedValue" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
             <TextBox
@@ -40,7 +53,9 @@
                 VerticalAlignment="Bottom"
                 materialDesign:HintAssist.Hint="Placa"
                 materialDesign:HintAssist.IsFloating="True"
-                MaxLength="40" />
+                MaxLength="40"
+                Text="{Binding Adiantamento.Placa, ValidatesOnExceptions=True}"
+                Validation.ErrorTemplate="{StaticResource errorTemplate}" />
             <TextBox
                 Name="Motorista"
                 Width="250"
@@ -49,21 +64,28 @@
                 VerticalAlignment="Bottom"
                 materialDesign:HintAssist.Hint="Motorista"
                 materialDesign:HintAssist.IsFloating="True"
-                MaxLength="40" />
+                MaxLength="40"
+                Text="{Binding Adiantamento.Motorista, ValidatesOnExceptions=True}"
+                Validation.ErrorTemplate="{StaticResource errorTemplate}" />
 
         </StackPanel>
-        <StackPanel HorizontalAlignment="Center" Margin="0 20" Orientation="Horizontal">
+        <StackPanel
+            Margin="0,20"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
 
             <Button
                 Name="BtnLancar"
                 Width="80"
                 Margin="0,10,10,5"
-                Content="Lançar" Click="BtnLancar_Click" />
+                Click="BtnLancar_Click"
+                Command="{Binding ComandoSalvar}"
+                Content="Lançar" />
             <Button
                 Name="BtnImprimir"
                 Width="100"
                 Margin="0,10,10,5"
-                Click="BtnImprimir_Click"
+                Command="{Binding ComandoImprimir}"
                 Content="Imprimir" />
         </StackPanel>
 

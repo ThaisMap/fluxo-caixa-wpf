@@ -32,7 +32,6 @@ namespace Caixa.Relatorios
         public ImprimirRelatorio(ReportClass relatorio)
         {
             InitializeComponent();
-            relatorio.Load();
             VisualizadorRelatorio.ViewerCore.ReportSource = relatorio;
         }
     }

@@ -22,7 +22,7 @@ namespace Dados
 
         public static List<Lancamento> Lancamentos = Context.Lancamentos.ToList();
 
-        public static List<Adiantamento> Adiantamentos = Context.Adiantamentos.ToList();
+        public static List<Adiantamento> AdiantamentosPendentes = Context.Adiantamentos.Where(x=>x.Pendente).ToList();
 
         public static List<Debito> Debitos = Context.Debitos.ToList();
 

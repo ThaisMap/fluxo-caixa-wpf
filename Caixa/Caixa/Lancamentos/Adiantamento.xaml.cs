@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Caixa.ViewModel;
 
 namespace Caixa.Lancamentos
 {
@@ -21,6 +22,7 @@ namespace Caixa.Lancamentos
         public Adiantamento()
         {
             InitializeComponent();
+            DataContext = new LancarAdiantamentoVM();
         }
 
         public static readonly RoutedEvent EventoAdiantamentoLancado =

@@ -95,7 +95,10 @@
     <Compile Include="Cadastros\Usuarios.xaml.cs">
       <DependentUpon>Usuarios.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commands\ImprimirAdiantamento.cs" />
+    <Compile Include="Commands\ImprimirAdiantamentoListaPendentes.cs" />
     <Compile Include="Commands\InserirFilial.cs" />
+    <Compile Include="Commands\LancarAdiantamento.cs" />
     <Compile Include="Commands\LancarSuprimento.cs" />
     <Compile Include="Componentes\CreditoOuDebitoBooleanConverter.cs" />
     <Compile Include="Componentes\Status.xaml.cs">
@@ -128,6 +131,8 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Adiantamento.cs" />
+    <Compile Include="Models\AdiantamentoRelatorio.cs" />
     <Compile Include="Models\Fechamento.cs" />
     <Compile Include="Models\Filial.cs" />
     <Compile Include="Models\Sessao.cs" />
@@ -135,8 +140,11 @@
     <Compile Include="Relatorios\ImprimirRelatorio.xaml.cs">
       <DependentUpon>ImprimirRelatorio.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Validacoes\FechamentoAberto.cs" />
+    <Compile Include="ViewModel\AdiantamentosPendentesVM.cs" />
     <Compile Include="ViewModel\CadastroFilialVM.cs" />
     <Compile Include="Models\Observavel.cs" />
+    <Compile Include="ViewModel\LancarAdiantamentoVM.cs" />
     <Compile Include="ViewModel\LancarSuprimentoVM.cs" />
     <Compile Include="ViewModel\StatusVM.cs" />
     <Compile Include="Views\CadastroFilialView.xaml.cs">
