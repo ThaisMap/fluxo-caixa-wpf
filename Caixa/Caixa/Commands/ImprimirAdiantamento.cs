@@ -1,4 +1,4 @@
-﻿using Caixa.ViewModel;
+﻿using Caixa.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +8,13 @@ using System.Windows.Input;
 
 namespace Caixa.Commands
 {
-    internal class ImprimirAdiantamento : ICommand
+    public class ImprimirAdiantamento : ICommand
     {
-        private LancarAdiantamentoVM lancar;
+        private Adiantamento_M controlador;
 
-        public ImprimirAdiantamento(LancarAdiantamentoVM lancar)
+        public ImprimirAdiantamento(Adiantamento_M pendentes)
         {
-            this.lancar = lancar;
+            this.controlador = pendentes;
         }
 
         public event EventHandler CanExecuteChanged
@@ -25,11 +25,11 @@ namespace Caixa.Commands
 
         public bool CanExecute(object parameter)
         {
-            return lancar.CanExecute;
+            return true;
         }
         public void Execute(object parameter)
         {
-            lancar.Imprimir();
+            controlador.Imprimir();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Caixa.ViewModel
 
         public LancarSuprimentoVM()
         {
-            suprimento = new Models.Suprimento();
+            suprimento = new Models.Suprimento("suprimento");
             ComandoSalvar = new LancarSuprimento(this);
         }
 

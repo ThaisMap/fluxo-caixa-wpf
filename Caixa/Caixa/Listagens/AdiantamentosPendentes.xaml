@@ -21,9 +21,11 @@
         <ScrollViewer>
             <StackPanel>
                 <componentes:Titulo Texto="Adiantamentos pendentes" />
-                <DataGrid Name="DgTipos" Style="{DynamicResource DataGridCentralizado}" 
-                          ItemsSource="{Binding Pendentes}"
-                          SelectedItem="{Binding AdiantamentoSelecionado}">
+                <DataGrid
+                    Name="DgTipos"
+                    ItemsSource="{Binding Pendentes}"
+                    SelectedItem="{Binding AdiantamentoSelecionado}"
+                    Style="{DynamicResource DataGridCentralizado}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id}" Header="Id" />
                         <DataGridTextColumn Binding="{Binding Data, StringFormat='d'}" Header="Data" />
@@ -35,9 +37,9 @@
                                 <DataTemplate>
                                     <Button
                                         Name="BtnImprimir"
+                                        Command="{Binding ComandoImprimir}"
                                         Content="Imprimir"
-                                        Style="{DynamicResource MaterialDesignFlatAccentButton}" 
-                                        Command="{Binding ComandoImprimir}"/>
+                                        Style="{DynamicResource MaterialDesignFlatAccentButton}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -46,6 +48,7 @@
                                 <DataTemplate>
                                     <Button
                                         Name="BtnEstornar"
+                                        Click="BtnEstornar_Click"
                                         Content="Estornar"
                                         Style="{DynamicResource MaterialDesignFlatAccentButton}" />
                                 </DataTemplate>

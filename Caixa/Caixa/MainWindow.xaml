@@ -55,6 +55,7 @@
                 Click="MenuRelatorios_Click"
                 Header="Relatórios" />
         </Menu>
+        <componentes:Status DockPanel.Dock="Top" />
         <ContentControl
             Name="Conteudo"
             HorizontalAlignment="Stretch"

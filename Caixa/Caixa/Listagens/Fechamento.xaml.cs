@@ -22,7 +22,7 @@ namespace Caixa.Listagens
         public Fechamento()
         {
             InitializeComponent();
-            DgCaixa.ItemsSource = Listas.Lancamentos;
+            DgCaixa.ItemsSource = Listas.Lancamentos();
         }
     }
 }

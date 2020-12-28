@@ -21,11 +21,11 @@ namespace Caixa.Listagens
     /// </summary>
     public partial class AdiantamentosPendentes : UserControl
     {
-    
+        AdiantamentosPendentesVM controlador = new AdiantamentosPendentesVM();
         public AdiantamentosPendentes()
         {
             InitializeComponent();
-            DataContext = new AdiantamentosPendentesVM();
+            DataContext = controlador;
         }
 
         private void BtnIncluir_Click(object sender, RoutedEventArgs e)
@@ -36,7 +36,12 @@ namespace Caixa.Listagens
         private void Adiantamento_AdiantamentoLancado(object sender, RoutedEventArgs e)
         {
             DialogoLancamento.IsOpen = false;
+            controlador.CarregarPendentes();
         }
 
+        private void BtnEstornar_Click(object sender, RoutedEventArgs e)
+        {
+            controlador.EstornarSelecionado();
+        }
     }
 }

@@ -14,19 +14,25 @@ namespace Dados
 
         public static List<Usuario> UsuariosCadastrados = Context.Usuarios.Include("Filial").ToList();
 
-        public static List<TipoCobranca> TiposCobranca = Context.TiposCobranca.ToList();
+        public static List<TipoCobranca> TiposCobranca()
+        {
+            return Context.TiposCobranca.ToList();
+        }
 
         public static List<TipoDocumento> TiposDocumento = Context.TiposDocumento.ToList();
 
         public static List<Cliente> Clientes = Context.Clientes.ToList();
 
-        public static List<Lancamento> Lancamentos = Context.Lancamentos.ToList();
-
-        public static List<Adiantamento> AdiantamentosPendentes = Context.Adiantamentos.Where(x=>x.Pendente).ToList();
-
+        public static List<Lancamento> Lancamentos() { return Context.Lancamentos.ToList(); }
+         
         public static List<Debito> Debitos = Context.Debitos.ToList();
 
         public static List<Fechamento> Fechamentos = Context.Fechamentos.ToList();
+
+        public static List<Adiantamento> GetListaAdiantamentos()
+        {
+            return Context.Adiantamentos.Where(x => x.Pendente).ToList();
+        }
     }
 }
 

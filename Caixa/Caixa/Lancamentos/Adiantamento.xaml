@@ -69,25 +69,14 @@
                 Validation.ErrorTemplate="{StaticResource errorTemplate}" />
 
         </StackPanel>
-        <StackPanel
-            Margin="0,20"
-            HorizontalAlignment="Center"
-            Orientation="Horizontal">
 
-            <Button
-                Name="BtnLancar"
-                Width="80"
-                Margin="0,10,10,5"
-                Click="BtnLancar_Click"
-                Command="{Binding ComandoSalvar}"
-                Content="Lançar" />
-            <Button
-                Name="BtnImprimir"
-                Width="100"
-                Margin="0,10,10,5"
-                Command="{Binding ComandoImprimir}"
-                Content="Imprimir" />
-        </StackPanel>
+        <Button
+            Name="BtnLancar"
+            Width="150"
+            Margin="0,10"
+            Click="BtnLancar_Click"
+            Command="{Binding ComandoSalvar}"
+            Content="Lançar e Imprimir" />
 
     </StackPanel>
 </UserControl>

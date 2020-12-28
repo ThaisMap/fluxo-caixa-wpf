@@ -26,7 +26,7 @@ namespace Caixa.Cadastros
         public Clientes()
         {
             InitializeComponent();
-            cbTipo.ItemsSource = Listas.TiposCobranca;
+            cbTipo.ItemsSource = Listas.TiposCobranca();
             cbTipo.DisplayMemberPath = "Descricao";
             cbTipo.SelectedValuePath = "Id";
             CbCadastrados.DisplayMemberPath = "Nome";

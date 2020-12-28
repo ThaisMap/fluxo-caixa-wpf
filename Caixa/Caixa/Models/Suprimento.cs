@@ -11,7 +11,7 @@ namespace Caixa.Models
     public class Suprimento : Observavel
     {
         private Dados.Modelos.Lancamento suprimento = new Dados.Modelos.Lancamento();
-        private Sessao status = new Sessao();
+        private Sessao status = Sessao.Status;
 
         [Required(ErrorMessage = "Informe o valor")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Informe um valor acima de 0")]
@@ -26,9 +26,10 @@ namespace Caixa.Models
             }
         }
         
-        public Suprimento()
+        public Suprimento(string tipo)
         {
             suprimento = new Dados.Modelos.Lancamento();
+            suprimento.TipoDocumento_Id = Listas.TiposDocumento.Where(t => t.Descricao.ToLower() == tipo).Select(t => t.Id).FirstOrDefault();
             DadosFixos();
         }
 
@@ -42,7 +43,6 @@ namespace Caixa.Models
             suprimento.Data = DateTime.Today;
             suprimento.Usuario_Id = status.IdUsuario;
             suprimento.Filial_Id = status.IdFilial;
-            suprimento.TipoDocumento_Id = Listas.TiposDocumento.Where(t => t.Descricao.ToLower() == "suprimento").Select(t => t.Id).FirstOrDefault();
             suprimento.Fechamento_Id = status.IdFechamento;
         }
 

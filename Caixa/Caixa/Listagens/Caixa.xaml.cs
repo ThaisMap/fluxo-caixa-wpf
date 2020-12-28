@@ -22,8 +22,11 @@ namespace Caixa.Listagens
         public Caixa()
         {
             InitializeComponent();
-            DgCaixa.ItemsSource = Listas.Lancamentos;
+            CarregaListaCaixa();
         }
+
+        private void CarregaListaCaixa() => DgCaixa.ItemsSource = Listas.Lancamentos();
+
 
         public static readonly RoutedEvent EventoBtnFechamento =
           EventManager.RegisterRoutedEvent("EventoBtnFechamento", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Caixa));
@@ -38,6 +41,7 @@ namespace Caixa.Listagens
         private void FecharPopUpDialog(object sender, RoutedEventArgs e)
         {
             DialogLancamento.IsOpen = false;
+            CarregaListaCaixa();
         }
 
         private void btnFechamento_Click(object sender, RoutedEventArgs e)
@@ -70,7 +74,6 @@ namespace Caixa.Listagens
         {
             popUp = new Lancamentos.PopUp("Suprimento");
             AbrirPopUpDialog();
-
         }
     }
 }

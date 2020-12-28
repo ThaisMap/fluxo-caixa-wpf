@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caixa.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,13 @@ namespace Caixa.ViewModel
 {
     public class StatusVM 
     {
-        private Models.Sessao status;
+        private Sessao status;
 
-        public Models.Sessao Status { get => status; }
+        public Sessao Status { get => status; }
 
         public StatusVM()
         {
-            status = new Models.Sessao();
+            status = Sessao.Status;
         }
     }
 }

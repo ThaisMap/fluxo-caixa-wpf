@@ -11,7 +11,6 @@
     mc:Ignorable="d">
     <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <componentes:Titulo DockPanel.Dock="Top" Texto="Realizar fechamento" />
-        <componentes:Status DockPanel.Dock="Top" />
 
         <StackPanel
             HorizontalAlignment="Center"

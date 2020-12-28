@@ -13,43 +13,35 @@ namespace Caixa.ViewModel
 {
     public class AdiantamentosPendentesVM
     {
-        private List<Adiantamento> pendentes;
-        public ICommand ComandoImprimir { get; private set; }
-        public ICommand ComandoEstornar { get; private set; }
-        public ICommand ComandoIncluir { get; private set; }
+        private ObservableCollection<Adiantamento_M> pendentes;
 
-        public List<Adiantamento> Pendentes { get => pendentes; }
+        public ObservableCollection<Adiantamento_M> Pendentes => pendentes;
 
-        public Adiantamento AdiantamentoSelecionado { get; set; } 
+        public Adiantamento_M AdiantamentoSelecionado { get; set; } 
 
         public AdiantamentosPendentesVM()
         {
-            pendentes = new List<Adiantamento>();
-            foreach (var item in Listas.AdiantamentosPendentes)
-            {
-                pendentes.Add(new Adiantamento(item));
-            }
-            ComandoImprimir = new ImprimirAdiantamentoListaPendentes(this);
+            CarregarPendentes();
         }
 
-        internal void Estornar()
+        public  void CarregarPendentes()
+        {
+            pendentes = new ObservableCollection<Adiantamento_M>();
+            foreach (var item in Listas.GetListaAdiantamentos())
+            {
+                pendentes.Add(new Adiantamento_M(item));
+            }
+        }
+
+        internal void EstornarSelecionado()
         {
             AdiantamentoSelecionado.Estornar();
-            //TODO: LANÇAMENTO DE ESTORNO
-        }
-
-        internal void Imprimir()
-        {
-            if (AdiantamentoSelecionado != null)
+            Suprimento estorno = new Suprimento("estorno de adiantamento")
             {
-                RelatoriosCrystal.Adiantamento recibo = new RelatoriosCrystal.Adiantamento();
-                List<AdiantamentoRelatorio> dadosRelatorio =
-                    new List<AdiantamentoRelatorio>() { new AdiantamentoRelatorio(AdiantamentoSelecionado.Id) };
-
-                recibo.SetDataSource(dadosRelatorio);
-                Relatorios.ImprimirRelatorio imprimir = new Relatorios.ImprimirRelatorio(recibo);
-                imprimir.ShowDialog();
-            }
+                Valor = AdiantamentoSelecionado.Valor
+            };
+            estorno.Salvar();
+            CarregarPendentes();
         }
     }
 }

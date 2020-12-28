@@ -5,7 +5,7 @@ namespace Dados.Modelos
     [Table("Debitos")]
     public class Debito : Lancamento
     {
-        public string Cte { get; set; }
+        public int Cte { get; set; }
         public int Volumes { get; set; }
         public int Cliente_Id { get; set; }
         public int TipoCobranca_Id { get; set; } 
@@ -13,7 +13,7 @@ namespace Dados.Modelos
         public virtual TipoCobranca TipoCobranca { get; set; }
 
 
-        public Debito(TipoCobranca tipoCobranca, string cte, int volumes, Cliente cliente, int? fechamento, Lancamento lancamento) :
+        public Debito(TipoCobranca tipoCobranca, int cte, int volumes, Cliente cliente, int? fechamento, Lancamento lancamento) :
            base(lancamento.Data, lancamento.Usuario_Id, lancamento.Filial_Id, lancamento.Valor, lancamento.TipoDocumento)
         {
             TipoCobranca_Id = tipoCobranca.Id;

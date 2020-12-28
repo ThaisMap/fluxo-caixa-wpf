@@ -23,8 +23,6 @@
         </materialDesign:DialogHost.DialogContent>
         <StackPanel>
             <componentes:Titulo Texto="Caixa" />
-
-            <componentes:Status />
             <DataGrid Name="DgCaixa" Style="{DynamicResource DataGridCentralizado}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Data, StringFormat='d'}" Header="Data" />

@@ -4,18 +4,22 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Caixa.Commands;
 using Caixa.Validacoes;
+using Dados.Modelos;
 
 namespace Caixa.Models
 {
-    public class Adiantamento : Observavel
+    public class Adiantamento_M : Observavel
     {
-        private Dados.Modelos.Adiantamento adiantamento;
+        private Adiantamento adiantamento;
         private Sessao status;
-
+        public ICommand ComandoImprimir { get; private set; }
+        public ICommand ComandoEstornar { get; private set; }
         public int Id { get => adiantamento.Id; }
 
-        [Required(ErrorMessage ="Informe a data")]
+        [Required(ErrorMessage = "Informe a data")]
         [FechamentoAberto(ErrorMessage = "Não há fechamento em aberto na data selecionada")]
         public DateTime Data
         {
@@ -30,6 +34,7 @@ namespace Caixa.Models
 
         [Required(ErrorMessage = "Informe o valor")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Informe um valor acima de 0")]
+        [SaldoSuficiente(ErrorMessage = "Saldo insuficiente")]
         public double Valor
         {
             get => adiantamento.Valor;
@@ -41,7 +46,7 @@ namespace Caixa.Models
             }
         }
 
-       
+
 
         [Required(ErrorMessage = "Informe a placa")]
         [StringLength(7, MinimumLength = 7, ErrorMessage = "A placa deve ter 7 caracteres")]
@@ -55,7 +60,7 @@ namespace Caixa.Models
                 OnPropertyChanged("Placa");
             }
         }
-        
+
         [Required(ErrorMessage = "Informe o nome do motorista")]
         [MinLength(3, ErrorMessage = "Minimo de 3 caracteres")]
         public string Motorista
@@ -75,21 +80,24 @@ namespace Caixa.Models
             return Validator.TryValidateObject(this, new ValidationContext(this), results, true);
         }
 
-        public Adiantamento()
+        public Adiantamento_M()
         {
-            adiantamento = new Dados.Modelos.Adiantamento();
+            adiantamento = new Adiantamento();
+            adiantamento.Data = DateTime.Today;
+            ComandoImprimir = new ImprimirAdiantamento(this);
+
         }
 
-        public Adiantamento(Dados.Modelos.Adiantamento doBanco)
+        public Adiantamento_M(Adiantamento doBanco)
         {
             adiantamento = doBanco;
+            ComandoImprimir = new ImprimirAdiantamento(this);
         }
 
 
         private void DadosFixos()
         {
-            adiantamento.Data = DateTime.Today;
-            status = new Sessao();
+            status = Sessao.Status;
             adiantamento.Usuario_Id = status.IdUsuario;
             adiantamento.Filial_Id = status.IdFilial;
             adiantamento.TipoDocumento_Id = Dados.Listas.TiposDocumento.Where(t => t.Descricao.ToLower() == "adiantamento").Select(t => t.Id).FirstOrDefault();
@@ -102,6 +110,7 @@ namespace Caixa.Models
                 DadosFixos();
             adiantamento.Pendente = false;
             adiantamento.Salvar();
+            status = Sessao.Status;
             status.AddValorSaldoFilial(Valor);
         }
 
@@ -111,6 +120,18 @@ namespace Caixa.Models
                 DadosFixos();
             adiantamento.Salvar();
             status.AddValorSaldoFilial(-Valor);
+        }
+
+        //TODO: os comandos de imprimir e estornar devem ficar aqui?
+        internal void Imprimir()
+        {
+            RelatoriosCrystal.Adiantamento recibo = new RelatoriosCrystal.Adiantamento();
+            List<AdiantamentoRelatorio> dadosRelatorio =
+                new List<AdiantamentoRelatorio>() { new AdiantamentoRelatorio(Id) };
+
+            recibo.SetDataSource(dadosRelatorio);
+            Relatorios.ImprimirRelatorio imprimir = new Relatorios.ImprimirRelatorio(recibo);
+            imprimir.ShowDialog();
         }
     }
 }

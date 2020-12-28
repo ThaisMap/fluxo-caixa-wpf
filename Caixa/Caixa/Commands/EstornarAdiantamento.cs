@@ -1,4 +1,5 @@
-﻿using Caixa.ViewModel;
+﻿using Caixa.Models;
+using Caixa.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ namespace Caixa.Commands
 {
     public class EstornarAdiantamento : ICommand
     {
-        private AdiantamentosPendentesVM controlador;
+        private Adiantamento_M controlador;
 
-        public EstornarAdiantamento(AdiantamentosPendentesVM controlador)
+        public EstornarAdiantamento(Adiantamento_M controlador)
         {
             this.controlador = controlador;
         }

@@ -10,7 +10,7 @@ using System.Data.Entity;
 
 namespace Caixa.Validacoes
 {
-    public class FechamentoAberto :ValidationAttribute
+    public class FechamentoAberto : ValidationAttribute
     {
         public override bool IsValid(object value)
         {
@@ -18,7 +18,7 @@ namespace Caixa.Validacoes
 
             using (var Banco = new CaixaContext())
             {
-                Sessao status = new Sessao();
+                Sessao status = Sessao.Status;
                 var fechamento = Banco.Fechamentos
                     .Where(x => x.Filial_Id == status.IdFilial
                     && DbFunctions.TruncateTime(x.Data) == DbFunctions.TruncateTime(dateTime)).FirstOrDefault();
