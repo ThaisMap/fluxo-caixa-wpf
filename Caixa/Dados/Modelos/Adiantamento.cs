@@ -8,7 +8,7 @@ namespace Dados.Modelos
 
         public string Placa { get; set; }
         public string Motorista { get; set; }
-        public bool Pendente { get; set; }
+        public bool Pendente { get; set; } = true;
         public Adiantamento(string placa, string motorista, bool pendente, Lancamento lancamento) :
             base(lancamento.Data, lancamento.Usuario_Id, lancamento.Filial_Id, lancamento.Valor, lancamento.TipoDocumento)
         {

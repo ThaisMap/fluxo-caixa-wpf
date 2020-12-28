@@ -41,6 +41,8 @@ namespace Caixa.Models
             }
         }
 
+       
+
         [Required(ErrorMessage = "Informe a placa")]
         [StringLength(7, MinimumLength = 7, ErrorMessage = "A placa deve ter 7 caracteres")]
         public string Placa
@@ -92,6 +94,15 @@ namespace Caixa.Models
             adiantamento.Filial_Id = status.IdFilial;
             adiantamento.TipoDocumento_Id = Dados.Listas.TiposDocumento.Where(t => t.Descricao.ToLower() == "adiantamento").Select(t => t.Id).FirstOrDefault();
             adiantamento.Fechamento_Id = status.IdFechamento;
+        }
+
+        internal void Estornar()
+        {
+            if (adiantamento.Usuario_Id < 1)
+                DadosFixos();
+            adiantamento.Pendente = false;
+            adiantamento.Salvar();
+            status.AddValorSaldoFilial(Valor);
         }
 
         public void Salvar()

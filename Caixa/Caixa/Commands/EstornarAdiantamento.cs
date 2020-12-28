@@ -8,15 +8,14 @@ using System.Windows.Input;
 
 namespace Caixa.Commands
 {
-    public class ImprimirAdiantamentoListaPendentes : ICommand
+    public class EstornarAdiantamento : ICommand
     {
         private AdiantamentosPendentesVM controlador;
 
-        public ImprimirAdiantamentoListaPendentes(AdiantamentosPendentesVM pendentes)
+        public EstornarAdiantamento(AdiantamentosPendentesVM controlador)
         {
-            this.controlador = pendentes;
+            this.controlador = controlador;
         }
-
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
@@ -29,7 +28,7 @@ namespace Caixa.Commands
         }
         public void Execute(object parameter)
         {
-            controlador.Imprimir();
+            controlador.Estornar();
         }
     }
 }

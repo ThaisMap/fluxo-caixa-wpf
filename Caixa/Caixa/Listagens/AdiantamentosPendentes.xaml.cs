@@ -1,4 +1,5 @@
 ﻿using Caixa; 
+using Caixa.ViewModel; 
 using Dados;
 using System;
 using System.Collections.Generic;
@@ -20,19 +21,11 @@ namespace Caixa.Listagens
     /// </summary>
     public partial class AdiantamentosPendentes : UserControl
     {
-        public List<Models.Adiantamento> Pendentes { get; private set; }
-        public Models.Adiantamento AdiantamentoSelecionado { get; set; }
-
+    
         public AdiantamentosPendentes()
         {
             InitializeComponent();
-            Pendentes = new List<Models.Adiantamento>();
-            foreach (var item in Listas.AdiantamentosPendentes)
-            {
-                Pendentes.Add(new Models.Adiantamento(item));
-            }
-
-            DataContext = this;
+            DataContext = new AdiantamentosPendentesVM();
         }
 
         private void BtnIncluir_Click(object sender, RoutedEventArgs e)
@@ -45,20 +38,5 @@ namespace Caixa.Listagens
             DialogoLancamento.IsOpen = false;
         }
 
-        private void BtnImprimir_Click(object sender, RoutedEventArgs e)
-        {
-            if (AdiantamentoSelecionado != null)
-            {
-                RelatoriosCrystal.Adiantamento recibo = new RelatoriosCrystal.Adiantamento();
-                //TODO: Criar um DataSet e um Modelo para impressão com as mesmas props 
-                //ou alterar o adiantamento para ter o nome da filial
-                List<Models.AdiantamentoRelatorio> dadosRelatorio =
-                    new List<Models.AdiantamentoRelatorio>() { new Models.AdiantamentoRelatorio(AdiantamentoSelecionado.Id) };
-
-                recibo.SetDataSource(dadosRelatorio);
-                Relatorios.ImprimirRelatorio imprimir = new Relatorios.ImprimirRelatorio(recibo);
-                imprimir.ShowDialog();
-            }
-        }
     }
 }

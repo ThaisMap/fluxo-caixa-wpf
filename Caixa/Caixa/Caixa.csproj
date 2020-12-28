@@ -95,6 +95,7 @@
     <Compile Include="Cadastros\Usuarios.xaml.cs">
       <DependentUpon>Usuarios.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commands\EstornarAdiantamento.cs" />
     <Compile Include="Commands\ImprimirAdiantamento.cs" />
     <Compile Include="Commands\ImprimirAdiantamentoListaPendentes.cs" />
     <Compile Include="Commands\InserirFilial.cs" />

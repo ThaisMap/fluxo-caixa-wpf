@@ -1,4 +1,5 @@
-﻿using Caixa.Models;
+﻿using Caixa.Commands;
+using Caixa.Models;
 using Dados;
 using System;
 using System.Collections.Generic;
@@ -23,16 +24,18 @@ namespace Caixa.ViewModel
 
         public AdiantamentosPendentesVM()
         {
-
-            using (var Banco = new CaixaContext())
+            pendentes = new List<Adiantamento>();
+            foreach (var item in Listas.AdiantamentosPendentes)
             {
-                var doBanco = Banco.Adiantamentos.Where(x => x.Pendente == true);
-                foreach (var item in doBanco)
-                {
-                    pendentes.Add(new Adiantamento(item));
-                }
-
+                pendentes.Add(new Adiantamento(item));
             }
+            ComandoImprimir = new ImprimirAdiantamentoListaPendentes(this);
+        }
+
+        internal void Estornar()
+        {
+            AdiantamentoSelecionado.Estornar();
+            //TODO: LANÇAMENTO DE ESTORNO
         }
 
         internal void Imprimir()
@@ -40,9 +43,7 @@ namespace Caixa.ViewModel
             if (AdiantamentoSelecionado != null)
             {
                 RelatoriosCrystal.Adiantamento recibo = new RelatoriosCrystal.Adiantamento();
-                //TODO: Criar um DataSet e um Modelo para impressão com as mesmas props 
-                //ou alterar o adiantamento para ter o nome da filial
-                List<AdiantamentoRelatorio> dadosRelatorio = 
+                List<AdiantamentoRelatorio> dadosRelatorio =
                     new List<AdiantamentoRelatorio>() { new AdiantamentoRelatorio(AdiantamentoSelecionado.Id) };
 
                 recibo.SetDataSource(dadosRelatorio);

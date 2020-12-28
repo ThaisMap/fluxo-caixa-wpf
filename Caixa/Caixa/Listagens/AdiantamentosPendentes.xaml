@@ -21,7 +21,6 @@
         <ScrollViewer>
             <StackPanel>
                 <componentes:Titulo Texto="Adiantamentos pendentes" />
-                <componentes:Status />
                 <DataGrid Name="DgTipos" Style="{DynamicResource DataGridCentralizado}" 
                           ItemsSource="{Binding Pendentes}"
                           SelectedItem="{Binding AdiantamentoSelecionado}">
@@ -38,7 +37,7 @@
                                         Name="BtnImprimir"
                                         Content="Imprimir"
                                         Style="{DynamicResource MaterialDesignFlatAccentButton}" 
-                                        Click="BtnImprimir_Click"/>
+                                        Command="{Binding ComandoImprimir}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
