@@ -20,8 +20,8 @@ namespace Caixa.Models
             get =>  filial.Nome;
             set
             {
-                ValidateProperty(value, "Nome");
                 filial.Nome = value;
+                ValidateProperty(value, "Nome");
                 OnPropertyChanged("Nome");
             }
         }
@@ -33,8 +33,8 @@ namespace Caixa.Models
 
             set
             {
-                ValidateProperty(value, "Saldo");
                 filial.Saldo = value;
+                ValidateProperty(value, "Saldo");
                 OnPropertyChanged("Saldo");
             }
         }

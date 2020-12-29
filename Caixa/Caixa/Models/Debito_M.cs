@@ -13,9 +13,13 @@ namespace Caixa.Models
     public class Debito_M : Observavel
     {
         private Debito debito;
-        private Sessao status;
+        private Sessao status = Sessao.Status;
 
-
+        public Debito_M()
+        {
+            debito = new Debito();
+            debito.Data = DateTime.Today;
+        }
 
         [Required(ErrorMessage = "Informe a data")]
         [FechamentoAberto(ErrorMessage = "Não há fechamento em aberto na data selecionada")]
@@ -24,8 +28,8 @@ namespace Caixa.Models
             get => debito.Data;
             set
             {
-                ValidateProperty(value, "Data");
                 debito.Data = value;
+                ValidateProperty(value, "Data");
                 OnPropertyChanged("Data");
             }
         }
@@ -39,8 +43,8 @@ namespace Caixa.Models
             get => debito.Valor;
             set
             {
-                ValidateProperty(value, "Valor");
                 debito.Valor = value;
+                ValidateProperty(value, "Valor");
                 OnPropertyChanged("Valor");
             }
         }
@@ -51,8 +55,8 @@ namespace Caixa.Models
             get => debito.TipoDocumento_Id;
             set
             {
-                ValidateProperty(value, "TipoDocumento");
                 debito.TipoDocumento_Id = value;
+                ValidateProperty(value, "TipoDocumento");
                 OnPropertyChanged("TipoDocumento");
             }
         }
@@ -63,9 +67,9 @@ namespace Caixa.Models
             get => debito.Cte;
             set
             {
-                ValidateProperty(value, "TipoDocumento");
                 debito.Cte = value;
-                OnPropertyChanged("TipoDocumento");
+                ValidateProperty(value, "Cte");
+                OnPropertyChanged("Cte");
             }
         }
 
@@ -75,9 +79,9 @@ namespace Caixa.Models
             get => debito.Volumes;
             set
             {
-                ValidateProperty(value, "TipoDocumento");
                 debito.Volumes = value;
-                OnPropertyChanged("TipoDocumento");
+                ValidateProperty(value, "Volumes");
+                OnPropertyChanged("Volumes");
             }
         }
 
@@ -87,9 +91,9 @@ namespace Caixa.Models
             get => debito.Cliente_Id;
             set
             {
-                ValidateProperty(value, "TipoDocumento");
                 debito.Cliente_Id = value;
-                OnPropertyChanged("TipoDocumento");
+                ValidateProperty(value, "Cliente");
+                OnPropertyChanged("Cliente");
             }
         }
 
@@ -99,9 +103,30 @@ namespace Caixa.Models
             get => debito.TipoCobranca_Id;
             set
             {
-                ValidateProperty(value, "TipoDocumento");
                 debito.TipoCobranca_Id = value;
-                OnPropertyChanged("TipoDocumento");
+                ValidateProperty(value, "TipoCobranca");
+                OnPropertyChanged("TipoCobranca");
+            }
+        }
+
+        public bool IsValid { get => isValid(); }
+
+       
+
+        private void DadosFixos()
+        {
+            debito.Usuario_Id = status.IdUsuario;
+            debito.Filial_Id = status.IdFilial; 
+            debito.Fechamento_Id = status.IdFechamento;
+        }
+
+        public void Salvar()
+        {
+            DadosFixos();
+            if (IsValid)
+            {
+                debito.Salvar();
+                status.AddValorSaldoFilial(-Valor);
             }
         }
     }

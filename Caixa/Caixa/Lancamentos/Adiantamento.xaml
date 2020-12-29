@@ -54,7 +54,7 @@
                 materialDesign:HintAssist.Hint="Placa"
                 materialDesign:HintAssist.IsFloating="True"
                 MaxLength="40"
-                Text="{Binding Adiantamento.Placa, ValidatesOnExceptions=True}"
+                Text="{Binding Adiantamento.Placa, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}"
                 Validation.ErrorTemplate="{StaticResource errorTemplate}" />
             <TextBox
                 Name="Motorista"
@@ -65,7 +65,7 @@
                 materialDesign:HintAssist.Hint="Motorista"
                 materialDesign:HintAssist.IsFloating="True"
                 MaxLength="40"
-                Text="{Binding Adiantamento.Motorista, ValidatesOnExceptions=True}"
+                Text="{Binding Adiantamento.Motorista, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}"
                 Validation.ErrorTemplate="{StaticResource errorTemplate}" />
 
         </StackPanel>

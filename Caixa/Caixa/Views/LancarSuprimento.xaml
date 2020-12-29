@@ -39,6 +39,5 @@
             Click="BtnLancar_Click"
             Command="{Binding ComandoSalvar}"
             Content="Lançar" />
-
     </StackPanel>
 </UserControl>

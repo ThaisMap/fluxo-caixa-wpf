@@ -37,10 +37,7 @@ namespace Caixa.Cadastros
 
         private void CarregarCadastros()
         {
-            using (var Banco = new CaixaContext())
-            {
-                ClientesCadastrados = Banco.Clientes.ToList();
-            }
+            ClientesCadastrados = Listas.Clientes();
             CbCadastrados.ItemsSource = ClientesCadastrados;
         }
 

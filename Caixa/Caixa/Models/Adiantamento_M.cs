@@ -14,7 +14,7 @@ namespace Caixa.Models
     public class Adiantamento_M : Observavel
     {
         private Adiantamento adiantamento;
-        private Sessao status;
+        private Sessao status = Sessao.Status;
         public ICommand ComandoImprimir { get; private set; }
         public ICommand ComandoEstornar { get; private set; }
         public int Id { get => adiantamento.Id; }
@@ -26,8 +26,8 @@ namespace Caixa.Models
             get => adiantamento.Data;
             set
             {
-                ValidateProperty(value, "Data");
                 adiantamento.Data = value;
+                ValidateProperty(value, "Data");
                 OnPropertyChanged("Data");
             }
         }
@@ -40,8 +40,8 @@ namespace Caixa.Models
             get => adiantamento.Valor;
             set
             {
-                ValidateProperty(value, "Valor");
                 adiantamento.Valor = value;
+                ValidateProperty(value, "Valor");
                 OnPropertyChanged("Valor");
             }
         }
@@ -55,8 +55,8 @@ namespace Caixa.Models
             get => adiantamento.Placa;
             set
             {
-                ValidateProperty(value, "Placa");
                 adiantamento.Placa = value;
+                ValidateProperty(value, "Placa");
                 OnPropertyChanged("Placa");
             }
         }
@@ -68,24 +68,19 @@ namespace Caixa.Models
             get => adiantamento.Motorista;
             set
             {
-                ValidateProperty(value, "Motorista");
                 adiantamento.Motorista = value;
+                ValidateProperty(value, "Motorista");
                 OnPropertyChanged("Motorista");
             }
         }
 
-        public bool isValid()
-        {
-            var results = new List<ValidationResult>();
-            return Validator.TryValidateObject(this, new ValidationContext(this), results, true);
-        }
-
+        public bool IsValid { get => isValid(); }
+               
         public Adiantamento_M()
         {
             adiantamento = new Adiantamento();
             adiantamento.Data = DateTime.Today;
             ComandoImprimir = new ImprimirAdiantamento(this);
-
         }
 
         public Adiantamento_M(Adiantamento doBanco)
@@ -96,11 +91,10 @@ namespace Caixa.Models
 
 
         private void DadosFixos()
-        {
-            status = Sessao.Status;
+        { 
             adiantamento.Usuario_Id = status.IdUsuario;
             adiantamento.Filial_Id = status.IdFilial;
-            adiantamento.TipoDocumento_Id = Dados.Listas.TiposDocumento.Where(t => t.Descricao.ToLower() == "adiantamento").Select(t => t.Id).FirstOrDefault();
+            adiantamento.TipoDocumento_Id = Dados.Listas.TiposDocumento().Where(t => t.Descricao.ToLower() == "adiantamento").Select(t => t.Id).FirstOrDefault();
             adiantamento.Fechamento_Id = status.IdFechamento;
         }
 
@@ -110,7 +104,6 @@ namespace Caixa.Models
                 DadosFixos();
             adiantamento.Pendente = false;
             adiantamento.Salvar();
-            status = Sessao.Status;
             status.AddValorSaldoFilial(Valor);
         }
 
@@ -121,14 +114,12 @@ namespace Caixa.Models
             adiantamento.Salvar();
             status.AddValorSaldoFilial(-Valor);
         }
-
-        //TODO: os comandos de imprimir e estornar devem ficar aqui?
+         
         internal void Imprimir()
         {
             RelatoriosCrystal.Adiantamento recibo = new RelatoriosCrystal.Adiantamento();
             List<AdiantamentoRelatorio> dadosRelatorio =
                 new List<AdiantamentoRelatorio>() { new AdiantamentoRelatorio(Id) };
-
             recibo.SetDataSource(dadosRelatorio);
             Relatorios.ImprimirRelatorio imprimir = new Relatorios.ImprimirRelatorio(recibo);
             imprimir.ShowDialog();

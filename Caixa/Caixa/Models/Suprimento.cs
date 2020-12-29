@@ -20,16 +20,17 @@ namespace Caixa.Models
             get => suprimento.Valor;
             set
             {
-                ValidateProperty(value, "Valor");
                 suprimento.Valor = value;
+                ValidateProperty(value, "Valor");
                 OnPropertyChanged("Valor");
             }
         }
-        
+
+
         public Suprimento(string tipo)
         {
             suprimento = new Dados.Modelos.Lancamento();
-            suprimento.TipoDocumento_Id = Listas.TiposDocumento.Where(t => t.Descricao.ToLower() == tipo).Select(t => t.Id).FirstOrDefault();
+            suprimento.TipoDocumento_Id = Listas.TiposDocumento().Where(t => t.Descricao.ToLower() == tipo).Select(t => t.Id).FirstOrDefault();
             DadosFixos();
         }
 

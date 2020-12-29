@@ -12,6 +12,10 @@ namespace Caixa.ViewModel
 {
     public class LancarDebitoVM
     {
-        public List<TipoCobranca> TiposCobranca => Listas.TiposCobranca(); 
+        public List<TipoCobranca> TiposCobranca => Listas.TiposCobranca();
+        public List<TipoDocumento> TiposDocumento => Listas.TiposDocumento();
+        public List<Cliente> Cliente => Listas.Clientes();
+
+        public string SelecionarId => "Id";
     }
 }

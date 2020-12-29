@@ -24,7 +24,7 @@ namespace Caixa.ViewModel
             ComandoSalvar = new LancarAdiantamento(this); 
         }
 
-        public bool CanExecute { get => adiantamento.isValid(); }
+        public bool CanExecute { get => adiantamento.IsValid; }
 
         internal void Salvar()
         {

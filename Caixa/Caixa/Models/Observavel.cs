@@ -47,6 +47,12 @@ namespace Caixa.Models
                 MemberName = name
             });
         }
+         
+        protected bool isValid()
+        {
+            var results = new List<ValidationResult>();
+            return Validator.TryValidateObject(this, new ValidationContext(this), results, true);
+        }
     }
 }
 

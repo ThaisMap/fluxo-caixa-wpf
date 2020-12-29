@@ -19,9 +19,15 @@ namespace Dados
             return Context.TiposCobranca.ToList();
         }
 
-        public static List<TipoDocumento> TiposDocumento = Context.TiposDocumento.ToList();
+        public static List<TipoDocumento> TiposDocumento()
+        {
+            return Context.TiposDocumento.ToList();
+        }
 
-        public static List<Cliente> Clientes = Context.Clientes.ToList();
+        public static List<Cliente> Clientes()
+        {
+            return Context.Clientes.ToList();
+        }
 
         public static List<Lancamento> Lancamentos() { return Context.Lancamentos.ToList(); }
          

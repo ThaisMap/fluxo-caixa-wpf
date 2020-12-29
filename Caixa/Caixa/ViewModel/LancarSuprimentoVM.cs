@@ -12,7 +12,16 @@ namespace Caixa.ViewModel
     {
         private Models.Suprimento suprimento;
         public Models.Suprimento Suprimento { get => suprimento; }
-        public bool CanExecute { get => suprimento.Valor > 0; }
+        public bool CanExecute
+        {
+            get
+            {
+                if (suprimento.Valor > 0 )
+                    return true;
+                else
+                    return false;
+            }
+        }
 
         public ICommand ComandoSalvar { get; private set; }
 
