@@ -13,9 +13,7 @@ namespace Caixa.ViewModel
 {
     public class AdiantamentosPendentesVM
     {
-        private ObservableCollection<Adiantamento_M> pendentes;
-
-        public ObservableCollection<Adiantamento_M> Pendentes => pendentes;
+        public ObservableCollection<Adiantamento_M> Pendentes { get; private set; }
 
         public Adiantamento_M AdiantamentoSelecionado { get; set; } 
 
@@ -26,17 +24,17 @@ namespace Caixa.ViewModel
 
         public  void CarregarPendentes()
         {
-            pendentes = new ObservableCollection<Adiantamento_M>();
+            Pendentes = new ObservableCollection<Adiantamento_M>();
             foreach (var item in Listas.GetListaAdiantamentos())
             {
-                pendentes.Add(new Adiantamento_M(item));
+                Pendentes.Add(new Adiantamento_M(item));
             }
         }
 
         internal void EstornarSelecionado()
         {
             AdiantamentoSelecionado.Estornar();
-            Suprimento estorno = new Suprimento("estorno de adiantamento")
+            Suprimento_M estorno = new Suprimento_M("estorno de adiantamento")
             {
                 Valor = AdiantamentoSelecionado.Valor
             };

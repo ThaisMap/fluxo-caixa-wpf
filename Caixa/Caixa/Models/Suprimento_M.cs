@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dados;
+using Dados.Modelos;
 
 namespace Caixa.Models
 {
-    public class Suprimento : Observavel
+    public class Suprimento_M : Observavel
     {
-        private Dados.Modelos.Lancamento suprimento = new Dados.Modelos.Lancamento();
+        private Lancamento suprimento = new Lancamento();
         private Sessao status = Sessao.Status;
 
         [Required(ErrorMessage = "Informe o valor")]
@@ -27,14 +28,14 @@ namespace Caixa.Models
         }
 
 
-        public Suprimento(string tipo)
+        public Suprimento_M(string tipo)
         {
-            suprimento = new Dados.Modelos.Lancamento();
+            suprimento = new Lancamento();
             suprimento.TipoDocumento_Id = Listas.TiposDocumento().Where(t => t.Descricao.ToLower() == tipo).Select(t => t.Id).FirstOrDefault();
             DadosFixos();
         }
 
-        public Suprimento(Dados.Modelos.Lancamento doBanco)
+        public Suprimento_M(Lancamento doBanco)
         {
             suprimento = doBanco;
         }

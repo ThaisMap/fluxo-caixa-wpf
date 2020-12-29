@@ -7,7 +7,7 @@ namespace Caixa.Componentes
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureInfo)
         {
             double i;
-            if (double.TryParse(value.ToString(), out i))
+            if (double.TryParse(value.ToString().Replace(',','.'), out i))
                 return new ValidationResult(true, null);
 
             return new ValidationResult(false, "Insira um valor numérico");

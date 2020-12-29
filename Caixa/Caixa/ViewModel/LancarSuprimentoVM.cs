@@ -10,13 +10,12 @@ namespace Caixa.ViewModel
 {
     public class LancarSuprimentoVM
     {
-        private Models.Suprimento suprimento;
-        public Models.Suprimento Suprimento { get => suprimento; }
+        public Models.Suprimento_M Suprimento { get; }
         public bool CanExecute
         {
             get
             {
-                if (suprimento.Valor > 0 )
+                if (Suprimento.Valor > 0 )
                     return true;
                 else
                     return false;
@@ -27,14 +26,14 @@ namespace Caixa.ViewModel
 
         public LancarSuprimentoVM()
         {
-            suprimento = new Models.Suprimento("suprimento");
+            Suprimento = new Models.Suprimento_M("suprimento");
             ComandoSalvar = new LancarSuprimento(this);
         }
 
         internal void Salvar()
         {
 
-            suprimento.Salvar();
+            Suprimento.Salvar();
         }
     }
 }

@@ -16,10 +16,6 @@ namespace Dados.Modelos
         {
 
         }
-        public TipoCobranca(string descricao) 
-        {
-            Descricao = descricao;
-        }
 
         public void Salvar()
         {

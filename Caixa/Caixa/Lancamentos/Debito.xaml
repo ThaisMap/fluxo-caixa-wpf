@@ -20,7 +20,9 @@
                 Margin="0,10,10,5"
                 HorizontalAlignment="Center"
                 materialDesign:HintAssist.Hint="Data"
-                materialDesign:HintAssist.IsFloating="True" />
+                materialDesign:HintAssist.IsFloating="True"
+                SelectedDate="{Binding Debito.Data, ValidatesOnExceptions=True, UpdateSourceTrigger=LostFocus}"
+                Validation.ErrorTemplate="{StaticResource errorTemplate}" />
 
             <TextBox
                 Name="Valor"
@@ -29,7 +31,20 @@
                 HorizontalAlignment="Center"
                 materialDesign:HintAssist.Hint="Valor"
                 materialDesign:HintAssist.IsFloating="True"
-                MaxLength="40" />
+                MaxLength="40"
+                Validation.ErrorTemplate="{StaticResource errorTemplate}">
+                <TextBox.Text>
+                    <Binding
+                        Delay="500"
+                        Path="Debito.Valor"
+                        UpdateSourceTrigger="PropertyChanged"
+                        ValidatesOnExceptions="True">
+                        <Binding.ValidationRules>
+                            <componentes:StringToDoubleValidationRule ValidationStep="RawProposedValue" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
 
             <ComboBox
                 Name="TipoDoc"
@@ -38,7 +53,11 @@
                 VerticalAlignment="Bottom"
                 materialDesign:HintAssist.Hint="Tipo de Documento"
                 materialDesign:HintAssist.IsFloating="True"
-                IsEditable="True" />
+                DisplayMemberPath="{Binding DisplayTipo}"
+                IsEditable="False"
+                ItemsSource="{Binding TiposDocumento}"
+                SelectedValue="{Binding Debito.TipoDocumento}"
+                SelectedValuePath="{Binding SelecionarId}" />
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
             <TextBox
@@ -49,7 +68,19 @@
                 VerticalAlignment="Bottom"
                 materialDesign:HintAssist.Hint="Cte"
                 materialDesign:HintAssist.IsFloating="True"
-                MaxLength="40" />
+                MaxLength="40"
+                Validation.ErrorTemplate="{StaticResource errorTemplate}">
+                <TextBox.Text>
+                    <Binding
+                        Path="Debito.Cte"
+                        UpdateSourceTrigger="PropertyChanged"
+                        ValidatesOnExceptions="True">
+                        <Binding.ValidationRules>
+                            <componentes:StringToIntValidationRule ValidationStep="RawProposedValue" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
             <TextBox
                 Name="Volumes"
                 Width="150"
@@ -58,7 +89,19 @@
                 VerticalAlignment="Bottom"
                 materialDesign:HintAssist.Hint="Volumes"
                 materialDesign:HintAssist.IsFloating="True"
-                MaxLength="40" />
+                MaxLength="40"
+                Validation.ErrorTemplate="{StaticResource errorTemplate}">
+                <TextBox.Text>
+                    <Binding
+                        Path="Debito.Volumes"
+                        UpdateSourceTrigger="PropertyChanged"
+                        ValidatesOnExceptions="True">
+                        <Binding.ValidationRules>
+                            <componentes:StringToIntValidationRule ValidationStep="RawProposedValue" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
             <ComboBox
                 Name="Cliente"
                 Width="150"
@@ -66,7 +109,12 @@
                 VerticalAlignment="Bottom"
                 materialDesign:HintAssist.Hint="Cliente"
                 materialDesign:HintAssist.IsFloating="True"
-                IsEditable="True" />
+                DisplayMemberPath="{Binding DisplayCliente}"
+                IsEditable="True"
+                ItemsSource="{Binding Clientes}"
+                SelectedValue="{Binding Debito.Cliente}"
+                SelectedValuePath="{Binding SelecionarId}"
+                Text="{Binding NomeCliente}" />
             <ComboBox
                 Name="TipoDescarga"
                 Width="150"
@@ -74,13 +122,18 @@
                 VerticalAlignment="Bottom"
                 materialDesign:HintAssist.Hint="Tipo descarga"
                 materialDesign:HintAssist.IsFloating="True"
-                IsEditable="True" />
+                DisplayMemberPath="{Binding DisplayTipo}"
+                IsEditable="False"
+                ItemsSource="{Binding TiposCobranca}"
+                SelectedValue="{Binding Debito.TipoCobranca}"
+                SelectedValuePath="{Binding SelecionarId}" />
         </StackPanel>
         <Button
             Name="BtnLancar"
             Width="80"
             Margin="0,20"
             Click="BtnLancar_Click"
+            Command="{Binding ComandoSalvar}"
             Content="Lançar" />
 
     </StackPanel>

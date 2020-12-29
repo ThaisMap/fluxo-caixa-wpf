@@ -39,10 +39,5 @@ namespace Caixa.Lancamentos
             RaiseEvent(new RoutedEventArgs(EventoAdiantamentoLancado));
         }
 
-        private void BtnImprimir_Click(object sender, RoutedEventArgs e)
-        {
-            Relatorios.ImprimirRelatorio imprimir = new Relatorios.ImprimirRelatorio();
-            imprimir.ShowDialog();
-        }
     }
 }

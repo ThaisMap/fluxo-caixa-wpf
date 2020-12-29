@@ -26,7 +26,7 @@ namespace Caixa.Cadastros
 
         private void CarregarCadastros()
         { 
-            FiliaisCadastradas = Listas.Filiais;
+            FiliaisCadastradas = Listas.Filiais();
             dgDados.ItemsSource = FiliaisCadastradas;
         }
 

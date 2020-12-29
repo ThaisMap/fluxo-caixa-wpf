@@ -62,6 +62,7 @@ namespace Caixa.Models
         }
 
         [Required(ErrorMessage = "Informe o numero do Cte")]
+        [Range(1, int.MaxValue, ErrorMessage ="Número inválido")]
         public int Cte
         {
             get => debito.Cte;
@@ -74,6 +75,7 @@ namespace Caixa.Models
         }
 
         [Required(ErrorMessage = "Informe a quantidade de volumes")]
+        [Range(1, int.MaxValue, ErrorMessage ="Quantidade inválida")]
         public int Volumes
         {
             get => debito.Volumes;
@@ -93,6 +95,7 @@ namespace Caixa.Models
             {
                 debito.Cliente_Id = value;
                 ValidateProperty(value, "Cliente");
+                AlteraParaTipoCliente(value);
                 OnPropertyChanged("Cliente");
             }
         }
@@ -111,6 +114,18 @@ namespace Caixa.Models
 
         public bool IsValid { get => isValid(); }
 
+        private void AlteraParaTipoCliente(int IdCliente)
+        {
+            if(IdCliente > 0)
+            {
+
+                using (var Banco = new CaixaContext())
+                {
+                    var tipoCliente = Banco.Clientes.Find(IdCliente).TipoCobranca_Id;
+                    TipoCobranca = tipoCliente;
+                }
+            }
+        }
        
 
         private void DadosFixos()

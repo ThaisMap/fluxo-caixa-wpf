@@ -11,7 +11,7 @@ namespace Dados
     public class CaixaContext : DbContext
     {
         public CaixaContext() :
-            base("CaixaConnectionString")
+            base("CaixaDB")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<CaixaContext, Migrations.Configuration>());
         }

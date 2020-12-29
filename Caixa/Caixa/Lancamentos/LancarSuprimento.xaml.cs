@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Caixa.Views
+namespace Caixa.Lancamentos
 {
     /// <summary>
     /// Interação lógica para Suprimento.xam

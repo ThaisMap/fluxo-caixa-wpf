@@ -22,16 +22,7 @@ namespace Dados.Modelos
         public Fechamento()
         {
                 
-        }
-
-        public Fechamento(DateTime data, Filial filial, double valorInicial, double? valorFinal, string arquivoScan)
-        {
-            Data = data;
-            Filial_Id = filial.Id;
-            ValorInicial = valorInicial;
-            ValorFinal = valorFinal;
-            ArquivoScan = arquivoScan;
-        }
+        }      
 
         public Fechamento(Filial filial)
         {

@@ -1,4 +1,5 @@
 ﻿using Dados;  
+using Dados.Modelos;  
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,9 @@ namespace Caixa.Models
 {
     public sealed class Sessao : Observavel
     { 
-        private Dados.Modelos.Usuario usuario;
-        private  Filial filial;
-        private Fechamento fechamento;
+        private Usuario usuario;
+        private Filial filial;
+        private Fechamento_M fechamento;
         private static Sessao instancia = null;
 
         public string NomeUsuario { get => usuario.Nome; }
@@ -45,17 +46,17 @@ namespace Caixa.Models
             using (var Banco = new CaixaContext())
             {
                 usuario = Banco.Usuarios.First();
-                filial = new Filial(Banco.Filiais.Find(usuario.Filial_Id));
+                filial =  Banco.Filiais.Find(usuario.Filial_Id);
 
-               var fechamentoBanco = Banco.Fechamentos.FirstOrDefault(x => x.Filial_Id == filial.Id && x.Data >= Hoje);
+                var fechamentoBanco = Banco.Fechamentos.FirstOrDefault(x => x.Filial_Id == filial.Id && x.Data >= Hoje);
                 if(fechamentoBanco == null)
                 {
-                    fechamento = new Fechamento(filial);
+                    fechamento = new Fechamento_M(filial);
                     fechamento.Salvar();
                 }
                 else
                 {
-                    fechamento = new Fechamento(fechamentoBanco);
+                    fechamento = new Fechamento_M(fechamentoBanco);
                 }
             }
         }

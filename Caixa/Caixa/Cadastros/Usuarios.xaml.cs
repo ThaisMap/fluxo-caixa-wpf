@@ -24,8 +24,8 @@ namespace Caixa.Cadastros
     {
         private bool estaEditando = false;
         Dados.Modelos.Usuario UsuarioSelecionado = new Dados.Modelos.Usuario();
-        ObservableCollection<Dados.Modelos.Usuario> UsuariosCadastrados;
-        List<Dados.Modelos.Filial> filiaisCadastradas = Listas.Filiais;
+        List<Dados.Modelos.Usuario> UsuariosCadastrados;
+        List<Dados.Modelos.Filial> filiaisCadastradas = Listas.Filiais();
         public Usuarios()
         {
             InitializeComponent(); 
@@ -37,7 +37,7 @@ namespace Caixa.Cadastros
 
         private void CarregarCadastros()
         {
-            UsuariosCadastrados = new ObservableCollection<Dados.Modelos.Usuario>(Listas.UsuariosCadastrados);
+            UsuariosCadastrados =  Listas.UsuariosCadastrados();
             CbCadastrados.ItemsSource = UsuariosCadastrados;
             cbFilial.ItemsSource = filiaisCadastradas;
         }

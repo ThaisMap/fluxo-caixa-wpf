@@ -1,10 +1,10 @@
 ﻿<UserControl
-    x:Class="Caixa.Views.LancarSuprimento"
+    x:Class="Caixa.Lancamentos.LancarSuprimento"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:componentes="clr-namespace:Caixa.Componentes"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:Caixa.Views"
+    xmlns:local="clr-namespace:Caixa.Lancamentos"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="250"
@@ -25,7 +25,9 @@
                 <Binding
                     Path="Suprimento.Valor"
                     UpdateSourceTrigger="PropertyChanged"
-                    ValidatesOnExceptions="True">
+                    ValidatesOnExceptions="True"  
+                    Delay="500">
+
                     <Binding.ValidationRules>
                         <componentes:StringToDoubleValidationRule ValidationStep="RawProposedValue" />
                     </Binding.ValidationRules>

@@ -12,24 +12,22 @@ namespace Caixa.ViewModel
 {
     public class LancarAdiantamentoVM
     {
-        private Adiantamento_M adiantamento;
-
-        public Adiantamento_M Adiantamento { get => adiantamento; }
+        public Adiantamento_M Adiantamento { get; }
 
         public ICommand ComandoSalvar { get; private set; } 
 
         public LancarAdiantamentoVM()
         {
-            adiantamento = new Models.Adiantamento_M();
+            Adiantamento = new Models.Adiantamento_M();
             ComandoSalvar = new LancarAdiantamento(this); 
         }
 
-        public bool CanExecute { get => adiantamento.IsValid; }
+        public bool CanExecute { get => Adiantamento.IsValid; }
 
         internal void Salvar()
         {
-            adiantamento.Salvar();
-            adiantamento.Imprimir();
+            Adiantamento.Salvar();
+            Adiantamento.Imprimir();
         }
 
     }

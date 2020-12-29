@@ -59,7 +59,7 @@
                 Name="btnFechamento"
                 Width="180"
                 Margin="0,10,10,5"
-                Click="btnFechamento_Click"
+                Click="BtnFechamento_Click"
                 Content="Realizar Fechamento" />
         </StackPanel>
     </materialDesign:DialogHost>

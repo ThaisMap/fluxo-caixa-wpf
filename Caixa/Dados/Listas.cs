@@ -10,9 +10,15 @@ namespace Dados
     {
         private static CaixaContext Context = new CaixaContext();
 
-        public static List<Filial> Filiais = Context.Filiais.ToList(); 
+        public static List<Filial> Filiais()
+        {
+            return Context.Filiais.ToList();
+        }
 
-        public static List<Usuario> UsuariosCadastrados = Context.Usuarios.Include("Filial").ToList();
+        public static List<Usuario> UsuariosCadastrados()
+        {
+            return Context.Usuarios.Include("Filial").ToList();
+        }
 
         public static List<TipoCobranca> TiposCobranca()
         {
@@ -24,16 +30,25 @@ namespace Dados
             return Context.TiposDocumento.ToList();
         }
 
+        public static List<TipoDocumento> TiposDescarga()
+        {
+            return Context.TiposDocumento.Where(d=> d.Id > 3).ToList();
+        }
+
         public static List<Cliente> Clientes()
         {
             return Context.Clientes.ToList();
         }
 
-        public static List<Lancamento> Lancamentos() { return Context.Lancamentos.ToList(); }
-         
-        public static List<Debito> Debitos = Context.Debitos.ToList();
+        public static List<Lancamento> Lancamentos()
+        {
+            return Context.Lancamentos.ToList();
+        }
 
-        public static List<Fechamento> Fechamentos = Context.Fechamentos.ToList();
+        public static List<Fechamento> Fechamentos()
+        {
+            return Context.Fechamentos.ToList();
+        }
 
         public static List<Adiantamento> GetListaAdiantamentos()
         {

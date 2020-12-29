@@ -28,9 +28,9 @@
             if (context.Usuarios.Count() == 0)
                 context.Usuarios.AddOrUpdate(master);
 
-            TipoDocumento suprimento = new TipoDocumento("Suprimento", true);
-            TipoDocumento adiantamento = new TipoDocumento("Adiantamento", false);
-            TipoDocumento estorno = new TipoDocumento("Estorno de adiantamento", true);
+            TipoDocumento suprimento = new TipoDocumento("Suprimento", true) { Id = 1 };
+            TipoDocumento adiantamento = new TipoDocumento("Adiantamento", false) { Id = 2 };
+            TipoDocumento estorno = new TipoDocumento("Estorno de adiantamento", true) { Id = 3 };
             context.TiposDocumento.AddOrUpdate(suprimento);
             context.TiposDocumento.AddOrUpdate(adiantamento);
             context.TiposDocumento.AddOrUpdate(estorno);

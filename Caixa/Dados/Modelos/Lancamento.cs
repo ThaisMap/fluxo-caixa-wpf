@@ -22,15 +22,6 @@ namespace Dados.Modelos
         {
 
         }
-        public Lancamento(DateTime data, int usuario, int filial, double valor, TipoDocumento tipoDocumento)
-        {
-            Data = data;
-            Usuario_Id = usuario;
-            Filial_Id = filial;
-            Valor = tipoDocumento.Soma ? valor : -valor;
-            TipoDocumento_Id = tipoDocumento.Id;
-        }
-         
 
         public void SalvarLancamentoBase()
         {

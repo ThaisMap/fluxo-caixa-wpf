@@ -13,14 +13,6 @@ namespace Dados.Modelos
         public virtual TipoCobranca TipoCobranca { get; set; }
 
 
-        public Debito(TipoCobranca tipoCobranca, int cte, int volumes, Cliente cliente, int? fechamento, Lancamento lancamento) :
-           base(lancamento.Data, lancamento.Usuario_Id, lancamento.Filial_Id, lancamento.Valor, lancamento.TipoDocumento)
-        {
-            TipoCobranca_Id = tipoCobranca.Id;
-            Cte = cte;
-            Volumes = volumes;
-            Cliente = cliente; 
-        }
         public Debito() : base()
         {
 

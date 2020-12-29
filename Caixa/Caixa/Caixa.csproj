@@ -95,9 +95,8 @@
     <Compile Include="Cadastros\Usuarios.xaml.cs">
       <DependentUpon>Usuarios.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Commands\EstornarAdiantamento.cs" />
+    <Compile Include="Commands\LancarDebito.cs" />
     <Compile Include="Commands\ImprimirAdiantamento.cs" />
-    <Compile Include="Commands\InserirFilial.cs" />
     <Compile Include="Commands\LancarAdiantamento.cs" />
     <Compile Include="Commands\LancarSuprimento.cs" />
     <Compile Include="Componentes\CreditoOuDebitoBooleanConverter.cs" />
@@ -116,9 +115,6 @@
     <Compile Include="Lancamentos\PopUp.xaml.cs">
       <DependentUpon>PopUp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lancamentos\Suprimento.xaml.cs">
-      <DependentUpon>Suprimento.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Listagens\AdiantamentosPendentes.xaml.cs">
       <DependentUpon>AdiantamentosPendentes.xaml</DependentUpon>
     </Compile>
@@ -133,29 +129,24 @@
     </Compile>
     <Compile Include="Models\Adiantamento_M.cs" />
     <Compile Include="Models\AdiantamentoRelatorio.cs" />
-    <Compile Include="Models\Fechamento.cs" />
-    <Compile Include="Models\Filial.cs" />
+    <Compile Include="Models\Fechamento_M.cs" />
     <Compile Include="Models\Debito_M.cs" />
     <Compile Include="Models\Sessao.cs" />
-    <Compile Include="Models\Suprimento.cs" />
+    <Compile Include="Models\Suprimento_M.cs" />
     <Compile Include="Relatorios\ImprimirRelatorio.xaml.cs">
       <DependentUpon>ImprimirRelatorio.xaml</DependentUpon>
     </Compile>
     <Compile Include="Validacoes\FechamentoAberto.cs" />
     <Compile Include="Validacoes\SaldoSuficiente.cs" />
     <Compile Include="ViewModel\AdiantamentosPendentesVM.cs" />
-    <Compile Include="ViewModel\CadastroFilialVM.cs" />
     <Compile Include="Models\Observavel.cs" />
     <Compile Include="ViewModel\LancarAdiantamentoVM.cs" />
     <Compile Include="ViewModel\LancarSuprimentoVM.cs" />
     <Compile Include="ViewModel\LancarDebitoVM.cs" />
     <Compile Include="ViewModel\StatusVM.cs" />
-    <Compile Include="Views\CadastroFilialView.xaml.cs">
-      <DependentUpon>CadastroFilialView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Componentes\StringToDoubleValidationRule.cs" />
     <Compile Include="Componentes\StringToIntValidationRule.cs" />
-    <Compile Include="Views\LancarSuprimento.xaml.cs">
+    <Compile Include="Lancamentos\LancarSuprimento.xaml.cs">
       <DependentUpon>LancarSuprimento.xaml</DependentUpon>
     </Compile>
     <Page Include="Cadastros\Clientes.xaml">
@@ -198,10 +189,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Lancamentos\Suprimento.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Listagens\AdiantamentosPendentes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -234,11 +221,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CadastroFilialView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\LancarSuprimento.xaml">
+    <Page Include="Lancamentos\LancarSuprimento.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

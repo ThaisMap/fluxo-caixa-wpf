@@ -34,9 +34,11 @@
                 MaxLength="40">
                 <TextBox.Text>
                     <Binding
+                        Delay="500"
                         Path="Adiantamento.Valor"
                         UpdateSourceTrigger="PropertyChanged"
                         ValidatesOnExceptions="True">
+
                         <Binding.ValidationRules>
                             <componentes:StringToDoubleValidationRule ValidationStep="RawProposedValue" />
                         </Binding.ValidationRules>

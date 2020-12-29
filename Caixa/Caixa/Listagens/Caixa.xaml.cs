@@ -25,7 +25,11 @@ namespace Caixa.Listagens
             CarregaListaCaixa();
         }
 
-        private void CarregaListaCaixa() => DgCaixa.ItemsSource = Listas.Lancamentos();
+        private void CarregaListaCaixa()
+        {
+            DgCaixa.ItemsSource = Listas.Lancamentos();
+
+        }
 
 
         public static readonly RoutedEvent EventoBtnFechamento =
@@ -44,7 +48,7 @@ namespace Caixa.Listagens
             CarregaListaCaixa();
         }
 
-        private void btnFechamento_Click(object sender, RoutedEventArgs e)
+        private void BtnFechamento_Click(object sender, RoutedEventArgs e)
         {
             RaiseEvent(new RoutedEventArgs(EventoBtnFechamento));
         }

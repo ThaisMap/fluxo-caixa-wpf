@@ -9,11 +9,11 @@ using System.Windows.Input;
 
 namespace Caixa.Commands
 {
-    public class EstornarAdiantamento : ICommand
+    public class LancarDebito : ICommand
     {
-        private Adiantamento_M controlador;
+        private LancarDebitoVM controlador;
 
-        public EstornarAdiantamento(Adiantamento_M controlador)
+        public LancarDebito(LancarDebitoVM controlador)
         {
             this.controlador = controlador;
         }
@@ -25,11 +25,11 @@ namespace Caixa.Commands
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return controlador.PodeLancar;
         }
         public void Execute(object parameter)
         {
-            controlador.Estornar();
+            controlador.Salvar();
         }
     }
 }

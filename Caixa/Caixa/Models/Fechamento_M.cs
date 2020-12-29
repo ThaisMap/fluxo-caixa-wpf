@@ -2,29 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Dados.Modelos;  
 using System.Threading.Tasks;
 
 namespace Caixa.Models
 {
-    public class Fechamento : Observavel
+    public class Fechamento_M : Observavel
     {
-        private Dados.Modelos.Fechamento fechamento;
+        private Fechamento fechamento;
 
         public int Id { get => fechamento.Id; }
         public double ValorInicial { get => fechamento.ValorInicial; }
 
-        public Fechamento(Filial filial)
+        public Fechamento_M(Filial filial)
         {
-            fechamento = new Dados.Modelos.Fechamento()
-            {
-                Data = DateTime.Now,
-                Filial_Id = filial.Id,
-                ValorInicial = filial.Saldo,
-                ArquivoScan = ""
-            };
+            fechamento = new Fechamento(filial);
         }
 
-        public Fechamento(Dados.Modelos.Fechamento doBanco)
+        public Fechamento_M(Fechamento doBanco)
         {
             fechamento = doBanco;
         }

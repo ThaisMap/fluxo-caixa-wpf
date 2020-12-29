@@ -12,10 +12,10 @@ namespace Dados.Modelos
         public virtual ICollection<Debito> Debitos { get; set; }
 
 
-        public Cliente(string nome, TipoCobranca tipoCobranca) 
+        public Cliente(string nome, int tipoCobranca) 
         {
             Nome = nome;
-            TipoCobranca_Id = tipoCobranca.Id;
+            TipoCobranca_Id = tipoCobranca;
         }
 
         public Cliente()

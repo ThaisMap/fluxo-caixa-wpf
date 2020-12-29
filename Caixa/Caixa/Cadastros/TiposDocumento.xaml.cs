@@ -23,7 +23,7 @@ namespace Caixa.Cadastros
     {
             string[] tiposPossiveis = { "Débito", "Crédito" };
         Dados.Modelos.TipoDocumento TipoSelecionado = new Dados.Modelos.TipoDocumento();
-        List<Dados.Modelos.TipoDocumento> TiposCadastrados = new List<Dados.Modelos.TipoDocumento>();
+        List<Dados.Modelos.TipoDocumento> TiposCadastrados = Listas.TiposDescarga();
         public TiposDocumento()
         {
             InitializeComponent();
@@ -40,10 +40,7 @@ namespace Caixa.Cadastros
 
         private void CarregarCadastros()
         {
-            using (var Banco = new CaixaContext())
-            {
-                TiposCadastrados = Banco.TiposDocumento.ToList();
-            }
+            TiposCadastrados = Listas.TiposDescarga();
             dgDados.ItemsSource = TiposCadastrados;
         }
 
