@@ -15,7 +15,7 @@ namespace Dados.Modelos
         public double ValorInicial { get; set; }
         public double? ValorFinal { get; set; }
         public string ArquivoScan { get; set; }
-        public bool Fechado { get; set;  }
+        public bool Fechado { get; set; } = false;
         public virtual Filial Filial { get; set; }
         public virtual ICollection<Lancamento> Lancamentos { get; set; } 
 
@@ -36,11 +36,12 @@ namespace Dados.Modelos
         {
             using (var Banco = new CaixaContext())
             {
-                var fechamento = Banco.Fechamentos.FirstOrDefault(x => x.Filial_Id == Filial_Id && DbFunctions.TruncateTime(x.Data) == DbFunctions.TruncateTime(Data.Date)); //(x.Data.Date.CompareTo(Data.Date) >= 0));
+                var fechamento = Banco.Fechamentos.FirstOrDefault(x => x.Filial_Id == Filial_Id && DbFunctions.TruncateTime(x.Data) == DbFunctions.TruncateTime(Data.Date)); 
                 if (fechamento != null)
                 {                   
                     fechamento.ArquivoScan = ArquivoScan;
                     fechamento.ValorFinal = ValorFinal;
+                    fechamento.Fechado = Fechado;
                 }
                 else
                 {                    

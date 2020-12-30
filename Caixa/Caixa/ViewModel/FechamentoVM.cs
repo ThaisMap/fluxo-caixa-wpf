@@ -44,10 +44,18 @@ namespace Caixa.ViewModel
             }
         }
 
-        internal void Imprimir()
+        internal void Fechar()
         {
-            RelatoriosCrystal.Fechamento relatorio = new RelatoriosCrystal.Fechamento(); 
+            Fechamento.Fechado = true;
+            if(Fechamento.ValorFinal == null)
+            {
+                Fechamento.ValorFinal = Sessao.Status.Saldo;
+            }
+        }
 
+        internal void Imprimir()
+        { 
+            RelatoriosCrystal.Fechamento relatorio = new RelatoriosCrystal.Fechamento(); 
             relatorio.SetDataSource(LancamentosPendentes);
             Relatorios.ImprimirRelatorio imprimir = new Relatorios.ImprimirRelatorio(relatorio);
             imprimir.ShowDialog();

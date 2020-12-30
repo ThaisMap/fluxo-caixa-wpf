@@ -13,6 +13,7 @@ namespace Caixa.Models
 
         public int Id { get => fechamento.Id; }
         public double ValorInicial { get => fechamento.ValorInicial; }
+        public double? ValorFinal { get => fechamento.ValorFinal; set => fechamento.ValorFinal = value; }
 
         public string CaminhoArquivo
         {
@@ -24,6 +25,9 @@ namespace Caixa.Models
                 OnPropertyChanged("CaminhoArquivo");
             }
         }
+
+        public bool Fechado { get => fechamento.Fechado; set => fechamento.Fechado  = value; }
+
         public Fechamento_M(Filial filial)
         {
             fechamento = new Fechamento(filial);

@@ -19,9 +19,11 @@ namespace Caixa.Validacoes
             using (var Banco = new CaixaContext())
             {
                 Sessao status = Sessao.Status;
+
                 var fechamento = Banco.Fechamentos
                     .Where(x => x.Filial_Id == status.IdFilial
                     && DbFunctions.TruncateTime(x.Data) == DbFunctions.TruncateTime(dateTime)).FirstOrDefault();
+
                 if (fechamento == null)
                     return false;
                 return !fechamento.Fechado;
