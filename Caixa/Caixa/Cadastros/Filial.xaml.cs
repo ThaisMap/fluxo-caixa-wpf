@@ -114,5 +114,10 @@ namespace Caixa.Cadastros
             CarregarCadastros();
             DialogFilial.IsOpen = false;
         }
+
+        private void Nome_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Nome.Text = Nome.Text.ToUpper();
+        }
     }
 }

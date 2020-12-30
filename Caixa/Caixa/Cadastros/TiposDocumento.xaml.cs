@@ -117,5 +117,10 @@ namespace Caixa.Cadastros
             AlterarDescricao.Text = TipoSelecionado.Descricao;
             DialogAlteracao.IsOpen = true;
         }
+
+        private void Descricao_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Descricao.Text = Descricao.Text.ToUpper();
+        }
     }
 }

@@ -35,6 +35,7 @@
             Width="350"
             Margin="0,10,0,5"
             HorizontalAlignment="Center"
+            LostFocus="Nome_LostFocus"
             materialDesign:HintAssist.Hint="Nome"
             materialDesign:HintAssist.IsFloating="True"
             MaxLength="40" />

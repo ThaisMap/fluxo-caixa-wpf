@@ -28,7 +28,7 @@ namespace Caixa
             // Register the Bubble Event Handler 
             AddHandler(Listagens.Caixa.EventoBtnFechamento,
                 new RoutedEventHandler(MenuFechamentos_Click));
-            Conteudo.Content = new Listagens.Caixa();
+            Conteudo.Content = new Listagens.Fechamento();
         }
 
 
@@ -76,8 +76,7 @@ namespace Caixa
 
         private void MenuRelatorios_Click(object sender, RoutedEventArgs e)
         {
-            Relatorios.ImprimirRelatorio imprimir = new Relatorios.ImprimirRelatorio();
-            imprimir.ShowDialog();
+           
         }
     }
 }

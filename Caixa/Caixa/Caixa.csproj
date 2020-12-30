@@ -140,6 +140,7 @@
     <Compile Include="Validacoes\SaldoSuficiente.cs" />
     <Compile Include="ViewModel\AdiantamentosPendentesVM.cs" />
     <Compile Include="Models\Observavel.cs" />
+    <Compile Include="ViewModel\FechamentoVM.cs" />
     <Compile Include="ViewModel\LancarAdiantamentoVM.cs" />
     <Compile Include="ViewModel\LancarSuprimentoVM.cs" />
     <Compile Include="ViewModel\LancarDebitoVM.cs" />

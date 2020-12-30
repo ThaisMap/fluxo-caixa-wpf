@@ -16,22 +16,21 @@
     <materialDesign:DialogHost Name="DialogAlteracao" IsOpen="False">
         <materialDesign:DialogHost.DialogContent>
             <StackPanel Width="350" Margin="20">
-                <StackPanel                    
-            HorizontalAlignment="Center"
-            Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                     <TextBox
-                    Name="AlterarDescricao"
-                    Margin="5" Width="200"
-                    materialDesign:HintAssist.Hint="Descrição do documento"
-                    materialDesign:HintAssist.IsFloating="True" />
+                        Name="AlterarDescricao"
+                        Width="200"
+                        Margin="5"
+                        materialDesign:HintAssist.Hint="Descrição do documento"
+                        materialDesign:HintAssist.IsFloating="True" />
                     <ComboBox
-                Name="cbTipoAlterar"
-                Width="100"
-                Margin="10 5"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                materialDesign:HintAssist.Hint="Tipo"
-                materialDesign:HintAssist.IsFloating="True" />
+                        Name="cbTipoAlterar"
+                        Width="100"
+                        Margin="10,5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        materialDesign:HintAssist.Hint="Tipo"
+                        materialDesign:HintAssist.IsFloating="True" />
                 </StackPanel>
                 <Button
                     Name="BtnAlterar"
@@ -45,7 +44,7 @@
 
 
         <StackPanel>
-        <componentes:Titulo Texto="Tipos de documento" />
+            <componentes:Titulo Texto="Tipos de documento" />
 
             <Grid HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
@@ -58,49 +57,52 @@
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <TextBox
-                Name="Descricao"
-                Width="350"
-                Margin="5"
-                HorizontalAlignment="Center"
+                    Name="Descricao"
                     Grid.Row="0"
                     Grid.Column="0"
-                VerticalAlignment="Bottom"
-                materialDesign:HintAssist.Hint="Descrição"
-                materialDesign:HintAssist.IsFloating="True" />
-            <ComboBox
-                Name="cbTipo"
-                Width="100"
-                Margin="5"
+                    Width="350"
+                    Margin="5"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    materialDesign:HintAssist.Hint="Descrição"
+                    materialDesign:HintAssist.IsFloating="True"
+                    LostFocus="Descricao_LostFocus" />
+                <ComboBox
+                    Name="cbTipo"
                     Grid.Row="0"
                     Grid.Column="1"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                materialDesign:HintAssist.Hint="Tipo"
-                materialDesign:HintAssist.IsFloating="True" />
-            <Button
-                x:Name="BtnAdicionar"
+                    Width="100"
+                    Margin="5"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    materialDesign:HintAssist.Hint="Tipo"
+                    materialDesign:HintAssist.IsFloating="True" />
+                <Button
+                    x:Name="BtnAdicionar"
                     Grid.Row="0"
                     Grid.Column="2"
-                Width="auto"
-                Margin="10,5,5,5"
-                VerticalAlignment="Bottom"
-                Click="BtnAdicionar_Click"
-                Content="Adicionar"
-                IsDefault="True" />
+                    Width="auto"
+                    Margin="10,5,5,5"
+                    VerticalAlignment="Bottom"
+                    Click="BtnAdicionar_Click"
+                    Content="Adicionar"
+                    IsDefault="True" />
                 <TextBlock
                     Name="DescricaoErro"
                     Grid.Row="1"
-                    Grid.Column="0" 
-                    Width="350" 
+                    Grid.Column="0"
+                    Width="350"
                     Text="Mínimo de 3 caracteres" />
-        </Grid>
-        <DataGrid Name="dgDados" Style="{DynamicResource DataGridCentralizado}"
-                  MouseDoubleClick="dgDados_MouseDoubleClick">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Descricao}" Header="Descrição" />
-                <DataGridTextColumn Binding="{Binding Soma, Converter={StaticResource CreditoOuDebito}}" Header="Tipo" />
-            </DataGrid.Columns>
-        </DataGrid>
-    </StackPanel>
+            </Grid>
+            <DataGrid
+                Name="dgDados"
+                MouseDoubleClick="dgDados_MouseDoubleClick"
+                Style="{DynamicResource DataGridCentralizado}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Descricao}" Header="Descrição" />
+                    <DataGridTextColumn Binding="{Binding Soma, Converter={StaticResource CreditoOuDebito}}" Header="Tipo" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
     </materialDesign:DialogHost>
 </UserControl>

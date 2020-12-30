@@ -105,5 +105,10 @@ namespace Caixa.Cadastros
             Nome.Text = ClienteSelecionado.Nome;
             cbTipo.SelectedValue = ClienteSelecionado.TipoCobranca_Id;
         }
+
+        private void Nome_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Nome.Text = Nome.Text.ToUpper();
+        }
     }
 }

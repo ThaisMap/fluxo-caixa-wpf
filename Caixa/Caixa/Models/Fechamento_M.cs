@@ -14,9 +14,24 @@ namespace Caixa.Models
         public int Id { get => fechamento.Id; }
         public double ValorInicial { get => fechamento.ValorInicial; }
 
+        public string CaminhoArquivo
+        {
+            get => fechamento.ArquivoScan;
+            set
+            {
+                fechamento.ArquivoScan = value;
+                ValidateProperty(value, "CaminhoArquivo");
+                OnPropertyChanged("CaminhoArquivo");
+            }
+        }
         public Fechamento_M(Filial filial)
         {
             fechamento = new Fechamento(filial);
+        }
+
+        public Fechamento_M()
+        {
+            fechamento = new Fechamento();
         }
 
         public Fechamento_M(Fechamento doBanco)

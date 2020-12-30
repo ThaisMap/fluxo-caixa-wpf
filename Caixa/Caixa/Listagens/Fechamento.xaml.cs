@@ -10,7 +10,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Caixa.ViewModel;
+using System.Windows.Shapes; 
 
 namespace Caixa.Listagens
 {
@@ -19,10 +20,17 @@ namespace Caixa.Listagens
     /// </summary>
     public partial class Fechamento : UserControl
     {
+        private FechamentoVM controlador;
         public Fechamento()
         {
             InitializeComponent();
-            DgCaixa.ItemsSource = Listas.Lancamentos();
+            controlador = new FechamentoVM();
+            DataContext = controlador; 
+        }
+
+        private void BtnArquivo_Click(object sender, RoutedEventArgs e)
+        {
+            controlador.SelecionarArquivo();
         }
     }
 }

@@ -20,19 +20,20 @@
             <Button
                 x:Name="BtnArquivo"
                 Margin="5"
+                Click="BtnArquivo_Click"
                 Content="Selecionar arquivo" />
             <TextBox
                 x:Name="TxtArquivo"
                 Margin="5"
                 VerticalAlignment="Bottom"
                 IsEnabled="False"
-                Text="C:\Users\ti\Pessoal\Produsis\Produsis\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.pdf" />
+                Text="{Binding Fechamento.CaminhoArquivo, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <Button
             x:Name="BtnImprimir"
-            Margin="5"
+            Margin="5, 0, 0 15"
             HorizontalAlignment="Center"
-            Content="Imprimir"
+            Content="Fechar e Imprimir"
             Cursor="Hand"
             DockPanel.Dock="Bottom" />
         <TextBlock
@@ -44,6 +45,7 @@
         <DataGrid
             Name="DgCaixa"
             DockPanel.Dock="Bottom"
+            ItemsSource="{Binding LancamentosPendentes}"
             Style="{DynamicResource DataGridCentralizado}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Data, StringFormat='d'}" Header="Data" />
