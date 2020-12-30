@@ -36,7 +36,8 @@ namespace Caixa.Lancamentos
         }
 
         private void BtnLancar_Click(object sender, RoutedEventArgs e)
-        { 
+        {
+            controlador.Salvar();
             RaiseEvent(new RoutedEventArgs(EventoDebitoLancado));
         } 
     }

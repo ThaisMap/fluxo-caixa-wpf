@@ -19,11 +19,12 @@ namespace Caixa.Lancamentos
     /// </summary>
     public partial class LancarSuprimento : UserControl
     {
-
+        private LancarSuprimentoVM controlador;
         public LancarSuprimento()
         {
             InitializeComponent();
-            DataContext = new LancarSuprimentoVM();
+            controlador = new LancarSuprimentoVM();
+            DataContext = controlador;
         }
         public static readonly RoutedEvent EventoSuprimentoLancado =
           EventManager.RegisterRoutedEvent("EventoSuprimentoLancado", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(LancarSuprimento));
@@ -36,7 +37,10 @@ namespace Caixa.Lancamentos
 
         private void BtnLancar_Click(object sender, RoutedEventArgs e)
         {
+            controlador.Salvar();
             RaiseEvent(new RoutedEventArgs(EventoSuprimentoLancado));
         }
-            }
+
+
+    }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -19,6 +20,7 @@ namespace Caixa.Listagens
     /// </summary>
     public partial class Caixa : UserControl
     {
+        private List<Dados.Modelos.Lancamento> LancamentosCadastrados;
         public Caixa()
         {
             InitializeComponent();
@@ -26,9 +28,8 @@ namespace Caixa.Listagens
         }
 
         private void CarregaListaCaixa()
-        {
-            DgCaixa.ItemsSource = Listas.Lancamentos();
-
+        { 
+            DgCaixa.ItemsSource = Listas.Lancamentos(); 
         }
 
 

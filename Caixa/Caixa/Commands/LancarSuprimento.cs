@@ -28,8 +28,9 @@ namespace Caixa.Commands
             return lancar.CanExecute;
         }
         public void Execute(object parameter)
-        {
-            lancar.Salvar();
+        {  
+            //deixei a execução no code behind por causa do evento pra fechar o pop up
+            //mas mantive o comando pra controlar o canExecute
         }
     }
 }

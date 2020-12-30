@@ -29,7 +29,8 @@ namespace Caixa.Commands
         }
         public void Execute(object parameter)
         {
-            controlador.Salvar();
+            //deixei a execução no code behind por causa do evento pra fechar o pop up
+            //mas mantive o comando pra controlar o canExecute
         }
     }
 }

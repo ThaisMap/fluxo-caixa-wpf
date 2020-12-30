@@ -19,10 +19,12 @@ namespace Caixa.Lancamentos
     /// </summary>
     public partial class Adiantamento : UserControl
     {
+        private LancarAdiantamentoVM controlador;
         public Adiantamento()
         {
             InitializeComponent();
-            DataContext = new LancarAdiantamentoVM();
+            controlador = new LancarAdiantamentoVM();
+            DataContext = controlador;
         }
 
         public static readonly RoutedEvent EventoAdiantamentoLancado =
@@ -36,6 +38,7 @@ namespace Caixa.Lancamentos
 
         private void BtnLancar_Click(object sender, RoutedEventArgs e)
         {
+            controlador.Salvar();
             RaiseEvent(new RoutedEventArgs(EventoAdiantamentoLancado));
         }
 

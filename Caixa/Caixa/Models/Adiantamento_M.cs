@@ -55,6 +55,7 @@ namespace Caixa.Models
             get => adiantamento.Placa;
             set
             {
+                value = value.ToUpper();
                 adiantamento.Placa = value;
                 ValidateProperty(value, "Placa");
                 OnPropertyChanged("Placa");
@@ -68,6 +69,7 @@ namespace Caixa.Models
             get => adiantamento.Motorista;
             set
             {
+                value = value.ToUpper();
                 adiantamento.Motorista = value;
                 ValidateProperty(value, "Motorista");
                 OnPropertyChanged("Motorista");

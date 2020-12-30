@@ -42,6 +42,7 @@ namespace Caixa.Listagens
         private void BtnEstornar_Click(object sender, RoutedEventArgs e)
         {
             controlador.EstornarSelecionado();
+            controlador.CarregarPendentes();
         }
     }
 }

@@ -50,6 +50,7 @@ namespace Caixa.Models
         }
 
         [Required(ErrorMessage = "Selecione um tipo")]
+        [Range(1, int.MaxValue, ErrorMessage = "Selecione um tipo")]
         public int TipoDocumento
         {
             get => debito.TipoDocumento_Id;
@@ -101,6 +102,7 @@ namespace Caixa.Models
         }
 
         [Required(ErrorMessage = "Selecione um tipo")]
+        [Range(1, int.MaxValue, ErrorMessage = "Selecione um tipo")]
         public int TipoCobranca
         {
             get => debito.TipoCobranca_Id;
