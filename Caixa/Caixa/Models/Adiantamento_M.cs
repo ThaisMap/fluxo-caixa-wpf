@@ -81,7 +81,7 @@ namespace Caixa.Models
         public Adiantamento_M()
         {
             adiantamento = new Adiantamento();
-            adiantamento.Data = DateTime.Today;
+            adiantamento.Data = DateTime.Now;
             ComandoImprimir = new ImprimirAdiantamento(this);
         }
 

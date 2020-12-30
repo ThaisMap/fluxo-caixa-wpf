@@ -31,8 +31,9 @@
         </StackPanel>
         <Button
             x:Name="BtnImprimir"
-            Margin="5, 0, 0 15"
+            Margin="5,0,0,15"
             HorizontalAlignment="Center"
+            Click="BtnImprimir_Click"
             Content="Fechar e Imprimir"
             Cursor="Hand"
             DockPanel.Dock="Bottom" />
@@ -49,9 +50,13 @@
             Style="{DynamicResource DataGridCentralizado}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Data, StringFormat='d'}" Header="Data" />
+                <DataGridTextColumn Binding="{Binding TipoDocumento}" Header="Tipo Documento" />
                 <DataGridTextColumn Binding="{Binding Valor, StringFormat='C'}" Header="Valor" />
-                <DataGridTextColumn Binding="{Binding TipoDocumento.Descricao}" Header="Tipo Documento" />
-                <DataGridTextColumn Binding="{Binding Usuario.Nome}" Header="Usuário" />
+                <DataGridTextColumn Binding="{Binding Cliente}" Header="Cliente / Motorista" />
+                <DataGridTextColumn Binding="{Binding CTe}" Header="Ct-e" />
+                <DataGridTextColumn Binding="{Binding Volumes}" Header="Volumes" />
+                <DataGridTextColumn Binding="{Binding TipoCobranca}" Header="Tipo Descarga" />
+                <DataGridTextColumn Binding="{Binding Usuario}" Header="Usuário" />
             </DataGrid.Columns>
         </DataGrid>
 

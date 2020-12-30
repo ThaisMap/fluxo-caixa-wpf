@@ -283,13 +283,23 @@ namespace RelatoriosCrystal {
             
             private global::System.Data.DataColumn columnCliente;
             
-            private global::System.Data.DataColumn columnCte;
+            private global::System.Data.DataColumn columnCTe;
             
             private global::System.Data.DataColumn columnVolumes;
             
             private global::System.Data.DataColumn columnTipoCobranca;
             
             private global::System.Data.DataColumn columnValor;
+            
+            private global::System.Data.DataColumn columnSaldoInicial;
+            
+            private global::System.Data.DataColumn columnSaldoFinal;
+            
+            private global::System.Data.DataColumn columnFilial;
+            
+            private global::System.Data.DataColumn columnUsuario;
+            
+            private global::System.Data.DataColumn columnTipoDocumento;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -342,9 +352,9 @@ namespace RelatoriosCrystal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn CteColumn {
+            public global::System.Data.DataColumn CTeColumn {
                 get {
-                    return this.columnCte;
+                    return this.columnCTe;
                 }
             }
             
@@ -369,6 +379,46 @@ namespace RelatoriosCrystal {
             public global::System.Data.DataColumn ValorColumn {
                 get {
                     return this.columnValor;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SaldoInicialColumn {
+                get {
+                    return this.columnSaldoInicial;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SaldoFinalColumn {
+                get {
+                    return this.columnSaldoFinal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FilialColumn {
+                get {
+                    return this.columnFilial;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn UsuarioColumn {
+                get {
+                    return this.columnUsuario;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TipoDocumentoColumn {
+                get {
+                    return this.columnTipoDocumento;
                 }
             }
             
@@ -409,15 +459,20 @@ namespace RelatoriosCrystal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public LancamentosRow AddLancamentosRow(string Data, string Cliente, string Cte, string Volumes, string TipoCobranca, string Valor) {
+            public LancamentosRow AddLancamentosRow(System.DateTime Data, string Cliente, string CTe, string Volumes, string TipoCobranca, double Valor, double SaldoInicial, double SaldoFinal, string Filial, string Usuario, string TipoDocumento) {
                 LancamentosRow rowLancamentosRow = ((LancamentosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Data,
                         Cliente,
-                        Cte,
+                        CTe,
                         Volumes,
                         TipoCobranca,
-                        Valor};
+                        Valor,
+                        SaldoInicial,
+                        SaldoFinal,
+                        Filial,
+                        Usuario,
+                        TipoDocumento};
                 rowLancamentosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLancamentosRow);
                 return rowLancamentosRow;
@@ -442,27 +497,42 @@ namespace RelatoriosCrystal {
             internal void InitVars() {
                 this.columnData = base.Columns["Data"];
                 this.columnCliente = base.Columns["Cliente"];
-                this.columnCte = base.Columns["Cte"];
+                this.columnCTe = base.Columns["CTe"];
                 this.columnVolumes = base.Columns["Volumes"];
                 this.columnTipoCobranca = base.Columns["TipoCobranca"];
                 this.columnValor = base.Columns["Valor"];
+                this.columnSaldoInicial = base.Columns["SaldoInicial"];
+                this.columnSaldoFinal = base.Columns["SaldoFinal"];
+                this.columnFilial = base.Columns["Filial"];
+                this.columnUsuario = base.Columns["Usuario"];
+                this.columnTipoDocumento = base.Columns["TipoDocumento"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnData = new global::System.Data.DataColumn("Data", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnData = new global::System.Data.DataColumn("Data", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnData);
                 this.columnCliente = new global::System.Data.DataColumn("Cliente", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCliente);
-                this.columnCte = new global::System.Data.DataColumn("Cte", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCte);
+                this.columnCTe = new global::System.Data.DataColumn("CTe", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCTe);
                 this.columnVolumes = new global::System.Data.DataColumn("Volumes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVolumes);
                 this.columnTipoCobranca = new global::System.Data.DataColumn("TipoCobranca", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTipoCobranca);
-                this.columnValor = new global::System.Data.DataColumn("Valor", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnValor = new global::System.Data.DataColumn("Valor", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnValor);
+                this.columnSaldoInicial = new global::System.Data.DataColumn("SaldoInicial", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSaldoInicial);
+                this.columnSaldoFinal = new global::System.Data.DataColumn("SaldoFinal", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSaldoFinal);
+                this.columnFilial = new global::System.Data.DataColumn("Filial", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFilial);
+                this.columnUsuario = new global::System.Data.DataColumn("Usuario", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUsuario);
+                this.columnTipoDocumento = new global::System.Data.DataColumn("TipoDocumento", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTipoDocumento);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -605,10 +675,10 @@ namespace RelatoriosCrystal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Data {
+            public System.DateTime Data {
                 get {
                     try {
-                        return ((string)(this[this.tableLancamentos.DataColumn]));
+                        return ((global::System.DateTime)(this[this.tableLancamentos.DataColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("O valor da coluna \'Data\' na tabela \'Lancamentos\' é DBNull.", e);
@@ -637,17 +707,17 @@ namespace RelatoriosCrystal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Cte {
+            public string CTe {
                 get {
                     try {
-                        return ((string)(this[this.tableLancamentos.CteColumn]));
+                        return ((string)(this[this.tableLancamentos.CTeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Cte\' na tabela \'Lancamentos\' é DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'CTe\' na tabela \'Lancamentos\' é DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableLancamentos.CteColumn] = value;
+                    this[this.tableLancamentos.CTeColumn] = value;
                 }
             }
             
@@ -685,10 +755,10 @@ namespace RelatoriosCrystal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Valor {
+            public double Valor {
                 get {
                     try {
-                        return ((string)(this[this.tableLancamentos.ValorColumn]));
+                        return ((double)(this[this.tableLancamentos.ValorColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("O valor da coluna \'Valor\' na tabela \'Lancamentos\' é DBNull.", e);
@@ -696,6 +766,86 @@ namespace RelatoriosCrystal {
                 }
                 set {
                     this[this.tableLancamentos.ValorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double SaldoInicial {
+                get {
+                    try {
+                        return ((double)(this[this.tableLancamentos.SaldoInicialColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'SaldoInicial\' na tabela \'Lancamentos\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLancamentos.SaldoInicialColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double SaldoFinal {
+                get {
+                    try {
+                        return ((double)(this[this.tableLancamentos.SaldoFinalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'SaldoFinal\' na tabela \'Lancamentos\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLancamentos.SaldoFinalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Filial {
+                get {
+                    try {
+                        return ((string)(this[this.tableLancamentos.FilialColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Filial\' na tabela \'Lancamentos\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLancamentos.FilialColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Usuario {
+                get {
+                    try {
+                        return ((string)(this[this.tableLancamentos.UsuarioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Usuario\' na tabela \'Lancamentos\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLancamentos.UsuarioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string TipoDocumento {
+                get {
+                    try {
+                        return ((string)(this[this.tableLancamentos.TipoDocumentoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'TipoDocumento\' na tabela \'Lancamentos\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLancamentos.TipoDocumentoColumn] = value;
                 }
             }
             
@@ -725,14 +875,14 @@ namespace RelatoriosCrystal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsCteNull() {
-                return this.IsNull(this.tableLancamentos.CteColumn);
+            public bool IsCTeNull() {
+                return this.IsNull(this.tableLancamentos.CTeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetCteNull() {
-                this[this.tableLancamentos.CteColumn] = global::System.Convert.DBNull;
+            public void SetCTeNull() {
+                this[this.tableLancamentos.CTeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -769,6 +919,66 @@ namespace RelatoriosCrystal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetValorNull() {
                 this[this.tableLancamentos.ValorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSaldoInicialNull() {
+                return this.IsNull(this.tableLancamentos.SaldoInicialColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSaldoInicialNull() {
+                this[this.tableLancamentos.SaldoInicialColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSaldoFinalNull() {
+                return this.IsNull(this.tableLancamentos.SaldoFinalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSaldoFinalNull() {
+                this[this.tableLancamentos.SaldoFinalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFilialNull() {
+                return this.IsNull(this.tableLancamentos.FilialColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFilialNull() {
+                this[this.tableLancamentos.FilialColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsUsuarioNull() {
+                return this.IsNull(this.tableLancamentos.UsuarioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetUsuarioNull() {
+                this[this.tableLancamentos.UsuarioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTipoDocumentoNull() {
+                return this.IsNull(this.tableLancamentos.TipoDocumentoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTipoDocumentoNull() {
+                this[this.tableLancamentos.TipoDocumentoColumn] = global::System.Convert.DBNull;
             }
         }
         

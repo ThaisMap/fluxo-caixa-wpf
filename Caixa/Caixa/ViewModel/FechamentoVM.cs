@@ -12,13 +12,23 @@ namespace Caixa.ViewModel
     public class FechamentoVM 
     { 
 
-        public Fechamento_M Fechamento { get; set; }
-        public List<Dados.Modelos.Lancamento> LancamentosPendentes { get; set; }
+        public Fechamento_M Fechamento { get; set; } 
+
+        public List<ItemFechamento> LancamentosPendentes { get; set; }
 
         public FechamentoVM()
         {
-            Fechamento = new Fechamento_M();
-            LancamentosPendentes = Listas.Lancamentos();
+            Fechamento = new Fechamento_M(); 
+            LancamentosPendentes = new List<ItemFechamento>();
+
+            using (var Banco = new CaixaContext())
+            {
+                var lancamentos = Banco.Lancamentos.Select(x => x.Id);
+                foreach (var id in lancamentos)
+                {
+                    LancamentosPendentes.Add(new ItemFechamento(id));
+                }
+            }
         }
 
         public void SelecionarArquivo()
@@ -32,6 +42,15 @@ namespace Caixa.ViewModel
             {
                 Fechamento.CaminhoArquivo = openFile.FileName;
             }
+        }
+
+        internal void Imprimir()
+        {
+            RelatoriosCrystal.Fechamento relatorio = new RelatoriosCrystal.Fechamento(); 
+
+            relatorio.SetDataSource(LancamentosPendentes);
+            Relatorios.ImprimirRelatorio imprimir = new Relatorios.ImprimirRelatorio(relatorio);
+            imprimir.ShowDialog();
         }
     }
 }

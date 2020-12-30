@@ -42,7 +42,7 @@ namespace Caixa.Models
          
         private void DadosFixos()
         {
-            suprimento.Data = DateTime.Today;
+            suprimento.Data = DateTime.Now;
             suprimento.Usuario_Id = status.IdUsuario;
             suprimento.Filial_Id = status.IdFilial;
             suprimento.Fechamento_Id = status.IdFechamento;

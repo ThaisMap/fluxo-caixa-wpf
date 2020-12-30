@@ -32,5 +32,10 @@ namespace Caixa.Listagens
         {
             controlador.SelecionarArquivo();
         }
+
+        private void BtnImprimir_Click(object sender, RoutedEventArgs e)
+        {
+            controlador.Imprimir();
+        }
     }
 }

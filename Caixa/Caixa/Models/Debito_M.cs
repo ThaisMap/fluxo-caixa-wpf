@@ -18,7 +18,7 @@ namespace Caixa.Models
         public Debito_M()
         {
             debito = new Debito();
-            debito.Data = DateTime.Today;
+            debito.Data = DateTime.Now;
         }
 
         [Required(ErrorMessage = "Informe a data")]

@@ -131,6 +131,7 @@
     <Compile Include="Models\AdiantamentoRelatorio.cs" />
     <Compile Include="Models\Fechamento_M.cs" />
     <Compile Include="Models\Debito_M.cs" />
+    <Compile Include="Models\ItemFechamento.cs" />
     <Compile Include="Models\Sessao.cs" />
     <Compile Include="Models\Suprimento_M.cs" />
     <Compile Include="Relatorios\ImprimirRelatorio.xaml.cs">
