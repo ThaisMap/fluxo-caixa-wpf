@@ -20,7 +20,7 @@ namespace Caixa.ViewModel
         public List<ItemFechamento> LancamentosPendentes { get; set; }
         public bool PodeFechar { get => Fechamento.CaminhoArquivo != String.Empty; }
 
-        
+        public double SaldoFinal => CalculaValorFinal();
 
         public FechamentoVM(Fechamento_M fechamento)
         {
@@ -53,15 +53,21 @@ namespace Caixa.ViewModel
         private void Fechar()
         {
             Fechamento.Fechado = true;
-            if (Fechamento.ValorFinal == null)
-            {
-                Fechamento.ValorFinal = Sessao.Status.Saldo;
-
-            } 
+            CalculaValorFinal();
             Fechamento.Salvar();
-            //qual vai ser o valor final se houver fechamento pendente depois ?
+            LancamentosPendentes.ForEach(x => x.SaldoFinal = (double)Fechamento.ValorFinal); 
         }
 
+
+        private double CalculaValorFinal()
+        {
+            Fechamento.ValorFinal = Fechamento.ValorInicial;
+            foreach (var item in LancamentosPendentes)
+            {
+                Fechamento.ValorFinal += item.Valor;
+            }
+            return (double)Fechamento.ValorFinal;
+        }
 
         internal void FecharEImprimir()
         {

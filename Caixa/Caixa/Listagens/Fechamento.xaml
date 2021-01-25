@@ -44,9 +44,23 @@
             DockPanel.Dock="Top"
             Style="{DynamicResource MaterialDesignHeadline6TextBlock}"
             Text="Lançamentos neste fechamento de caixa" />
+        <StackPanel
+            HorizontalAlignment="Center"
+            DockPanel.Dock="Bottom"
+            Orientation="Horizontal">
+            <TextBlock
+                Margin="0,15"
+                Style="{DynamicResource MaterialDesignSubtitle1TextBlock}"
+                Text="Saldo final: " />
+            <TextBlock
+                Margin="0,15"
+                HorizontalAlignment="Center"
+                Style="{DynamicResource MaterialDesignSubtitle1TextBlock}"
+                Text="{Binding SaldoFinal, StringFormat='C'}" />
+        </StackPanel>
         <DataGrid
             Name="DgCaixa"
-            DockPanel.Dock="Bottom"
+            DockPanel.Dock="Top"
             ItemsSource="{Binding LancamentosPendentes}"
             Style="{DynamicResource DataGridCentralizado}">
             <DataGrid.Columns>

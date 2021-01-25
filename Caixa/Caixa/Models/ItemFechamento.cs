@@ -17,7 +17,7 @@ namespace Caixa.Models
         public string TipoCobranca  { get; private set; }
         public double Valor         { get; private set; }
         public double SaldoInicial  { get; private set; }
-        public double SaldoFinal    { get; private set; }
+        public double SaldoFinal    { get; set; }
         public string Filial        { get; private set; }
         public string Usuario        { get; private set; }
 
@@ -44,6 +44,7 @@ namespace Caixa.Models
                         CTe = debito.Cte.ToString();
                         Volumes = debito.Volumes.ToString();
                         TipoCobranca = debito.TipoCobranca.Descricao;
+                        Valor *= -1;
                     }
                     else
                     {//CASO SEJA UM SUPRIMENTO
@@ -57,9 +58,10 @@ namespace Caixa.Models
                         var adiantamento = Banco.Adiantamentos.FirstOrDefault(x => x.Id == idLancamento);
                         if (adiantamento != null)
                         {
-                            Cliente = adiantamento.Motorista; 
+                            Cliente = adiantamento.Motorista;
+                            Valor *= -1;
                         }
-                         
+
                     }
                 }
             }

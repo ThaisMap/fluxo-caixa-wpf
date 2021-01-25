@@ -20,7 +20,6 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Data, StringFormat='d'}" Header="Data" />
                     <DataGridTextColumn Binding="{Binding ValorInicial, StringFormat='C'}" Header="Valor Inicial" />
-                    <DataGridTextColumn Binding="{Binding ValorFinal, StringFormat='C'}" Header="Valor Final" />
                     <DataGridTemplateColumn Header="Fechar">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
