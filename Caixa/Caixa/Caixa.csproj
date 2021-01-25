@@ -99,6 +99,7 @@
     <Compile Include="Commands\ImprimirAdiantamento.cs" />
     <Compile Include="Commands\LancarAdiantamento.cs" />
     <Compile Include="Commands\LancarSuprimento.cs" />
+    <Compile Include="Commands\RealizaFechamento.cs" />
     <Compile Include="Componentes\CreditoOuDebitoBooleanConverter.cs" />
     <Compile Include="Componentes\FechamentoEventArgs.cs" />
     <Compile Include="Componentes\Status.xaml.cs">

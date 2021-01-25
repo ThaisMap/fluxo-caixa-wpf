@@ -55,7 +55,7 @@
                     Content="Suprimento"
                     Cursor="Hand" />
             </StackPanel>
-            
+
         </StackPanel>
     </materialDesign:DialogHost>
 </UserControl>

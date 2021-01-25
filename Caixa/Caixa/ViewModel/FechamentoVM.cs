@@ -1,4 +1,5 @@
-﻿using Caixa.Models;
+﻿using Caixa.Commands;
+using Caixa.Models;
 using Dados;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace Caixa.ViewModel
 {
@@ -13,14 +15,18 @@ namespace Caixa.ViewModel
     {
 
         public Fechamento_M Fechamento { get; set; }
+        public ICommand ComandoFechar { get; private set; }
 
         public List<ItemFechamento> LancamentosPendentes { get; set; }
+        public bool PodeFechar { get => Fechamento.CaminhoArquivo != String.Empty; }
+
+        
 
         public FechamentoVM(Fechamento_M fechamento)
         {
             Fechamento = fechamento;
             LancamentosPendentes = new List<ItemFechamento>();
-
+            ComandoFechar = new RealizaFechamento(this);
             using (var Banco = new CaixaContext())
             {
                 var lancamentos = Banco.Lancamentos.Where(x => x.Fechamento_Id == fechamento.Id).Select(x => x.Id);
@@ -53,6 +59,7 @@ namespace Caixa.ViewModel
 
             } 
             Fechamento.Salvar();
+            //qual vai ser o valor final se houver fechamento pendente depois ?
         }
 
 
