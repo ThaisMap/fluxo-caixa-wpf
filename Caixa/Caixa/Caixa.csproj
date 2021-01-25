@@ -100,6 +100,7 @@
     <Compile Include="Commands\LancarAdiantamento.cs" />
     <Compile Include="Commands\LancarSuprimento.cs" />
     <Compile Include="Componentes\CreditoOuDebitoBooleanConverter.cs" />
+    <Compile Include="Componentes\FechamentoEventArgs.cs" />
     <Compile Include="Componentes\Status.xaml.cs">
       <DependentUpon>Status.xaml</DependentUpon>
     </Compile>
@@ -124,6 +125,9 @@
     <Compile Include="Listagens\Fechamento.xaml.cs">
       <DependentUpon>Fechamento.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Listagens\FechamentosPendentes.xaml.cs">
+      <DependentUpon>FechamentosPendentes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -142,6 +146,7 @@
     <Compile Include="Validacoes\SaldoSuficiente.cs" />
     <Compile Include="ViewModel\AdiantamentosPendentesVM.cs" />
     <Compile Include="Models\Observavel.cs" />
+    <Compile Include="ViewModel\FechamentosPendentesVM.cs" />
     <Compile Include="ViewModel\FechamentoVM.cs" />
     <Compile Include="ViewModel\LancarAdiantamentoVM.cs" />
     <Compile Include="ViewModel\LancarSuprimentoVM.cs" />
@@ -203,6 +208,10 @@
     <Page Include="Listagens\Fechamento.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Listagens\FechamentosPendentes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Dados.Modelos;  
 using System.Threading.Tasks;
+using Dados;
 
 namespace Caixa.Models
 {
@@ -12,9 +13,20 @@ namespace Caixa.Models
         private Fechamento fechamento;
 
         public int Id { get => fechamento.Id; }
+        public DateTime Data { get => fechamento.Data; }
         public double ValorInicial { get => fechamento.ValorInicial; }
         public double? ValorFinal { get => fechamento.ValorFinal; set => fechamento.ValorFinal = value; }
 
+        public bool PodeFechar => podeFechar();
+
+        private bool podeFechar()
+        {
+            if (fechamento.Fechado)
+                return false;
+
+            var pendentes = Listas.GetFechamentosPendentes();
+            return !pendentes.Where(x => x.Data < Data && !x.Fechado).Any();
+        }
         public string CaminhoArquivo
         {
             get => fechamento.ArquivoScan;

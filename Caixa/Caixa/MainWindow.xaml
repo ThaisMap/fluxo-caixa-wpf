@@ -48,7 +48,7 @@
                 Header="Adiantamentos" />
             <MenuItem
                 Name="MenuFechamentos"
-                Click="MenuFechamentos_Click"
+                Click="MenuFechamentosPendentes_Click"
                 Header="Fechamento" />
             <MenuItem
                 Name="MenuRelatorios"

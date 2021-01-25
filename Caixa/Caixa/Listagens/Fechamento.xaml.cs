@@ -11,7 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using Caixa.ViewModel;
-using System.Windows.Shapes; 
+using System.Windows.Shapes;
+using Caixa.Models;
 
 namespace Caixa.Listagens
 {
@@ -21,10 +22,10 @@ namespace Caixa.Listagens
     public partial class Fechamento : UserControl
     {
         private FechamentoVM controlador;
-        public Fechamento()
+        public Fechamento(Fechamento_M fechamento)
         {
             InitializeComponent();
-            controlador = new FechamentoVM();
+            controlador = new FechamentoVM(fechamento);
             DataContext = controlador; 
         }
 
@@ -35,7 +36,7 @@ namespace Caixa.Listagens
 
         private void BtnImprimir_Click(object sender, RoutedEventArgs e)
         {
-            controlador.Imprimir();
+            controlador.FecharEImprimir();
         }
     }
 }

@@ -20,7 +20,6 @@ namespace Caixa.Listagens
     /// </summary>
     public partial class Caixa : UserControl
     {
-        private List<Dados.Modelos.Lancamento> LancamentosCadastrados;
         public Caixa()
         {
             InitializeComponent();
@@ -31,29 +30,14 @@ namespace Caixa.Listagens
         { 
             DgCaixa.ItemsSource = Listas.Lancamentos(); 
         }
-
-
-        public static readonly RoutedEvent EventoBtnFechamento =
-          EventManager.RegisterRoutedEvent("EventoBtnFechamento", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Caixa));
-
-        public event RoutedEventHandler BtnFechamento
-        {
-            add { AddHandler(EventoBtnFechamento, value); }
-            remove { RemoveHandler(EventoBtnFechamento, value); }
-        }
-
-       
+      
         private void FecharPopUpDialog(object sender, RoutedEventArgs e)
         {
             DialogLancamento.IsOpen = false;
             CarregaListaCaixa();
         }
 
-        private void BtnFechamento_Click(object sender, RoutedEventArgs e)
-        {
-            RaiseEvent(new RoutedEventArgs(EventoBtnFechamento));
-        }
-
+   
         Lancamentos.PopUp popUp;
         private void BtnIncluir_Click(object sender, RoutedEventArgs e)
         {

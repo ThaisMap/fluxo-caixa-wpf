@@ -1,0 +1,40 @@
+﻿<UserControl
+    x:Class="Caixa.Listagens.FechamentosPendentes"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:componentes="clr-namespace:Caixa.Componentes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Caixa.Listagens"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <ScrollViewer>
+        <StackPanel>
+            <componentes:Titulo Texto="Fechamentos pendentes" />
+            <DataGrid
+                Name="DgPendencias"
+                ItemsSource="{Binding Pendentes}"
+                SelectedItem="{Binding FechamentoSelecionado}"
+                Style="{DynamicResource DataGridCentralizado}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Data, StringFormat='d'}" Header="Data" />
+                    <DataGridTextColumn Binding="{Binding ValorInicial, StringFormat='C'}" Header="Valor Inicial" />
+                    <DataGridTextColumn Binding="{Binding ValorFinal, StringFormat='C'}" Header="Valor Final" />
+                    <DataGridTemplateColumn Header="Fechar">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button
+                                    Name="BtnFechamento"
+                                    Click="BtnFechamento_Click"
+                                    Content="Fechar"
+                                    IsEnabled="{Binding PodeFechar}"
+                                    Style="{DynamicResource MaterialDesignFlatAccentButton}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

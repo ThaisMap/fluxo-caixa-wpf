@@ -9,21 +9,21 @@ using System.Windows.Forms;
 
 namespace Caixa.ViewModel
 {
-    public class FechamentoVM 
-    { 
+    public class FechamentoVM
+    {
 
-        public Fechamento_M Fechamento { get; set; } 
+        public Fechamento_M Fechamento { get; set; }
 
         public List<ItemFechamento> LancamentosPendentes { get; set; }
 
-        public FechamentoVM()
+        public FechamentoVM(Fechamento_M fechamento)
         {
-            Fechamento = new Fechamento_M(); 
+            Fechamento = fechamento;
             LancamentosPendentes = new List<ItemFechamento>();
 
             using (var Banco = new CaixaContext())
             {
-                var lancamentos = Banco.Lancamentos.Select(x => x.Id);
+                var lancamentos = Banco.Lancamentos.Where(x => x.Fechamento_Id == fechamento.Id).Select(x => x.Id);
                 foreach (var id in lancamentos)
                 {
                     LancamentosPendentes.Add(new ItemFechamento(id));
@@ -38,22 +38,31 @@ namespace Caixa.ViewModel
                 DefaultExt = "pdf",
                 Filter = "Arquivos scanneados |*.pdf"
             };
-            if( openFile.ShowDialog() == DialogResult.OK)
+            if (openFile.ShowDialog() == DialogResult.OK)
             {
                 Fechamento.CaminhoArquivo = openFile.FileName;
             }
         }
 
-        internal void Fechar()
+        private void Fechar()
         {
             Fechamento.Fechado = true;
-            if(Fechamento.ValorFinal == null)
+            if (Fechamento.ValorFinal == null)
             {
                 Fechamento.ValorFinal = Sessao.Status.Saldo;
-            }
+
+            } 
+            Fechamento.Salvar();
         }
 
-        internal void Imprimir()
+
+        internal void FecharEImprimir()
+        {
+            Fechar();
+            Imprimir();
+        } 
+
+        private void Imprimir()
         { 
             RelatoriosCrystal.Fechamento relatorio = new RelatoriosCrystal.Fechamento(); 
             relatorio.SetDataSource(LancamentosPendentes);

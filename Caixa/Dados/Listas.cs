@@ -9,7 +9,7 @@ namespace Dados
     public static class Listas
     {
         private static CaixaContext Context = new CaixaContext();
-
+        
         public static List<Filial> Filiais()
         {
             return Context.Filiais.ToList();
@@ -45,9 +45,9 @@ namespace Dados
             return Context.Lancamentos.ToList();
         }
 
-        public static List<Fechamento> Fechamentos()
+        public static List<Fechamento> GetFechamentosPendentes()
         {
-            return Context.Fechamentos.ToList();
+            return Context.Fechamentos.Where(x => !x.Fechado).ToList();
         }
 
         public static List<Adiantamento> GetListaAdiantamentos()
