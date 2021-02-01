@@ -41,6 +41,7 @@ namespace Dados.Modelos
                 {                   
                     fechamento.ArquivoScan = ArquivoScan;
                     fechamento.ValorFinal = ValorFinal;
+                    fechamento.ValorInicial = ValorInicial;
                     fechamento.Fechado = Fechado;
                 }
                 else

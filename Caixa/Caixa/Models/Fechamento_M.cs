@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Dados;
+using Dados.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Dados.Modelos;  
-using System.Threading.Tasks;
-using Dados;
 
 namespace Caixa.Models
 {
@@ -14,19 +12,13 @@ namespace Caixa.Models
 
         public int Id { get => fechamento.Id; }
         public DateTime Data { get => fechamento.Data; }
-        public double ValorInicial { get => fechamento.ValorInicial; }
+        public double ValorInicial { get => fechamento.ValorInicial; set => fechamento.ValorInicial = value; }
         public double? ValorFinal { get => fechamento.ValorFinal; set => fechamento.ValorFinal = value; }
+
+        public List<ItemFechamento> LancamentosPendentes { get; set; }
 
         public bool PodeFechar => podeFechar();
 
-        private bool podeFechar()
-        {
-            if (fechamento.Fechado)
-                return false;
-
-            var pendentes = Listas.GetFechamentosPendentes();
-            return !pendentes.Where(x => x.Data < Data && !x.Fechado).Any();
-        }
         public string CaminhoArquivo
         {
             get => fechamento.ArquivoScan;
@@ -38,7 +30,19 @@ namespace Caixa.Models
             }
         }
 
-        public bool Fechado { get => fechamento.Fechado; set => fechamento.Fechado  = value; }
+        public bool Fechado
+        {
+            get => fechamento.Fechado; set => fechamento.Fechado = value;
+        }
+
+        private bool podeFechar()
+        {
+            if (fechamento.Fechado)
+                return false;
+
+            var pendentes = Listas.GetFechamentosPendentes();
+            return !pendentes.Where(x => x.Data < Data && !x.Fechado).Any();
+        }
 
         public Fechamento_M(Filial filial)
         {
@@ -58,6 +62,29 @@ namespace Caixa.Models
         public void Salvar()
         {
             fechamento.Salvar();
+        }
+
+        public void CarregarLancamentos()
+        {
+            LancamentosPendentes = new List<ItemFechamento>();
+            using (var Banco = new CaixaContext())
+            {
+                var lancamentos = Banco.Lancamentos.Where(x => x.Fechamento_Id == fechamento.Id).Select(x => x.Id);
+                foreach (var id in lancamentos)
+                {
+                    LancamentosPendentes.Add(new ItemFechamento(id));
+                }
+            }
+        }
+
+        public double CalculaValorFinal()
+        {
+            ValorFinal = ValorInicial;
+            foreach (var item in LancamentosPendentes)
+            {
+                ValorFinal += item.Valor;
+            }
+            return (double)ValorFinal;
         }
     }
 }

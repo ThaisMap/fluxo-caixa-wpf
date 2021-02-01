@@ -13,28 +13,21 @@ namespace Caixa.ViewModel
 {
     public class FechamentoVM
     {
-
-        public Fechamento_M Fechamento { get; set; }
+        private FechamentosPendentes fechamentosPendentes;
+        public Fechamento_M Fechamento => fechamentosPendentes.LiberadoParaFechar;
         public ICommand ComandoFechar { get; private set; }
 
-        public List<ItemFechamento> LancamentosPendentes { get; set; }
+        public List<ItemFechamento> LancamentosPendentes { get => Fechamento.LancamentosPendentes; }
         public bool PodeFechar { get => Fechamento.CaminhoArquivo != String.Empty; }
 
-        public double SaldoFinal => CalculaValorFinal();
-
-        public FechamentoVM(Fechamento_M fechamento)
+        public double SaldoFinal => Fechamento.CalculaValorFinal();
+       
+        public FechamentoVM()
         {
-            Fechamento = fechamento;
-            LancamentosPendentes = new List<ItemFechamento>();
+            fechamentosPendentes = new FechamentosPendentes();
+            fechamentosPendentes.Carregar();
+            Fechamento.CarregarLancamentos();
             ComandoFechar = new RealizaFechamento(this);
-            using (var Banco = new CaixaContext())
-            {
-                var lancamentos = Banco.Lancamentos.Where(x => x.Fechamento_Id == fechamento.Id).Select(x => x.Id);
-                foreach (var id in lancamentos)
-                {
-                    LancamentosPendentes.Add(new ItemFechamento(id));
-                }
-            }
         }
 
         public void SelecionarArquivo()
@@ -53,21 +46,13 @@ namespace Caixa.ViewModel
         private void Fechar()
         {
             Fechamento.Fechado = true;
-            CalculaValorFinal();
+            Fechamento.CalculaValorFinal();
             Fechamento.Salvar();
-            LancamentosPendentes.ForEach(x => x.SaldoFinal = (double)Fechamento.ValorFinal); 
+            Fechamento.LancamentosPendentes.ForEach(x => x.SaldoFinal = (double)Fechamento.ValorFinal);
         }
 
 
-        private double CalculaValorFinal()
-        {
-            Fechamento.ValorFinal = Fechamento.ValorInicial;
-            foreach (var item in LancamentosPendentes)
-            {
-                Fechamento.ValorFinal += item.Valor;
-            }
-            return (double)Fechamento.ValorFinal;
-        }
+       
 
         internal void FecharEImprimir()
         {

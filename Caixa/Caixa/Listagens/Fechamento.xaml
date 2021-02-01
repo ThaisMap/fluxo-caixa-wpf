@@ -33,7 +33,6 @@
             x:Name="BtnImprimir"
             Margin="5,0,0,15"
             HorizontalAlignment="Center"
-            Click="BtnImprimir_Click"
             Command="{Binding ComandoFechar}"
             Content="Fechar e Imprimir"
             Cursor="Hand"

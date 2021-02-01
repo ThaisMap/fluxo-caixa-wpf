@@ -25,7 +25,7 @@ namespace Caixa.Listagens
         public Fechamento(Fechamento_M fechamento)
         {
             InitializeComponent();
-            controlador = new FechamentoVM(fechamento);
+            controlador = new FechamentoVM();
             DataContext = controlador; 
         }
 

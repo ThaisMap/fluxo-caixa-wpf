@@ -11,27 +11,17 @@ namespace Caixa.ViewModel
 {
     public class FechamentosPendentesVM
     {
-        public ObservableCollection<Fechamento_M> Pendentes { get; private set; }
+        private FechamentosPendentes fechamentosPendentes;
+        public List<Fechamento_M> Pendentes => fechamentosPendentes.Pendentes;
 
         public Fechamento_M FechamentoSelecionado { get; set; }
 
         public FechamentosPendentesVM()
         {
-            CarregarPendentes();
+            fechamentosPendentes = new FechamentosPendentes();
+            fechamentosPendentes.Carregar();
+            fechamentosPendentes.CalcularSaldosIniciais();            
         }
-
-        private void CarregarPendentes()
-        {
-            Pendentes = new ObservableCollection<Fechamento_M>();
-            foreach (var item in Listas.GetFechamentosPendentes())
-            {
-                Pendentes.Add(new Fechamento_M(item));
-            }
-        }
-
-        public void FecharSelecionado()
-        {
-
-        }
+        
     }
 }

@@ -134,6 +134,7 @@
     </Compile>
     <Compile Include="Models\Adiantamento_M.cs" />
     <Compile Include="Models\AdiantamentoRelatorio.cs" />
+    <Compile Include="Models\FechamentosPendentes.cs" />
     <Compile Include="Models\Fechamento_M.cs" />
     <Compile Include="Models\Debito_M.cs" />
     <Compile Include="Models\ItemFechamento.cs" />
