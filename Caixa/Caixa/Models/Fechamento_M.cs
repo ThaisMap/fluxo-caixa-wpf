@@ -37,7 +37,7 @@ namespace Caixa.Models
 
         private bool podeFechar()
         {
-            if (fechamento.Fechado)
+            if (fechamento.Fechado || Data.Date == DateTime.Today)
                 return false;
 
             var pendentes = Listas.GetFechamentosPendentes();

@@ -1,31 +1,31 @@
-﻿using Dados;  
-using Dados.Modelos;  
+﻿using Dados;
+using Dados.Modelos;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Caixa.Models
 {
     public sealed class Sessao : Observavel
-    { 
-        private Usuario usuario;
-        private Filial filial;
-        private Fechamento_M fechamento;
+    {
         private static Sessao instancia = null;
+        private Filial filial;
+        private Usuario usuario;
 
-        public string NomeUsuario { get => usuario.Nome; }
-        public int IdUsuario { get => usuario.Id; }
-        public string NomeFilial { get => filial.Nome; }
-        public int IdFilial { get => filial.Id; }
-        public double SaldoInicial { get => fechamento.ValorInicial; }  
-
-        public static Sessao Status { get
+        public static Sessao Status
+        {
+            get
             {
                 if (instancia == null)
                 { instancia = new Sessao(); }
                 return instancia;
-            } }
+            }
+        }
+
+        public DateTime Hoje { get => DateTime.Today; }
+        public int IdFilial { get => filial.Id; }
+        public int IdUsuario { get => usuario.Id; }
+        public string NomeFilial { get => filial.Nome; }
+        public string NomeUsuario { get => usuario.Nome; }
 
         public double Saldo
         {
@@ -37,35 +37,48 @@ namespace Caixa.Models
                 OnPropertyChanged("Saldo");
             }
         }
-        
-        public DateTime Hoje { get => DateTime.Today; }
 
-        public int IdFechamento { get => fechamento.Id; }
+        public double SaldoInicial
+        {
+            get => SaldoInicial;
+            set
+            {
+                SaldoInicial = value;
+                ValidateProperty(value, "SaldoInicial");
+                OnPropertyChanged("SaldoInicial");
+            }
+        }
+
         private Sessao()
         {
             using (var Banco = new CaixaContext())
             {
                 usuario = Banco.Usuarios.First();
-                filial =  Banco.Filiais.Find(usuario.Filial_Id);
-
-                var fechamentoBanco = Banco.Fechamentos.FirstOrDefault(x => x.Filial_Id == filial.Id && x.Data >= Hoje);
-                if(fechamentoBanco == null)
-                {
-                    fechamento = new Fechamento_M(filial);
-                    fechamento.Salvar();
-                }
-                else
-                {
-                    fechamento = new Fechamento_M(fechamentoBanco);
-                }
+                filial = Banco.Filiais.Find(usuario.Filial_Id);
             }
+            RecarregarFechamento();
         }
 
         public void AddValorSaldoFilial(double valor)
         {
+            // Pode ter sido adicionado um lançamento numa data anterior, daí alteraria o saldo inicial mais recente
+            RecarregarFechamento();
             Saldo += valor;
             filial.Salvar();
         }
 
+        private void RecarregarFechamento()
+        {
+            using (var Banco = new CaixaContext())
+            {
+                var fechamentoBanco = Banco.Fechamentos
+                    .Where(x => x.Filial_Id == filial.Id && !x.Fechado)
+                    .OrderByDescending(x => x.Data)
+                    .FirstOrDefault();
+
+                //  se não tiver nenhum fechamento aberto, considera o saldo da filial como inicial e final
+                SaldoInicial = fechamentoBanco == null ? filial.Saldo : fechamentoBanco.ValorInicial;
+            }
+        }
     }
 }

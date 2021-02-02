@@ -32,7 +32,6 @@ namespace Caixa.Models
         {
             suprimento = new Lancamento();
             suprimento.TipoDocumento_Id = Listas.TiposDocumento().Where(t => t.Descricao.ToLower() == tipo).Select(t => t.Id).FirstOrDefault();
-            DadosFixos();
         }
 
         public Suprimento_M(Lancamento doBanco)
@@ -45,13 +44,17 @@ namespace Caixa.Models
             suprimento.Data = DateTime.Now;
             suprimento.Usuario_Id = status.IdUsuario;
             suprimento.Filial_Id = status.IdFilial;
-            suprimento.Fechamento_Id = status.IdFechamento;
+            suprimento.Fechamento_Id = Listas.GetFechamentoNaData(suprimento.Filial_Id, suprimento.Data);
         }
 
         public void Salvar()
         {
-            suprimento.SalvarLancamentoBase();
-            status.AddValorSaldoFilial(Valor);
+            if (Validacoes.NovoFechamento.ValidaDataFechamento(suprimento.Data))
+            {
+                DadosFixos();
+                suprimento.SalvarLancamentoBase();
+                status.AddValorSaldoFilial(Valor);
+            }
         }
     }
 }
