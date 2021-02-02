@@ -21,7 +21,6 @@ namespace Caixa.Models
         public int Id { get => adiantamento.Id; }
 
         [Required(ErrorMessage = "Informe a data")]
-        [FechamentoAberto(ErrorMessage = "Não há fechamento em aberto na data selecionada")]
         public DateTime Data
         {
             get => adiantamento.Data;
@@ -97,18 +96,10 @@ namespace Caixa.Models
         { 
             adiantamento.Usuario_Id = status.IdUsuario;
             adiantamento.Filial_Id = status.IdFilial;
-            adiantamento.TipoDocumento_Id = Dados.Listas.TiposDocumento().Where(t => t.Descricao.ToLower() == "adiantamento").Select(t => t.Id).FirstOrDefault();
-            adiantamento.Fechamento_Id = status.IdFechamento;
+            adiantamento.TipoDocumento_Id = Listas.TiposDocumento().Where(t => t.Descricao.ToLower() == "adiantamento").Select(t => t.Id).FirstOrDefault();
+            adiantamento.Fechamento_Id = Listas.GetFechamentoNaData(adiantamento.Filial_Id, adiantamento.Data);
         }
-
-        private void VerificaFechamento()
-        {
-
-            using (var Banco = new CaixaContext())
-            {
-                
-            }
-        }
+              
 
         internal void Estornar()
         {
@@ -121,10 +112,13 @@ namespace Caixa.Models
 
         public void Salvar()
         {
-            if (adiantamento.Usuario_Id < 1)
-                DadosFixos();
-            adiantamento.Salvar();
-            status.AddValorSaldoFilial(-Valor);
+            if (NovoFechamento.ValidaDataFechamento(Data))
+            {
+                if (adiantamento.Usuario_Id < 1)
+                    DadosFixos();
+                adiantamento.Salvar();
+                status.AddValorSaldoFilial(-Valor);
+            }
         }
          
         internal void Imprimir()

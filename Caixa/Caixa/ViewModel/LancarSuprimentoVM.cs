@@ -32,7 +32,6 @@ namespace Caixa.ViewModel
 
         internal void Salvar()
         {
-
             Suprimento.Salvar();
         }
     }

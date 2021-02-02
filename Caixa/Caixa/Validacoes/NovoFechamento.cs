@@ -44,6 +44,7 @@ namespace Caixa.Validacoes
                         };
 
                         Banco.Fechamentos.Add(novo);
+                        Banco.SaveChanges();
                         return true;
                     }
                 }

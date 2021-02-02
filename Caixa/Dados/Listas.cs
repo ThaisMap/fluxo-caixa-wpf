@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Dados
@@ -53,6 +54,13 @@ namespace Dados
         public static List<Adiantamento> GetListaAdiantamentos()
         {
             return Context.Adiantamentos.Where(x => x.Pendente).ToList();
+        }
+  
+        public static int GetFechamentoNaData(int filial, DateTime Data)
+        {
+            return Context.Fechamentos
+                    .Where(x => x.Filial_Id == filial && DbFunctions.TruncateTime(x.Data) == DbFunctions.TruncateTime(Data))
+                    .Select(x => x.Id).FirstOrDefault();
         }
     }
 }

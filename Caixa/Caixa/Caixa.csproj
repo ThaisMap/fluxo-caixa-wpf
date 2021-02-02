@@ -143,7 +143,6 @@
     <Compile Include="Relatorios\ImprimirRelatorio.xaml.cs">
       <DependentUpon>ImprimirRelatorio.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Validacoes\FechamentoAberto.cs" />
     <Compile Include="Validacoes\NovoFechamento.cs" />
     <Compile Include="Validacoes\SaldoSuficiente.cs" />
     <Compile Include="ViewModel\AdiantamentosPendentesVM.cs" />

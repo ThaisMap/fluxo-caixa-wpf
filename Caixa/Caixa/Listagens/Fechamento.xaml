@@ -33,6 +33,7 @@
             x:Name="BtnImprimir"
             Margin="5,0,0,15"
             HorizontalAlignment="Center"
+            Click="BtnImprimir_Click"
             Command="{Binding ComandoFechar}"
             Content="Fechar e Imprimir"
             Cursor="Hand"
@@ -42,7 +43,7 @@
             HorizontalAlignment="Center"
             DockPanel.Dock="Top"
             Style="{DynamicResource MaterialDesignHeadline6TextBlock}"
-            Text="Lançamentos neste fechamento de caixa" />
+            Text="Neste fechamento de caixa" />
         <StackPanel
             HorizontalAlignment="Center"
             DockPanel.Dock="Bottom"
@@ -50,7 +51,16 @@
             <TextBlock
                 Margin="0,15"
                 Style="{DynamicResource MaterialDesignSubtitle1TextBlock}"
-                Text="Saldo final: " />
+                Text="Saldo inicial: " />
+            <TextBlock
+                Margin="0,15"
+                HorizontalAlignment="Center"
+                Style="{DynamicResource MaterialDesignSubtitle1TextBlock}"
+                Text="{Binding SaldoInicial, StringFormat='C'}" />
+            <TextBlock
+                Margin="0,15"
+                Style="{DynamicResource MaterialDesignSubtitle1TextBlock}"
+                Text=" - Saldo final: " />
             <TextBlock
                 Margin="0,15"
                 HorizontalAlignment="Center"

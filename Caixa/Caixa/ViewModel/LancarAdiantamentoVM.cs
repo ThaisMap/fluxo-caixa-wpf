@@ -18,7 +18,7 @@ namespace Caixa.ViewModel
 
         public LancarAdiantamentoVM()
         {
-            Adiantamento = new Models.Adiantamento_M();
+            Adiantamento = new Adiantamento_M();
             ComandoSalvar = new LancarAdiantamento(this); 
         }
 

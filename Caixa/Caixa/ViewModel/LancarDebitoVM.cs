@@ -27,6 +27,8 @@ namespace Caixa.ViewModel
         public Debito_M Debito { get; }
         public bool PodeLancar { get => Debito.IsValid; }
 
+        public bool exibirErro { get; set; }
+
         public LancarDebitoVM()
         {
             Debito = new Debito_M();
@@ -40,7 +42,7 @@ namespace Caixa.ViewModel
                 novo.Salvar();
                 Debito.Cliente = novo.Id;
             }
-            Debito.Salvar();
+            exibirErro = !Debito.Salvar();
         }
     }
 }

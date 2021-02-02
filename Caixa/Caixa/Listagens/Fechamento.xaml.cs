@@ -29,6 +29,16 @@ namespace Caixa.Listagens
             DataContext = controlador; 
         }
 
+        public static readonly RoutedEvent EventoVoltarListaFechamentos =
+  EventManager.RegisterRoutedEvent("EventoVoltarListaFechamentos", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Fechamento));
+
+        public event RoutedEventHandler BtnFechamento
+        {
+            add { AddHandler(EventoVoltarListaFechamentos, value); }
+            remove { RemoveHandler(EventoVoltarListaFechamentos, value); }
+        }
+
+
         private void BtnArquivo_Click(object sender, RoutedEventArgs e)
         {
             controlador.SelecionarArquivo();
@@ -36,7 +46,8 @@ namespace Caixa.Listagens
 
         private void BtnImprimir_Click(object sender, RoutedEventArgs e)
         {
-            controlador.FecharEImprimir();
+            MessageBox.Show("Fechamento finalizado");
+            RaiseEvent(new RoutedEventArgs(EventoVoltarListaFechamentos));
         }
     }
 }

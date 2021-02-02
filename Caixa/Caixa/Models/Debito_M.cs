@@ -4,6 +4,7 @@ using Dados.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,6 @@ namespace Caixa.Models
         }
 
         [Required(ErrorMessage = "Informe a data")]
-        [FechamentoAberto(ErrorMessage = "Não há fechamento em aberto na data selecionada")]
         public DateTime Data
         {
             get => debito.Data;
@@ -133,18 +133,20 @@ namespace Caixa.Models
         private void DadosFixos()
         {
             debito.Usuario_Id = status.IdUsuario;
-            debito.Filial_Id = status.IdFilial; 
-            debito.Fechamento_Id = status.IdFechamento;
+            debito.Filial_Id = status.IdFilial;
+            debito.Fechamento_Id = Listas.GetFechamentoNaData(debito.Filial_Id, debito.Data);
         }
 
-        public void Salvar()
+        public bool Salvar()
         {
-            DadosFixos();
-            if (IsValid)
+            if (NovoFechamento.ValidaDataFechamento(Data))
             {
+                DadosFixos();
                 debito.Salvar();
                 status.AddValorSaldoFilial(-Valor);
+                return true;
             }
+            return false;
         }
     }
 }

@@ -38,7 +38,10 @@ namespace Caixa.Lancamentos
         private void BtnLancar_Click(object sender, RoutedEventArgs e)
         {
             controlador.Salvar();
-            RaiseEvent(new RoutedEventArgs(EventoDebitoLancado));
+            if (controlador.exibirErro)
+                MessageBox.Show("Data inválida");
+            else
+                RaiseEvent(new RoutedEventArgs(EventoDebitoLancado));
         } 
     }
 }

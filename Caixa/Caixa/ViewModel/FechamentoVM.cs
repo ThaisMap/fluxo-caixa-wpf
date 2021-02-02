@@ -20,6 +20,7 @@ namespace Caixa.ViewModel
         public List<ItemFechamento> LancamentosPendentes { get => Fechamento.LancamentosPendentes; }
         public bool PodeFechar { get => Fechamento.CaminhoArquivo != String.Empty; }
 
+        public double SaldoInicial => Fechamento.ValorInicial;
         public double SaldoFinal => Fechamento.CalculaValorFinal();
        
         public FechamentoVM()
@@ -51,21 +52,21 @@ namespace Caixa.ViewModel
             Fechamento.LancamentosPendentes.ForEach(x => x.SaldoFinal = (double)Fechamento.ValorFinal);
         }
 
-
-       
-
         internal void FecharEImprimir()
         {
             Fechar();
             Imprimir();
-        } 
+        }
 
         private void Imprimir()
-        { 
-            RelatoriosCrystal.Fechamento relatorio = new RelatoriosCrystal.Fechamento(); 
-            relatorio.SetDataSource(LancamentosPendentes);
-            Relatorios.ImprimirRelatorio imprimir = new Relatorios.ImprimirRelatorio(relatorio);
-            imprimir.ShowDialog();
+        {
+            if (LancamentosPendentes.Count > 0)
+            {
+                RelatoriosCrystal.Fechamento relatorio = new RelatoriosCrystal.Fechamento();
+                relatorio.SetDataSource(LancamentosPendentes);
+                Relatorios.ImprimirRelatorio imprimir = new Relatorios.ImprimirRelatorio(relatorio);
+                imprimir.ShowDialog();
+            }
         }
     }
 }

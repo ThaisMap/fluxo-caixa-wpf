@@ -59,8 +59,6 @@ namespace Caixa.Models
 
         }
 
-
-
         
     }
 }
