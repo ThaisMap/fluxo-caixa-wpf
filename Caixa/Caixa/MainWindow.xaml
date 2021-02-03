@@ -53,7 +53,12 @@
             <MenuItem
                 Name="MenuRelatorios"
                 Click="MenuRelatorios_Click"
-                Header="Relatórios" />
+                Header="Relatórios" >
+                <MenuItem
+                Name="MenuFechamentosAnteriores"
+                Click="MenuFechamentosAnteriores_Click"
+                Header="Fechamento" />
+            </MenuItem>
         </Menu>
         <componentes:Status DockPanel.Dock="Top" />
         <ContentControl

@@ -10,7 +10,7 @@ namespace Caixa.Models
         private static Sessao instancia = null;
         private Filial filial;
         private Usuario usuario;
-
+        private double saldoInicial = 0;
         public static Sessao Status
         {
             get
@@ -32,7 +32,6 @@ namespace Caixa.Models
             get => filial.Saldo;
             set
             {
-                ValidateProperty(value, "Saldo");
                 filial.Saldo = value;
                 OnPropertyChanged("Saldo");
             }
@@ -40,11 +39,10 @@ namespace Caixa.Models
 
         public double SaldoInicial
         {
-            get => SaldoInicial;
+            get => saldoInicial;
             set
             {
-                SaldoInicial = value;
-                ValidateProperty(value, "SaldoInicial");
+                saldoInicial = value;
                 OnPropertyChanged("SaldoInicial");
             }
         }

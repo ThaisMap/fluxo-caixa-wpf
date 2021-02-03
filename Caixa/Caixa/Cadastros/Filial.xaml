@@ -47,9 +47,9 @@
                     Margin="0,10,10,5"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
-                    LostFocus="Nome_LostFocus"
                     materialDesign:HintAssist.Hint="Nome"
                     materialDesign:HintAssist.IsFloating="True"
+                    LostFocus="Nome_LostFocus"
                     MaxLength="50" />
                 <TextBox
                     Name="Saldo"

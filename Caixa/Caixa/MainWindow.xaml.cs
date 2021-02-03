@@ -87,5 +87,10 @@ namespace Caixa
         {
            
         }
+
+        private void MenuFechamentosAnteriores_Click(object sender, RoutedEventArgs e)
+        {
+            Conteudo.Content = new Relatorios.FechamentosAnteriores();
+        }
     }
 }

@@ -140,6 +140,9 @@
     <Compile Include="Models\ItemFechamento.cs" />
     <Compile Include="Models\Sessao.cs" />
     <Compile Include="Models\Suprimento_M.cs" />
+    <Compile Include="Relatorios\FechamentosAnteriores.xaml.cs">
+      <DependentUpon>FechamentosAnteriores.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\ImprimirRelatorio.xaml.cs">
       <DependentUpon>ImprimirRelatorio.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,7 @@
     <Compile Include="Validacoes\SaldoSuficiente.cs" />
     <Compile Include="ViewModel\AdiantamentosPendentesVM.cs" />
     <Compile Include="Models\Observavel.cs" />
+    <Compile Include="ViewModel\FechamentosAnterioresVM.cs" />
     <Compile Include="ViewModel\FechamentosPendentesVM.cs" />
     <Compile Include="ViewModel\FechamentoVM.cs" />
     <Compile Include="ViewModel\LancarAdiantamentoVM.cs" />
@@ -230,6 +234,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Relatorios\FechamentosAnteriores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Relatorios\ImprimirRelatorio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

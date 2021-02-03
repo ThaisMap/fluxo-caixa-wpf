@@ -1,0 +1,75 @@
+﻿<UserControl
+    x:Class="Caixa.Relatorios.FechamentosAnteriores"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:componentes="clr-namespace:Caixa.Componentes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Caixa.Relatorios"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <DockPanel>
+        <componentes:Titulo DockPanel.Dock="Top" Texto="Fechamentos anteriores" />
+        <StackPanel
+            Margin="10"
+            HorizontalAlignment="Center"
+            DockPanel.Dock="Top"
+            Orientation="Horizontal">
+            <DatePicker
+                Width="150"
+                Margin="5"
+                VerticalAlignment="Bottom"
+                materialDesign:HintAssist.Hint="Data inicial"
+                SelectedDate="{Binding DataInicial}" />
+            <DatePicker
+                Width="150"
+                Margin="5"
+                VerticalAlignment="Bottom"
+                materialDesign:HintAssist.Hint="Data final"
+                SelectedDate="{Binding DataFinal}" />
+            <Button
+                Height="25"
+                Margin="5"
+                Name="BtnPesquisar"
+                Click="BtnPesquisar_Click"
+                Content="Pesquisar" />
+        </StackPanel>
+        <DataGrid
+            Name="DgPendencias"
+            ItemsSource="{Binding Fechamentos}"
+            SelectedItem="{Binding FechamentoSelecionado}"
+            Style="{DynamicResource DataGridCentralizado}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Data, StringFormat='d'}" Header="Data" />
+                <DataGridTextColumn Binding="{Binding ValorInicial, StringFormat='C'}" Header="Saldo Inicial" />
+                <DataGridTextColumn Binding="{Binding ValorFinal, StringFormat='C'}" Header="Saldo Final" />
+                <DataGridTemplateColumn Header="Imprimir">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Name="BtnImprimir"
+                                Click="BtnImprimir_Click"
+                                Style="{DynamicResource MaterialDesignFlatAccentButton}">
+                                <materialDesign:PackIcon Kind="Printer" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Scan">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Name="BtnArquivo"
+                                Click="BtnArquivo_Click"
+                                Style="{DynamicResource MaterialDesignFlatAccentButton}">
+                                <materialDesign:PackIcon Kind="File" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</UserControl>
