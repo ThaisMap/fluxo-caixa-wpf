@@ -11,7 +11,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Dados.Modelos;
 using Dados;
-using System.Linq; 
+using System.Linq;
+using Caixa.ViewModel;
 
 namespace Caixa
 {
@@ -20,16 +21,30 @@ namespace Caixa
     /// </summary>
     public partial class Login : Window
     {
+        private LoginVM controlador = new LoginVM();
         public Login()
         {
             InitializeComponent();
+            DataContext = controlador;
+        }
+
+        public bool Validar()
+        {
+            return controlador.ValidarLogin(TxbSenha.Password);
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-            this.Close();
-            main.Show();
+            if (Validar())
+            {
+                MainWindow main = new MainWindow(controlador.Id);
+                this.Close();
+                main.Show();
+            }
+            else
+            {
+                MessageBox.Show("Login / senha inválidos");
+            }
         }
     }
 }

@@ -59,6 +59,16 @@ namespace Caixa.Models
             RecarregarFechamento();
         }
 
+        public void Login(int IdUsuario)
+        {
+            using (var Banco = new CaixaContext())
+            {
+                usuario = Banco.Usuarios.Where(x => x.Id == IdUsuario).FirstOrDefault();
+                filial = Banco.Filiais.Find(usuario.Filial_Id);
+            }
+            RecarregarFechamento();
+        }
+
         public void AddValorSaldoFilial(double valor)
         {
             // Pode ter sido adicionado um lançamento numa data anterior, daí alteraria o saldo inicial mais recente

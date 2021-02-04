@@ -140,6 +140,7 @@
     <Compile Include="Models\ItemFechamento.cs" />
     <Compile Include="Models\Sessao.cs" />
     <Compile Include="Models\Suprimento_M.cs" />
+    <Compile Include="Models\Usuario_M.cs" />
     <Compile Include="Relatorios\FechamentosAnteriores.xaml.cs">
       <DependentUpon>FechamentosAnteriores.xaml</DependentUpon>
     </Compile>
@@ -156,6 +157,7 @@
     <Compile Include="ViewModel\LancarAdiantamentoVM.cs" />
     <Compile Include="ViewModel\LancarSuprimentoVM.cs" />
     <Compile Include="ViewModel\LancarDebitoVM.cs" />
+    <Compile Include="ViewModel\LoginVM.cs" />
     <Compile Include="ViewModel\StatusVM.cs" />
     <Compile Include="Componentes\StringToDoubleValidationRule.cs" />
     <Compile Include="Componentes\StringToIntValidationRule.cs" />

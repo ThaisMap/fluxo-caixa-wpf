@@ -39,6 +39,8 @@
                     Margin="10"
                     materialDesign:HintAssist.Hint="Login"
                     materialDesign:HintAssist.IsFloating="True"
+                    Text="{Binding Usuario.Login, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}"
+                Validation.ErrorTemplate="{StaticResource errorTemplate}"
                     IsTabStop="True"
                     TabIndex="0" />
 

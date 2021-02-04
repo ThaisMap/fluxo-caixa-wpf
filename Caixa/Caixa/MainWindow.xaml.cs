@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Caixa.Models;
 using Dados;
 using Dados.Modelos;
 
@@ -22,9 +23,13 @@ namespace Caixa
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(int IdUsuarioLogado)
         {
             InitializeComponent();
+
+            Sessao status = Sessao.Status;
+            status.Login(IdUsuarioLogado);
+
             // Vai pra tela de realizar fechamentos, vindo dos fechamentos pendentes
             AddHandler(Listagens.FechamentosPendentes.EventoBtnFechamento,
                 new RoutedEventHandler(MenuFechamentos_Click));
@@ -33,7 +38,6 @@ namespace Caixa
             AddHandler(Listagens.Fechamento.EventoVoltarListaFechamentos, 
                 new RoutedEventHandler(MenuFechamentosPendentes_Click));
 
-            Models.Sessao status = Models.Sessao.Status;
             MenuFiliais.Visibility = status.UsuarioMaster ? Visibility.Visible : Visibility.Collapsed;
             
             Conteudo.Content = new Listagens.Caixa();
