@@ -1,4 +1,5 @@
-﻿using Dados;
+﻿using Caixa.Models;
+using Dados;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,6 +33,8 @@ namespace Caixa.Cadastros
             CbCadastrados.DisplayMemberPath = "Nome";
             cbFilial.DisplayMemberPath = "Nome";
             cbFilial.SelectedValuePath = "Id";
+            Sessao status = Sessao.Status;
+            CkAdmin.IsEnabled = status.UsuarioMaster;
             CarregarCadastros();
         }
 

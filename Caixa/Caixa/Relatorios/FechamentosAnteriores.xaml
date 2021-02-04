@@ -30,9 +30,9 @@
                 materialDesign:HintAssist.Hint="Data final"
                 SelectedDate="{Binding DataFinal}" />
             <Button
+                Name="BtnPesquisar"
                 Height="25"
                 Margin="5"
-                Name="BtnPesquisar"
                 Click="BtnPesquisar_Click"
                 Content="Pesquisar" />
         </StackPanel>

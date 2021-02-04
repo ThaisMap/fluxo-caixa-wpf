@@ -33,6 +33,9 @@ namespace Caixa
             AddHandler(Listagens.Fechamento.EventoVoltarListaFechamentos, 
                 new RoutedEventHandler(MenuFechamentosPendentes_Click));
 
+            Models.Sessao status = Models.Sessao.Status;
+            MenuFiliais.Visibility = status.UsuarioMaster ? Visibility.Visible : Visibility.Collapsed;
+            
             Conteudo.Content = new Listagens.Caixa();
         }
 

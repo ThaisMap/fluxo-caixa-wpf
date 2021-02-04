@@ -19,7 +19,7 @@
             <MenuItem Name="MenuCadastros" Header="Cadastros">
                 <MenuItem
                     Name="MenuFiliais"
-                    Click="MenuFiliais_Click"
+                    Click="MenuFiliais_Click"                    
                     Header="Filiais" />
                 <MenuItem
                     Name="MenuClientes"

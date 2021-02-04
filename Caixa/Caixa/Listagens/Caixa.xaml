@@ -51,7 +51,7 @@
                 <Button
                     Name="BtnSuprimento"
                     Margin="10"
-                    Click="BtnSuprimento_Click"
+                    Click="BtnSuprimento_Click"                    
                     Content="Suprimento"
                     Cursor="Hand" />
             </StackPanel>

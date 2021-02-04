@@ -23,6 +23,9 @@ namespace Caixa.Listagens
         public Caixa()
         {
             InitializeComponent();
+            Models.Sessao status = Models.Sessao.Status;
+            BtnSuprimento.Visibility = status.UsuarioMaster ? Visibility.Visible : Visibility.Collapsed;
+
             CarregaListaCaixa();
         }
 

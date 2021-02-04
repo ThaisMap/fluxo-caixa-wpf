@@ -27,6 +27,8 @@ namespace Caixa.Models
         public string NomeFilial { get => filial.Nome; }
         public string NomeUsuario { get => usuario.Nome; }
 
+        public bool UsuarioMaster { get => usuario.Admin; }
+
         public double Saldo
         {
             get => filial.Saldo;
@@ -51,7 +53,7 @@ namespace Caixa.Models
         {
             using (var Banco = new CaixaContext())
             {
-                usuario = Banco.Usuarios.First();
+                usuario = Banco.Usuarios.Where(x => x.Id == 1).FirstOrDefault();
                 filial = Banco.Filiais.Find(usuario.Filial_Id);
             }
             RecarregarFechamento();
